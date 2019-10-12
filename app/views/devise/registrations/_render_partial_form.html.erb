@@ -1,0 +1,7 @@
+<h3>Here is the partial form</h3>
+
+<%= form_tag("/next_step", method: 'post') do %>
+    <%= label_tag(:data, "Some options: ") %>
+    <%= select_tag(:data, options_for_select(@array_from_controller.transpose[0].collect)) %>
+    <%= submit_tag('Next') %>
+<% end %>
