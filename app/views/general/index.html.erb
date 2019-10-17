@@ -47,67 +47,69 @@
 
 <% if current_user.try(:admin?) %>
 
+	
+
 	<table>
 	    <% @users.each do |user| %>
+
 	      <tr>
-	        
-	        <% if user.approved != true %>
+	      	
+	      	<td>
 
-	        	<td>
+	    		<% if user.avatar.attached? && user.avatar.variable? %>
 
-	        		<% if user.avatar.attached? %>
+	    			<%= puts "user.avatar.attached = " + user.avatar.attached?.to_s %>
+	    			<%= puts "user.avatar.varible = " + user.avatar.variable?.to_s %>
 
-  						
-	        			
-  						<%= image_tag user.avatar.variant(resize_to_limit: [30, 30]) %>
-  						
+						
+					<%= image_tag user.avatar.variant(resize_to_limit: [32, 32]) %>
+						
 
-					<% else %>
+				<% elsif user.avatar.attached? && user.avatar.previewable? %>
+ 
+	    			<%= puts "no.avatar.attached = " + user.avatar.attached?.to_s %>
+	    			<%= puts "no.avatar.varible = " + user.avatar.variable?.to_s %>
 
-						<%= image_tag("/assets/man100px.png", height: '32', width: '32') %>
+	    			<%= image_tag user.avatar.preview(resize_to_limit: [32, 32]) %>
+
+    			<% else %>
+
+					<%= image_tag("/assets/man100px.png", height: '32', width: '32') %>
 
 
-					<% end %>
+				<% end %>
 
+    		</td>
+			
+			<td><%= user.uid %></td>
+			<td><%= user.first_name %></td>
+        	<td><%= user.last_name %></td>
 
-        		</td>
+        	<% if user.approved? && !user.admin %>
+				<td><%= link_to "click to ban", judge_path(:id => user.id, :approved => false), :method => :patch %>
 				
-				<td><%= user.uid %></td>
-				<td><%= user.first_name %></td>
-	        	<td><%= user.last_name %></td>
-				<td><%= link_to "click to approve User", judge_path(:id => user.id, :approved => true), :method => :patch %></td>
-			<% else %>
-
-
-				<td>
-
-	        		<% if user.avatar.attached? %>
-
-  						
-
-  						<%= image_tag user.avatar.variant(resize_to_limit: [32, 32]) %>
-
-
-					<% else %>
-
-						<%= image_tag("/assets/man100px.png", height: '32', width: '32') %>
-
-
-					<% end %>
-
-
-
-
-        		</td>
-
-				<td><%= user.uid %></td>
-				<td><%= user.first_name %></td>
-	        	<td><%= user.last_name %></td>
+				</td>
+			<%elsif !user.approved && !user.admin  %>
+				<td><%= link_to "click to approve user", judge_path(:id => user.id, :approved => true), :method => :patch %>
 				
-				<td><%= link_to "click to ban", judge_path(:id => user.id, :approved => false), :method => :patch %></td>
-	        <% end %>
+				</td>
+
+			<%else user.admin %>
+				<td><%= "admin account" %>
+				
+				</td>
+
+			<%end%>
+
+			
+
+
+
+				
 	      
 	      </tr>
+	    
+
 	    <% end %>
 	</table>
 

@@ -20,9 +20,9 @@
     <%= f.email_field :email, autocomplete: "email", disabled: true %><br/><br/>
  
 
-<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br/>
-<% end %>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br/>
+  <% end %>
 
 
     <%= f.label "pick new password" %><br/>
@@ -44,8 +44,19 @@
     <div class="avatar_wrapper_current">
 
     <% if current_user.avatar.attached? %>
-      <%= image_tag current_user.avatar.variant(resize_to_limit: [150, 150]) %>
-    <% else %>
+      
+
+      
+
+        <%= image_tag current_user.avatar.variant(resize_to_limit: [100, 100]) %>
+      
+
+      <%else%>
+
+
+        
+
+   
         
       <%= image_tag("man100px.png", height: '150', width: '150') %>
     <% end %><br/><br/>
