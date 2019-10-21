@@ -1,8 +1,19 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # :confirmable, :lockable, :timeoutable, :trackable and : omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :validatable, :trackable
+
+  validates_presence_of     :uid # optional
+  validates_presence_of     :email # optional
+  validates_presence_of     :first_name # optional
+  validates_presence_of     :last_name # optional
+
+  validates :uid, uniqueness: true
+  validates :email, uniqueness: true
+  
+
+
 
   has_one_attached :avatar
   #has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
@@ -15,5 +26,17 @@ class User < ApplicationRecord
   def inactive_message 
     approved? ? super : :not_approved
   end
+
+
+
+  
+
+
+
+
+
+
+
+
 
 end

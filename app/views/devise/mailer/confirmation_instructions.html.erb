@@ -1,5 +1,11 @@
-<p>Welcome <%= @email %>!</p>
+<p>Welcome <%=@user.first_name + " (" + @user.uid + ")" %></p>
 
-<p>You can confirm your account email through the link below:</p>
+<p> Thanks for joining cwaLive!!!</p>
+
+<p> cwaLive.com gives you access to watch live monthly union meetings and interact with cwa brothers and sisters in real time.  </p>
+
+<p>Please confirm your account email through the link below:</p>
+<p>Then allow our cwa staff to validate your info and activate your account.</p>
+
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

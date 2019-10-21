@@ -21,9 +21,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #check if person trying to register is on the list
     #if Pool.exists?(uid: params[:user][:uid])
 
-
+      if User.count == 0
+        super
+        @user.admin = "true"
+        @user.approved = "true"
+        @user.save
+      else
 
       super
+    end
+
+      
 
       if params[:user][:avatar] != nil
       puts "there was an avatar"
@@ -52,9 +60,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
-     super
+     
 
-     if params[:user][:avatar] != nil
+    super
+    
+
+     if params[:user][:avatar] != nil || params[:avatar] != nil
       puts "there was an avatar at update method"
       @user.avatar.attach(params[:user][:avatar])
 
@@ -109,6 +120,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def account_update_params
+    
     params.require(:user).permit(:uid, :first_name, :last_name, :email, :password, :password_confirmation, :avatar, :approved, :admin, :current_password)
   end
 

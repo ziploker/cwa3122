@@ -13,7 +13,15 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
+
 console.log('Hello World from Webpacker');
+
+console.log("in hereeeeeee");
+
+$( document ).ready(function() {
+$(".alert-notice").fadeOut(4444);
+});
+
 
 //setTimeout(function(){
 //    $('.alert-notice').fadeOut();

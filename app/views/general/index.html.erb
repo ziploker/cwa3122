@@ -1,8 +1,8 @@
-<main>
+
 	<section id="video_section">
 		
 	
-
+		<p>sdfsdfsdfsdfs</p>
 
 
 
@@ -15,7 +15,7 @@
 		
 	
 
-
+		<p>sdfsdfsdfsdfs</p>
 
 
 
@@ -26,7 +26,7 @@
 	<section id="chat_section">
 		
 	
-
+		<p>sdfsdfsdfsdfs</p>
 
 
 
@@ -35,84 +35,15 @@
 
 	</section>
 
-	<footer>
-		
-	</footer>
-</main>
-
-
-
-
-
-
-<% if current_user.try(:admin?) %>
-
 	
 
-	<table>
-	    <% @users.each do |user| %>
-
-	      <tr>
-	      	
-	      	<td>
-
-	    		<% if user.avatar.attached? && user.avatar.variable? %>
-
-	    			<%= puts "user.avatar.attached = " + user.avatar.attached?.to_s %>
-	    			<%= puts "user.avatar.varible = " + user.avatar.variable?.to_s %>
-
-						
-					<%= image_tag user.avatar.variant(resize_to_limit: [32, 32]) %>
-						
-
-				<% elsif user.avatar.attached? && user.avatar.previewable? %>
- 
-	    			<%= puts "no.avatar.attached = " + user.avatar.attached?.to_s %>
-	    			<%= puts "no.avatar.varible = " + user.avatar.variable?.to_s %>
-
-	    			<%= image_tag user.avatar.preview(resize_to_limit: [32, 32]) %>
-
-    			<% else %>
-
-					<%= image_tag("/assets/man100px.png", height: '32', width: '32') %>
-
-
-				<% end %>
-
-    		</td>
-			
-			<td><%= user.uid %></td>
-			<td><%= user.first_name %></td>
-        	<td><%= user.last_name %></td>
-
-        	<% if user.approved? && !user.admin %>
-				<td><%= link_to "click to ban", judge_path(:id => user.id, :approved => false), :method => :patch %>
-				
-				</td>
-			<%elsif !user.approved && !user.admin  %>
-				<td><%= link_to "click to approve user", judge_path(:id => user.id, :approved => true), :method => :patch %>
-				
-				</td>
-
-			<%else user.admin %>
-				<td><%= "admin account" %>
-				
-				</td>
-
-			<%end%>
-
-			
 
 
 
-				
-	      
-	      </tr>
-	    
 
-	    <% end %>
-	</table>
 
-	Total Users = <%= @users.count %>
-<% end %>
+
+
+
+
 

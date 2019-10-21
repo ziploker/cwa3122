@@ -2,20 +2,82 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html{
+	margin: 0;
+	padding: 0;
+}
+
+.default_wrapper{
+	
+  	min-height: 100vh;
+  	display: grid;
+	
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) 1fr minmax(25px, 30px) 1fr;
+	grid-template-areas:
+
+		". header ."
+		". video ."
+		". info ."
+		". chat ."
+		
+}
+
+.admin_wrapper{
+	
+  	min-height: 100vh;
+  	display: grid;
+	
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) 1fr ;
+	grid-template-areas:
+
+		". header ."
+		". admin ."
+		
+		
+}
+
+header{
+
+ 	background-color: red;
+ 	
+ 	grid-area: header;
+ }
+
+
+
+
+
 #video_section{
 
 	background-color: blue;
-	height: 250px;
+	
+	grid-area: video;
 }
 
 #info_section{
 
 	background-color: pink;
-	height: 50px;
+	
+	grid-area: info;
 }
 
 #chat_section{
 
 	background-color: yellow;
-	height: 500px;
+	
+	grid-area: chat;
+}
+
+#admin_section{
+	grid-area: admin;
+}
+
+.upload-preview img{
+
+	height: 100px;
+	width: 100px;
+
+
 }

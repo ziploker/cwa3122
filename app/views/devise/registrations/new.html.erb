@@ -72,21 +72,38 @@
 
   <div class="avatar_wrapper_current">
 
-  <%= f.label "default avatar"  %>
-    <% if false %>
-     if current_user.avatar.url != nil %>
-        <%= image_tag(current_user.avatar.url(:thumb)) %>
-    <% else %>
-    
-        <%= image_tag("man100px.png") %>
+    <div class="upload-preview">
+      
+
+
+    <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable?%>
+      
+
+      
+
+      <%= image_tag current_user.avatar.variant(resize_to_limit: [100, 100]) %>
+      
+
+    <%else%>
+
+
+        
+
+   
+        
+      <%= image_tag("man100px.png", height: '150', width: '150') %>
     <% end %>
 
-  <div class="avatar_wrapper">
-    <%= f.label :avatar  %>
-    
-    <%= f.file_field :avatar %>
-   
-  </div>      
+    </div>
+
+
+    <div class="avatar_wrapper"><br/><br/>
+     
+      
+      <%= f.file_field :avatar, class: "file" %>
+
+
+    </div>    
 
  
 

@@ -7,29 +7,60 @@
 
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_pack_tag 'application'%>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+    
+    $(document).ready(function(){
+    
+    var preview = $(".upload-preview img");
+
+    $(".file").change(function(event){
+       
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           
+           preview.attr("src", image_base64);
+       };
+       reader.readAsDataURL(file);
+    });
+});
+
+    </script>
   </head>
 
   <body>
 
-    <header>
+    <div class="<%= @title == "admin_page" ? 'admin_wrapper' : 'default_wrapper' %>">
 
-      
+    
 
-      <%= render partial: '/general/navbar' %>
-      
-      
-            
-    </header>
+      <header>
 
-    <% flash.each do |name, msg| %>
-      <div class = 'alert-<%=name%>'>
-        <%= msg %>
-      </div>
+        
+
+        <%= render partial: '/general/navbar' %>
+        
+        
+              
+      </header>
+
+      <% flash.each do |name, msg| %>
+        <div class = 'alert-<%=name%>'>
+          <%= msg %>
+        </div>
 
 
-    <% end %>
+      <% end %>
 
     <%= yield %>
+
+    </div>
 
   </body>
 </html>
