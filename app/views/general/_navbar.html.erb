@@ -1,35 +1,13 @@
 <div id="logo"><%= image_tag("cwa3122.webp", height: '40', width: '40') %></div>
 
+
+
+
+
 <nav>
   <ul>
 
-    <li>
-
-      <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
-
-        <%= puts "user.avatar.attached = " + current_user.avatar.attached?.to_s %>
-        <%= puts "user.avatar.varible = " + current_user.avatar.variable?.to_s %>
-
-                    
-        <%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
-                    
-
-      <% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
-
-        <%= puts "no.avatar.attached = " + current_user.avatar.attached?.to_s %>
-        <%= puts "no.avatar.varible = " + current_user.avatar.variable?.to_s %>
-
-        <%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
-
-      <% else %>
-
-        <%= image_tag("/assets/man100px.png", height: '32', width: '32') %>
-
-
-      <% end %>
-
-
-    </li>
+    
 
 
 
@@ -41,11 +19,15 @@
           
         <li class='minimenu'>
           <%= link_to('Logout |', destroy_user_session_path, :method => :delete) %>     
-          <%= link_to('Edit', edit_user_registration_path) %> 
+          <%= link_to('Edit ', edit_user_registration_path) %> 
           <% if current_user.admin? %>
 
-            <%= link_to "admin", admins_path %>  
+            <%= link_to "| Admin", admins_path %>  
+
+
           <%end%>
+
+          <span id="logged_in">| you are currently logged in as <%= current_user.uid %></span>
         </li>
         
       <% else %>
@@ -61,6 +43,33 @@
     </ul>
 
   </nav>
+<div id="avatar">
+  <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
+
+    <%= puts "user.avatar.attached = " + current_user.avatar.attached?.to_s %>
+    <%= puts "user.avatar.varible = " + current_user.avatar.variable?.to_s %>
+
+                
+    <%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
+                
+
+  <% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
+
+    <%= puts "no.avatar.attached = " + current_user.avatar.attached?.to_s %>
+    <%= puts "no.avatar.varible = " + current_user.avatar.variable?.to_s %>
+
+    <%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
+
+  <% else %>
+
+    <%= image_tag("/assets/man100px.png") %>
+
+
+  <% end %>
+
+</div>
+
+
   
 
 

@@ -1,20 +1,56 @@
-#logo{
+header{
+
+	display: grid;
 	
-	float: left;
-	
+	grid-template-columns: 1em 1fr 5fr 1fr 1em;
 
 	
-  	height: 40px;
-  	width: 40px;
+	grid-template-areas:
+
+		". logo nav avatar ."
+
+  	
 }
 
 
 
 
-nav{
-	float: right;
+#logo{
 	
+	
+	
+	grid-area: logo;
+	justify-self: left;
+	
+  	height: 40px;
+  	width: 40px;
+  	align-self: center;
+}
+
+#avatar{
+
+	grid-area: avatar;
+	align-self: end;
+
+	
+  	height: 39px;
+  	width: 39px;
+}
+
+#avatar img{
+
 	height: 100%;
+	width: 100%;
+	border-radius: 10%;
+
+
+}
+
+nav{
+	
+	grid-area: nav;
+	align-self: end;
+	justify-self: end;
 
 	
 	
@@ -25,7 +61,7 @@ nav ul{
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-	height: 100%;
+	
 
 	
 	
@@ -34,17 +70,19 @@ nav ul{
 nav li{
 	display: inline-block;
 	
-	height: 100%;
 }
 
-nav img{
+nav a{
 
-	position: relative;
-  	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%,-50%);
-  	height: auto;
-  	width: 100%;
-  	border-radius: 50%;
+	color:black;
+	
+	font:1em/1.2 Helvetica, sans-serif;
+	
+	text-decoration:none;
+	vertical-align:bottom;
 }
 
+nav #logged_in{
+
+	font-size: .7em;
+}
