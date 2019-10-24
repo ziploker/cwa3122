@@ -1,8 +1,9 @@
 .simple_form label {
   float: left;
-  width: 100px;
+  width: 200px;
   text-align: right;
   margin: 2px 10px;
+  white-space: nowrap;
 
 }
 
@@ -16,11 +17,7 @@
 	
 
 }
-input{
 
-	display: block;
-	
-}
 
 span.error{
 	float: right;
@@ -29,7 +26,11 @@ span.error{
 
 
 form{
-display: inline-block;
+//display: inline-block;
+//padding-right: 100px;
+
+
+
 }
 #fileSwitch{
 
@@ -39,32 +40,62 @@ display: inline-block;
 
 .avatar_wrapper_current{
 
-	text-align: left;
-	margin-top: 2em;
 	
-  	display: grid;
+	grid-area: avatar;
+	justify-self: end;
+	align-self: center;
+	
+  	
+		
+}
+
+#new_user{
+
+	display: grid;
 
   	justify-items: center;
   	align-items: center;
 	
 	grid-template-columns: 1fr 1fr;
-	//grid-template-rows: minmax(auto, auto);
+	grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
 	grid-template-areas:
 
+		"form form"
 		"avatar button"
-		
+		"enter enter"
 }
 
+
+.devise_upper{
+	grid-area: form;
+	
+
+}
+.upload-preview{
+
+	justify-self: end;
+}
 .upload-preview img{
 	
 	margin: 0;
 	border: 1px solid #021a40;
 	grid-area: avatar;
+	height: 50px;
+	width: 50px;
+	margin-right: 1.5em;
 }
 
 .upload_button{
 
 	grid-area: button;
+	justify-self: start;
+	align-self: center;
+}
+
+.devise_signup{
+	grid-area: enter;
+	justify-self: center;
+	width: 100%;
 }
 
 .upload_button label{
@@ -102,6 +133,7 @@ display: inline-block;
 #headline{
 
 	float: left;
+	height: fit-content;
 }
 
 
@@ -125,6 +157,7 @@ display: inline-block;
 .devise_login{
 	grid-area: login;
 
+
 }
 
 .devise_signup{
@@ -134,7 +167,13 @@ display: inline-block;
 
 .devise_signup input.btn{
 
-	width: 100%;
+	justify-self: stretch;
 	height: 4em;
+	width: 100%;
 
+}
+
+.chg_avatar{
+
+	width: min-content !important;
 }

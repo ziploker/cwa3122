@@ -17,49 +17,50 @@
 
     <% f.error_notification %>
 
+    <div class="devise_upper">
 
+      <% if params[:user].present? %>
 
-    <% if params[:user].present? %>
+        <%= f.input :uid, required: true, autofocus: true, :input_html => { :value => params[:user][:uid] } %>
 
-      <%= f.input :uid, required: true, autofocus: true, :input_html => { :value => params[:user][:uid] } %>
+        <%= f.input :first_name, required: true, :input_html => { :value => params[:user][:first_name] } %>
 
-      <%= f.input :first_name, required: true, :input_html => { :value => params[:user][:first_name] } %>
+        <%= f.input :last_name, required: true, :input_html => { :value => params[:user][:last_name] } %>
 
-      <%= f.input :last_name, required: true, :input_html => { :value => params[:user][:last_name] } %>
+        <%= f.input :email, required: true, :input_html => { :value => params[:user][:email] }  %>
 
-      <%= f.input :email, required: true, :input_html => { :value => params[:user][:email] }  %>
-
-      <%= f.input :password, required: true %>
-
-      <%= f.input :password_confirmation, required: true %>
-
-
-
-
-
-
-    <% else %>
-      
-      <%= f.input :uid, required: true, autofocus: true  %>
-
-      <%= f.input :first_name, required: true  %>
-      <%= f.input :last_name, required: true  %>
-
-
-      <% if(params[:e] != "" ) %>  
-        <%= f.input :email, required: true, :input_html => { :value => params[:e] }  %>
-        <%= f.input :password, required: true %> 
-      <% else %>
-        <%= f.input :email, required: true %>
         <%= f.input :password, required: true %>
-      <% end %>
+
+        <%= f.input :password_confirmation, required: true %>
+
+
+
+
+
+
+      <% else %>
         
+        <%= f.input :uid, required: true, autofocus: true  %>
 
-      <%= f.input :password_confirmation, required: true %>
+        <%= f.input :first_name, required: true  %>
+        <%= f.input :last_name, required: true  %>
 
+
+        <% if(params[:e] != "" ) %>  
+          <%= f.input :email, required: true, :input_html => { :value => params[:e] }  %>
+          <%= f.input :password, required: true %> 
+        <% else %>
+          <%= f.input :email, required: true %>
+          <%= f.input :password, required: true %>
+        <% end %>
+          
+
+        <%= f.input :password_confirmation, required: true %>
+      </div>
 
     <% end %>
     
+  
 
 
 
@@ -92,24 +93,26 @@
 
       </div>
 
-
+    </div>
       <div class="upload_button">
        
         
         <%= f.file_field :avatar, class: "file", id: "fileSwitch" %>
-        <label for="fileSwitch">change avatar??</label>
+        <label class="chg_avatar", for="fileSwitch">change avatar??</label>
 
 
-      </div>    
+      </div>  
+
+      <div class="devise_signup">
+      <%= f.button :submit, "Sign up" %>
+    </div>  
 
    </div>
 
 
 
 
-    <div class="devise_signup">
-      <%= f.button :submit, "Sign up" %>
-    </div>
+    
 
 
   <% end %>
@@ -118,6 +121,9 @@
 
 
   <br/>
+
+</div>
+
 
   <% render "devise/shared/links" %>
 
