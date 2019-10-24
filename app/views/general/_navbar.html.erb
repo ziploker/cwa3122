@@ -18,8 +18,9 @@
       <% if user_signed_in? %>
           
         <li class='minimenu'>
-          <%= link_to('Logout |', destroy_user_session_path, :method => :delete) %>     
-          <%= link_to('Edit ', edit_user_registration_path) %> 
+          
+          <%= link_to( 'Logout',destroy_user_session_path, :method => :delete) %><label class="uid"> <%= '('+current_user.uid+')'%></label><%= link_to(' | Edit ', edit_user_registration_path) %> 
+          
           <% if current_user.admin? %>
 
             <%= link_to "| Admin", admins_path %>  
@@ -27,7 +28,7 @@
 
           <%end%>
 
-          <span id="logged_in">| you are currently logged in as <%= current_user.uid %></span>
+          
         </li>
         
       <% else %>
@@ -62,7 +63,7 @@
 
   <% else %>
 
-    <%= image_tag("/assets/man100px.png") %>
+    <% image_tag("/assets/man100px.png") %>
 
 
   <% end %>

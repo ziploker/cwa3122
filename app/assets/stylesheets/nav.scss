@@ -7,7 +7,7 @@ header{
 	
 	grid-template-areas:
 
-		". logo nav avatar ."
+		". logo avatar nav ."
 
   	
 }
@@ -30,11 +30,14 @@ header{
 #avatar{
 
 	grid-area: avatar;
-	align-self: center;
+	align-self: end;
+	justify-self: end;
+	margin-right: .5em;
+	margin-bottom: 3px;
 
 	
-  	height: 39px;
-  	width: 39px;
+  	height: 25px;
+  	width: 25px;
 }
 
 #avatar img{
@@ -52,6 +55,8 @@ nav{
 	align-self: end;
 	justify-self: end;
 	padding-bottom: 2px;
+	width: min-content;
+	white-space: nowrap;
 	
 
 	

@@ -18,7 +18,7 @@
 
 
     
-
+    <div class="devise_upper">
 
     <%= f.input :uid, required: true, autofocus: true, disabled: true, :input_html => { :value => current_user.uid } %>
 
@@ -49,7 +49,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %><br/>
 
 
-    
+    </div>
 
       
 
@@ -94,6 +94,8 @@
         <% end %>
 
       </div>
+    </div>
+  
 
 
       <div class="upload_button">
@@ -103,16 +105,19 @@
         <label for="fileSwitch">change avatar??</label>
 
 
-      </div>    
+      </div> 
+
+      <div class="devise_signup">
+        <%= f.button :submit, "Sign up" %>
+      </div>   
 
    </div>
+ 
 
 
 
 
-    <div class="devise_signup">
-      <%= f.button :submit, "Sign up" %>
-    </div>
+    
 
 
   <% end %>
