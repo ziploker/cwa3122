@@ -2,7 +2,7 @@ header{
 
 	display: grid;
 	
-	grid-template-columns: 1em 1fr 5fr 1fr 1em;
+	grid-template-columns: 1em 1fr 11fr 1fr 1em;
 
 	
 	grid-template-areas:
@@ -30,7 +30,7 @@ header{
 #avatar{
 
 	grid-area: avatar;
-	align-self: end;
+	align-self: center;
 
 	
   	height: 39px;
@@ -51,6 +51,8 @@ nav{
 	grid-area: nav;
 	align-self: end;
 	justify-self: end;
+	padding-bottom: 2px;
+	
 
 	
 	
@@ -80,6 +82,7 @@ nav a{
 	
 	text-decoration:none;
 	vertical-align:bottom;
+
 }
 
 nav #logged_in{

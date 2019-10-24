@@ -40,11 +40,35 @@ html{
 		
 }
 
+.devise_wrapper{
+	
+  	min-height: 100vh;
+  	display: grid;
+
+  	justify-items: center;
+  	align-items: center;
+	
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) auto auto;
+	grid-template-areas:
+
+		".header."
+		". headline ."
+		". login ."
+		
+
+		
+		
+}
+
 header{
 
  	background-color: red;
  	
  	grid-area: header;
+
+ 	justify-self: stretch;
+  	align-self: stretch;
  }
 
 

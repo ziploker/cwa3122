@@ -6,6 +6,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #respond_to :html, :js
   #GET /resource/sign_up
   def new
+
+    @title = "devise_page"
     super
 
 
@@ -20,6 +22,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     #check if person trying to register is on the list
     #if Pool.exists?(uid: params[:user][:uid])
+
+    @title = "devise_page"
 
       if User.count == 0
         super
@@ -60,6 +64,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
+
+    @title = "devise_page"
+
      
 
     super

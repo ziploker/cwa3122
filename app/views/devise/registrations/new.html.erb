@@ -2,127 +2,126 @@
 
 <div class="devise_headline">
   
-  <div id="headline">
-    <h1>Create a FREE account</h1>
-  </div>
+  
+    <h1>Join cwaLive</h1>
+ 
 
-  <div id="padlock"> 
-    <%= render :partial => 'shared/padlock' %>
-  </div>
-
+  
 </div>
 
 
+<div class="devise_login">
+
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <% f.error_notification %>
 
 
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <% if params[:user].present? %>
 
-  <%= f.error_notification %>
+      <%= f.input :uid, required: true, autofocus: true, :input_html => { :value => params[:user][:uid] } %>
 
+      <%= f.input :first_name, required: true, :input_html => { :value => params[:user][:first_name] } %>
 
+      <%= f.input :last_name, required: true, :input_html => { :value => params[:user][:last_name] } %>
 
-  <% if params[:user].present? %>
+      <%= f.input :email, required: true, :input_html => { :value => params[:user][:email] }  %>
 
-    <%= f.input :uid, required: true, autofocus: true, :input_html => { :value => params[:user][:uid] } %>
-
-    <%= f.input :first_name, required: true, :input_html => { :value => params[:user][:first_name] } %>
-
-    <%= f.input :last_name, required: true, :input_html => { :value => params[:user][:last_name] } %>
-
-    <%= f.input :email, required: true, :input_html => { :value => params[:user][:email] }  %>
-
-    <%= f.input :password, required: true %>
-
-    <%= f.input :password_confirmation, required: true %>
-
-
-
-
-
-
-  <% else %>
-    
-    <%= f.input :uid, required: true, autofocus: true  %>
-
-    <%= f.input :first_name, required: true  %>
-    <%= f.input :last_name, required: true  %>
-
-
-    <% if(params[:e] != "" ) %>  
-      <%= f.input :email, required: true, :input_html => { :value => params[:e] }  %>
-      <%= f.input :password, required: true %> 
-    <% else %>
-      <%= f.input :email, required: true %>
       <%= f.input :password, required: true %>
-    <% end %>
+
+      <%= f.input :password_confirmation, required: true %>
+
+
+
+
+
+
+    <% else %>
       
+      <%= f.input :uid, required: true, autofocus: true  %>
 
-    <%= f.input :password_confirmation, required: true %>
-
-
-  <% end %>
-  
+      <%= f.input :first_name, required: true  %>
+      <%= f.input :last_name, required: true  %>
 
 
-
-
-
-
-
-  <div class="avatar_wrapper_current">
-
-    <div class="upload-preview">
-      
-
-
-    <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable?%>
-      
-
-      
-
-      <%= image_tag current_user.avatar.variant(resize_to_limit: [100, 100]) %>
-      
-
-    <%else%>
-
-
+      <% if(params[:e] != "" ) %>  
+        <%= f.input :email, required: true, :input_html => { :value => params[:e] }  %>
+        <%= f.input :password, required: true %> 
+      <% else %>
+        <%= f.input :email, required: true %>
+        <%= f.input :password, required: true %>
+      <% end %>
         
 
-   
-        
-      <%= image_tag("man100px.png", height: '150', width: '150') %>
-    <% end %>
+      <%= f.input :password_confirmation, required: true %>
 
+
+    <% end %>
+    
+
+
+
+
+    <div class="avatar_wrapper_current">
+
+
+
+      <div class="upload-preview">
+        
+
+
+        <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable?%>
+          
+
+          
+
+          <%= image_tag current_user.avatar.variant(resize_to_limit: [100, 100]) %>
+          
+
+        <%else%>
+
+
+            
+
+       
+            
+          <%= image_tag("man100px.png", height: '150', width: '150') %>
+        <% end %>
+
+      </div>
+
+
+      <div class="upload_button">
+       
+        
+        <%= f.file_field :avatar, class: "file", id: "fileSwitch" %>
+        <label for="fileSwitch">change avatar??</label>
+
+
+      </div>    
+
+   </div>
+
+
+
+
+    <div class="devise_signup">
+      <%= f.button :submit, "Sign up" %>
     </div>
 
 
-    <div class="avatar_wrapper"><br/><br/>
-     
-      
-      <%= f.file_field :avatar, class: "file" %>
-
-
-    </div>    
-
- 
+  <% end %>
 
 
 
 
-  <div class="devise_signup">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+  <br/>
+
+  <% render "devise/shared/links" %>
 
 
-<% end %>
-
-
-
-
-
-
-<%= render "devise/shared/links" %>
 
 
 

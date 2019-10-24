@@ -36,7 +36,26 @@
 
   <body>
 
-    <div class="<%= @title == "admin_page" ? 'admin_wrapper' : 'default_wrapper' %>">
+    
+
+      <% if @title == "admin_page" %>
+
+        <div class="admin_wrapper">
+
+      <% elsif @title == "devise_page" %>
+
+        <div class="devise_wrapper">
+
+      <% else %>
+
+        <div class="default_wrapper">
+        
+      <% end %>
+
+
+
+
+   
 
     
 
