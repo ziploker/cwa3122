@@ -1,5 +1,6 @@
 class GeneralController < ApplicationController
-	
+	require 'opentok'
+	#skip_before_action :verify_authenticity_token
 
 	def index
 
@@ -8,6 +9,37 @@ class GeneralController < ApplicationController
 
 		@api_key = ENV['api_key']
 	    @api_secret = ENV['api_secret']
+
+	    opentok = OpenTok::OpenTok.new @api_key, @api_secret
+
+
+	    #create session and session ID
+    	@session = opentok.create_session :media_mode => :routed
+	    	
+    	@session_id = @session.session_id
+
+
+    	#create Token
+		if user_signed_in?
+				
+			@token = opentok.generate_token @session_id, :data => current_user.uid+@ipAddress
+			session[:uid] = current_user.uid
+			session[:ip] = @ipAddress
+			puts "created new token for user with nickname"
+		else
+
+			puts "--------++--------------not signed in-----------"
+
+
+		end
+
+
+
+
+
+
+
+
 
 
 

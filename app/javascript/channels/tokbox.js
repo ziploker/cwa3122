@@ -10,8 +10,21 @@ $(document).ready(function (){
 
 	// replace these values with those generated in your TokBox Account
 	var apiKey = "46445792";
-	var sessionId = "1_MX40NjQ0NTc5Mn5-MTU3MTk2MDU5NTgyMH5wOW4ycnlqM3lvOVBYdkk0Vk53TmoxbHB-fg";
-	var token = "T1==cGFydG5lcl9pZD00NjQ0NTc5MiZzaWc9Yzk5M2RhZGM4NTQ1YjVlODE4MjcxOTA3N2VmNzUyYTc3MmE2ZTJhMTpzZXNzaW9uX2lkPTFfTVg0ME5qUTBOVGM1TW41LU1UVTNNVGsyTURVNU5UZ3lNSDV3T1c0eWNubHFNM2x2T1ZCWWRrazBWazUzVG1veGJIQi1mZyZjcmVhdGVfdGltZT0xNTcxOTYwNjQxJm5vbmNlPTAuMjc5NjQ3OTEzMDgzODk1MzYmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTU3MTk2NDIzOSZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==";
+	
+
+
+	
+	var ip = "<%= @ipAddress %>";
+	var publisher;
+    //var streams = [];
+    var token = "<%= @token %>";
+    var watchers = 0;
+	var streamers = 0;
+	var api_key = "<%= @api_key %>"
+	var session_id = "<%= @session_id %>"
+
+
+
 
 	// (optional) add server code here
 	initializeSession();
@@ -29,7 +42,7 @@ $(document).ready(function (){
 
 	function initializeSession() {
 		
-		var session = OT.initSession(apiKey, sessionId);
+		var session = OT.initSession(api_key, session_id);
 
 		// Subscribe to a newly created stream
 		session.on('streamCreated', function(event) {
