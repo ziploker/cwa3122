@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 
-
 //import $ from 'jquery';
 //global.$ = jQuery;
 require('jquery')
@@ -12,14 +11,13 @@ require("@rails/ujs").start()
 //require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("channels/tokbox.js")
 
 
-console.log('Hello World from Webpacker');
 
-console.log("in hereeeeeee");
 
 $( document ).ready(function() {
-$(".alert-notice").fadeOut(4444);
+	$(".alert-notice").fadeOut(4444);
 });
 
 

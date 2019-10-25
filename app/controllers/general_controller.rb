@@ -3,6 +3,15 @@ class GeneralController < ApplicationController
 
 	def index
 
+		@ipAddress = request.ip
+
+
+		@api_key = ENV['api_key']
+	    @api_secret = ENV['api_secret']
+
+
+
+
 		#current_user.avatar.purge
 		if current_user.try(:admin?)
 			@pending_users = User.where(approved: false)

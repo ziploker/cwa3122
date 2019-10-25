@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	console.log("in hereeeeeee");
+	console.log("in hereeeeeeeGGG");
 	$(".alert-notice").fadeout();
 
 });
