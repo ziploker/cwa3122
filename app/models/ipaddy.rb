@@ -1,0 +1,2 @@
+class Ipaddy < ApplicationRecord
+end

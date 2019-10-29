@@ -11,7 +11,7 @@ require("@rails/ujs").start()
 //require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("channels/tokbox.js")
+require("channels/tokbox.js.erb")
 
 
 

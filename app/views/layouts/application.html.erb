@@ -11,28 +11,40 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
-    <script type="text/javascript">
-    
-    
-    $(document).ready(function(){
-    
-    var preview = $(".upload-preview img");
+    <script>
 
-    $(".file").change(function(event){
-       
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
-       var reader = new FileReader();
-       reader.onload = function(e){
-           image_base64 = e.target.result;
-           
-           preview.attr("src", image_base64);
-       };
-       reader.readAsDataURL(file);
-    });
-});
+
+      var ip = "<%= @ipAddress %>";
+      var token = "<%= @token %>";
+      var api_key = "<%= @api_key %>"
+      var session_id = "<%= @session_id %>"
 
     </script>
+    
+    <script type="text/javascript">
+    
+      
+      $(document).ready(function(){
+      
+        var preview = $(".upload-preview img");
+
+        $(".file").change(function(event){
+           
+           var input = $(event.currentTarget);
+           var file = input[0].files[0];
+           var reader = new FileReader();
+           reader.onload = function(e){
+               image_base64 = e.target.result;
+               
+               preview.attr("src", image_base64);
+           };
+           reader.readAsDataURL(file);
+        });
+      });
+
+    </script>
+
+    
   </head>
 
   <body>

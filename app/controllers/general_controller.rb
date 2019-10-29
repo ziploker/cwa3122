@@ -1,6 +1,7 @@
 class GeneralController < ApplicationController
 	require 'opentok'
-	#skip_before_action :verify_authenticity_token
+	skip_before_action :verify_authenticity_token
+	before_filter :authenticate_user!
 
 	def index
 
@@ -11,56 +12,167 @@ class GeneralController < ApplicationController
 	    @api_secret = ENV['api_secret']
 
 	    opentok = OpenTok::OpenTok.new @api_key, @api_secret
+	    
+
+	    #check if theres an existing session
+	    @allSessions = Session.all
 
 
-	    #create session and session ID
-    	@session = opentok.create_session :media_mode => :routed
+	    puts "in here============="
+
+
+	    #if theres no existing sessions create one
+
+	    if user_signed_in? && current_user.admin == "true"
+
 	    	
-    	@session_id = @session.session_id
+	    	puts "------------user is signed in and the admin aswell"
 
 
-    	#create Token
-		if user_signed_in?
+		    if @allSessions.length == 0
+
+		    	puts "----------@allSessions.length == 0"
+
+		    	@session = opentok.create_session :media_mode => :routed
+		    	
+		    	@session_id = @session.session_id
+		    	
+		   		@newSession = Session.new
+
+		   		#set values for new DB record
+		    	@newSession.session = @session_id
+		    	
+		    	@newSession.save!
+		    	
+
+		    	puts "created new session"
 				
-			@token = opentok.generate_token @session_id, :data => current_user.uid+@ipAddress
-			session[:uid] = current_user.uid
-			session[:ip] = @ipAddress
-			puts "created new token for user with nickname"
+		    	
+				#create Token
+				
+					
+				@token = opentok.generate_token @session_id, data: @ipAddress
+
+				session[:uid] = current_user.uid
+				session[:ip] = @ipAddress
+	    			
+    			puts "created new token"
+				
+		    
+
+
+		  	else
+
+		    	puts "----------@allSessions.length > 0, shows on"
+
+	    	end
+
+	  	
+	  	elsif user_signed_in?
+
+
+	  		puts "------------user is signed in and NOT the admin aswell"
+
+
+		    if @allSessions.length == 0
+
+		    	
+	    			
+    			puts "-----non admin signed in but no sessions in db, shows off"
+				
+		    else
+
+		    	puts "-----non admin signed in and session exists in db"
+		    	puts "IP address is = "+ @ipAddress
+
+		    	@session_id = Session.first
+
+		    	
+		    	@numberOfTimesIpIsInConnectDb = Ip.where("ipaddy = ?", @ipAddress)
+
+
+
+
+
+
+		    	
+		    	
+		    	
+		    	
+		   		
+
+		   		
+				#create Token
+				if @numberOfTimesIpIsInConnectDb.length == 0
+					
+					@token = opentok.generate_token @session_id, data: @ipAddress
+					session[:uid] = current_user.uid
+					session[:ip] = @ipAddress
+		    			
+	    			puts "created new token"
+    			else
+    				puts "only 1ipallowed"
+
+				end
+	    	end
+
+    	end
+
+
+  		puts "neither one ?????????????????????????"
+  		 
+		if user_signed_in?
+			puts "user is signed in"
+		else
+			puts "user aint signed in"
+		end
+
+		if current_user == nil
+
+			puts " current user is nil" 	
 		else
 
-			puts "--------++--------------not signed in-----------"
-
-
+			puts current_user.admin + " current_user"
 		end
+  	end
 
 
+  	def handle_connectionCreated(event)
+
+	  puts "hanble connection crated action Starting............"
+	  
+	  tokenData = params[:connection][:data]
+
+	 
+
+	  #puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin hcc event is " + params[:connection][:id]
 
 
+	  
+
+	  newIpToSaveInDb = Ip.new(:ip => ipString)
+	  newIpToSaveInDb.save
+	  puts "saved " + tokenData + " to DB"
+	end
+
+	def handle_connectionDestroyed(event)
+	  
+	  #tokenData = params[:connection][:data]
+
+	  #ipString = tokenData.partition('@').last
 
 
+	  #ipSearchResult = Connect.where("ip = ?", ipString)
 
+#	  if ipSearchResult.length > 0
+#
+#
+  	puts "IP(s) have been purged**************not"
+#	  	ipSearchResult.destroy_all
+#	  else
+#	  	puts "NO IP(s) have been harmed in the making of the notice********"
+ # 	  end
 
-
-
-
-
-		#current_user.avatar.purge
-		if current_user.try(:admin?)
-			@pending_users = User.where(approved: false)
-			@users = User.all
-		end
-
-		
-
-		if user_signed_in?
-
-			@user = current_user
-		end
-
-
-
-
-		
 	end
 
 
