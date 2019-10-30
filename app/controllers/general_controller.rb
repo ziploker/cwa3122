@@ -1,9 +1,16 @@
 class GeneralController < ApplicationController
 	require 'opentok'
-	skip_before_action :verify_authenticity_token
-	before_filter :authenticate_user!
+	#skip_before_action :verify_authenticity_token
+	#before_filter :authenticate_user!
+
+	puts "============ pre general controller"
+
+
 
 	def index
+
+		#set default flag, used in tokbox.js to trigger session if someone logged in.
+		@goodToGo = "false"
 
 		@ipAddress = request.ip
 
@@ -23,10 +30,12 @@ class GeneralController < ApplicationController
 
 	    #if theres no existing sessions create one
 
-	    if user_signed_in? && current_user.admin == "true"
+	    if user_signed_in? && current_user.admin
 
 	    	
 	    	puts "------------user is signed in and the admin aswell"
+
+	    	@goodToGo = "true"
 
 
 		    if @allSessions.length == 0
@@ -69,6 +78,8 @@ class GeneralController < ApplicationController
 
 	  	
 	  	elsif user_signed_in?
+
+	  		@goodToGo = "true"
 
 
 	  		puts "------------user is signed in and NOT the admin aswell"
@@ -132,14 +143,14 @@ class GeneralController < ApplicationController
 			puts " current user is nil" 	
 		else
 
-			puts current_user.admin + " current_user"
+			puts  "current_user.admin? == "+current_user.admin.to_s
 		end
   	end
 
 
   	def handle_connectionCreated(event)
 
-	  puts "hanble connection crated action Starting............"
+	  puts "==================hanble connection crated action Starting"
 	  
 	  tokenData = params[:connection][:data]
 

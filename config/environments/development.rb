@@ -1,5 +1,8 @@
 Rails.application.configure do
 
+  #Rails.logger = Logger.new(STDOUT)
+  #config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:              ENV['smtp_server'],
