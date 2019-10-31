@@ -41,6 +41,10 @@ $(document).ready(function (){
 
 
 	function initializeSession() {
+
+
+		console.log("*************initializeSession")
+
 		
 		if (OT.checkSystemRequirements() == 0) {
 
@@ -49,6 +53,10 @@ $(document).ready(function (){
 		}else {
 
 			var session = OT.initSession(api_key, session_id);
+
+			console.log("api key currently is = " + api_key);
+
+			console.log("session_id_currently is = " + session_id);
 
 			// Connect to the session
 			session.connect(token, function(error) {
@@ -60,9 +68,11 @@ $(document).ready(function (){
 				      alert("You are not connected to the internet. Check your network connection.");
 				    }
 
+				    puts = "some other error happened";
+
 				} else {
-					session.publish(publisher, handleError);
-					console.log("Session.connect else");
+					//session.publish(publisher, handleError);
+					console.log("Session.connect TryingTo");
 				}
 			});
 
@@ -110,28 +120,128 @@ $(document).ready(function (){
 	}
 
 
+
+
+
+
+	function subscribe2Session() {
+
+
+		console.log("*************subscribe2Session")
+		
+		if (OT.checkSystemRequirements() == 0) {
+
+			console.log("The client does not support WebRTC.");
+
+		}else {
+
+			
+
+
+
+
+			var session = OT.initSession(api_key, session_id);
+
+			console.log("api key currently is = " + api_key);
+
+			console.log("session_id_currently is = " + session_id);
+
+			// Connect to the session
+			session.connect(token, function(error) {
+				// If the connection is successful, publish to the session
+				if (error) {
+					//handleError(error);
+					console.log("Session.connect error");
+					if (error.name === "OT_NOT_CONNECTED") {
+				      alert("You are not connected to the internet. Check your network connection.");
+				    }
+
+				    puts = "some other error happened";
+
+				} else {
+					//session.publish(publisher, handleError);
+					console.log("Session.connect else");
+				}
+			});
+
+
+			
+
+
+
+
+
+
+			//forign user connects to the session
+			session.on("connectionCreated", function(event){
+				console.log("connectionCreated========" + event);
+				
+				
+	      		
+	        });
+
+			// Subscribe to a newly created stream
+			session.on('streamCreated', function(event) {
+
+				console.log("New Stream Created");
+				console.log(event);
+
+				session.subscribe(event.stream, 'subscriber', {
+				insertMode: 'append',
+				width: '100%',
+				height: '100%'
+				}, handleError);
+			});
+
+			
+			// Create a publisher
+			var publisher = OT.initPublisher('subscriber', {
+				insertMode: 'append',
+				width: '100%',
+				height: '100%'
+			}, handleError);
+
+
+
+
+		}
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+	// if admin is logged in, and wants to start publishing
 	$('#publisherStart').click( function (){
 
 
 		if (goodToGo == "true") {
-			console.log("goodToGo was true");
+			console.log("publisher start starting  true");
 			initializeSession();
 			goodToGo = "false";
 		}else{
 			console.log("goodToGo was false");
 
 		}
-		
-
-
-
-
-
 	});
 
-	if (isAdmin == "false"){
-		console.log("is admin is false gogogogogo");
-			initializeSession();
+
+	
+
+	
+
+	//if non-admin user is logged in, start initalSession()
+	if (goodToGo == "true" && isAdmin == "false"){
+		console.log("is admin is false and user logged in gogogogogo");
+			subscribe2Session();
 
 	}
 

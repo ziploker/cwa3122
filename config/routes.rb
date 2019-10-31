@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   	
   get 'general/deleteSessions' => 'general#deleteSessions', :as => "delete_all_sessions"
+  get 'general/deleteSessionsV2' => 'general#deleteSessionsV2', :as => "delete_all_sessionsV2"
   get 'general/deleteSIps' => 'general#deleteIps', :as => "delete_all_ips"
   get 'video/index'
   get 'admins/index' => 'admins#index', :as =>'admins'

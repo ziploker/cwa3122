@@ -3,46 +3,47 @@ class GeneralController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	#before_filter :authenticate_user!
 
-	puts "============ pre general controller"
+	
 
 
 
 	def index
 
-		#set default flag, used in tokbox.js to trigger session if someone logged in.
+		@showDeleteSessionInsteadOfStartPublishing = "false"
+
+		#set default flag, used in tokbox.js to trigger initalSession() if flag = true.
 		@goodToGo = "false"
 
-		@ipAddress = request.ip
-
+		
+		#used at the end of tokbox.js, if false then start initalSession() automatically when user signes in
 		@isAdmin = "false"
+
+		@ipAddress = request.ip
 
 		@api_key = ENV['api_key']
 	    @api_secret = ENV['api_secret']
 
+	    
 	    opentok = OpenTok::OpenTok.new @api_key, @api_secret
 	    
 
-	    #check if theres an existing session
 	    @allSessions = Session.all
-
-
-	    puts "in here============="
 
 
 	    #check if logged in, and if admin status is true
 		if user_signed_in? && current_user.admin
 
+			puts "------------Admin user signed in"
+
 			@isAdmin = "true"
+			@goodToGo = "true"
 
 	    	
-	    	puts "------------user is signed in and the admin aswell"
-
-	    	@goodToGo = "true"
-
-	    	#if theres no existing sessions create one
+	    	
+	    	#if admin logged in, and if theres no existing sessions, create one
 		    if @allSessions.size == 0
 
-		    	puts "----------@allSessions.length == 0"
+		    	puts "----------Admin logged in, and no sessions exist."
 
 		    	@session = opentok.create_session :media_mode => :routed
 		    	
@@ -50,24 +51,37 @@ class GeneralController < ApplicationController
 		    	
 		   		@newSession = Session.new
 
-		   		#set values for new DB record
+		   		
 		    	@newSession.session = @session_id
 		    	
 		    	@newSession.save!
 		    	
 
-		    	puts "created new session"
+		    	puts "***********Admin logged in, no sessions existed so created new session and save to db"
 				
+
+
+
+				#3#temporarily, ALWAYS create token
+				#@token = opentok.generate_token @session_id, data: @ipAddress
+					
+				#newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+  				#newIpToSaveInDb.save
+
+    			#puts "*****************created new token and saved ip to DB"
 		    	
-				#create Token
+				
+
+
+				#create Token if user is not already logged in.
 				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
 
-				if @numberOfTimesIpIsInIpDb.size >= 0
+				if @numberOfTimesIpIsInIpDb.size == 0
 
 					@token = opentok.generate_token @session_id, data: @ipAddress
 					
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
-	  				newIpToSaveInDb.save
+	  				#newIpToSaveInDb.save
 
 	    			puts "*****************created new token and saved it to DB"
 
@@ -77,33 +91,27 @@ class GeneralController < ApplicationController
   					puts "**Unable to create dual service token ****************"
   				end
 
+			
 
-				
-	    			
-				
-		    
-
-
-		  	else
+			else
 
 		    	puts "----------@allSessions.length > 0, shows on, Duplicate tab maybe??"
+		    	@showDeleteSessionInsteadOfStartPublishing = "true"
 
 	    	end
 
 	  	
-	  	elsif user_signed_in?
+	  	#check if user logged in
+	  	elsif user_signed_in? && current_user.admin == false
+
+	  		puts "----------non-Admin user logged in."
 
 	  		@goodToGo = "true"
 
 
-	  		puts "------------user is signed in and NOT the admin aswell"
+	  		if @allSessions.size == 0
 
-
-		    if @allSessions.size == 0
-
-		    	
-	    			
-    			puts "-----non admin signed in but no sessions in db, shows off"
+		    	puts "-----non admin signed in but no sessions in db, shows off"
 				
 		    else
 
@@ -112,30 +120,37 @@ class GeneralController < ApplicationController
 
 		    	
 
-		    	
+		    	@session_id = Session.first.session
+
+		    	#temporarily, ALWAYS create token
+				#@token = opentok.generate_token @session_id, data: @ipAddress
+					
+				#newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+  				#newIpToSaveInDb.save
+
+    			#puts "***********created new token and saved ip to DB"
+    			#puts "***********non-Admin user logged in, sessions did exist so pulled existing session ID from db"
+
+
+
+
+
 		    	#create Token
 				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
 
-				if @numberOfTimesIpIsInIpDb.size >= 0
+				if @numberOfTimesIpIsInIpDb.size == 0
 
-					@session_id = Session.first.session
-
-
-					puts "SEEEESSSION  " + @session_id
+					
 
 					@token = opentok.generate_token @session_id, data: @ipAddress
 
-
-
-
-					
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
-	  				newIpToSaveInDb.save
+	  				#newIpToSaveInDb.save
 
 	    			puts "*****************created new token and saved it to DB"
 
 
-  				elsif @numberOfTimesIpIsInIpDb.size < 0
+  				elsif @numberOfTimesIpIsInIpDb.size > 0
   					
   					puts "**Unable to create dual service token ****************"
   				end
@@ -144,9 +159,9 @@ class GeneralController < ApplicationController
     	end
 
 
-  		puts "past the big logic block"
-  		 
-		if user_signed_in?
+  		
+  		
+  		if user_signed_in?
 			puts "user is signed in"
 		else
 			puts "user aint signed in"
@@ -154,10 +169,10 @@ class GeneralController < ApplicationController
 
 		if current_user == nil
 
-			puts " current user is nil" 	
+			puts " ....and current user is nil" 	
 		else
 
-			puts  "current_user.admin? == "+current_user.admin.to_s
+			puts  " ....current_user.admin? == "+current_user.admin.to_s
 		end
   	end
 
@@ -182,6 +197,19 @@ class GeneralController < ApplicationController
   		allIps.delete_all
 
   		redirect_to admins_path
+
+
+
+	end
+
+	def deleteSessionsV2
+		
+		puts "Welcome to DeleteSessionsV2 path, you will remain in the general controller"
+		allSessions = Session.all
+
+  		allSessions.delete_all
+
+  		redirect_to root_path
 
 
 

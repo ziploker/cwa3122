@@ -21,8 +21,18 @@
 
 	<section id="info_section">
 		
-	
-		<div id="publisherStart">Start Publishing</div>
+		<% if @showDeleteSessionInsteadOfStartPublishing == "true" %>
+
+			<%= link_to delete_all_sessionsV2_path do %>
+				<div id="deleteSession">DELETE_SESSION</div>
+				<% @showDeleteSessionInsteadOfStartPublishing = "false" %>
+			<% end %>
+			
+
+
+		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false" %>
+			<div id="publisherStart">Start Publishing</div>
+		<%end%>
 
 
 
