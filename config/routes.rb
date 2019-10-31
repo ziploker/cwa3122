@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     
   	}
 
-  	
 
+  	
+  get 'general/deleteSessions' => 'general#deleteSessions', :as => "delete_all_sessions"
+  get 'general/deleteSIps' => 'general#deleteIps', :as => "delete_all_ips"
   get 'video/index'
   get 'admins/index' => 'admins#index', :as =>'admins'
   root 'general#index'

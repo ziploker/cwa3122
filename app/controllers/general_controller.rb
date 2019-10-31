@@ -1,6 +1,6 @@
 class GeneralController < ApplicationController
 	require 'opentok'
-	#skip_before_action :verify_authenticity_token
+	skip_before_action :verify_authenticity_token
 	#before_filter :authenticate_user!
 
 	puts "============ pre general controller"
@@ -14,6 +14,7 @@ class GeneralController < ApplicationController
 
 		@ipAddress = request.ip
 
+		@isAdmin = "false"
 
 		@api_key = ENV['api_key']
 	    @api_secret = ENV['api_secret']
@@ -28,17 +29,18 @@ class GeneralController < ApplicationController
 	    puts "in here============="
 
 
-	    #if theres no existing sessions create one
+	    #check if logged in, and if admin status is true
+		if user_signed_in? && current_user.admin
 
-	    if user_signed_in? && current_user.admin
+			@isAdmin = "true"
 
 	    	
 	    	puts "------------user is signed in and the admin aswell"
 
 	    	@goodToGo = "true"
 
-
-		    if @allSessions.length == 0
+	    	#if theres no existing sessions create one
+		    if @allSessions.size == 0
 
 		    	puts "----------@allSessions.length == 0"
 
@@ -58,21 +60,33 @@ class GeneralController < ApplicationController
 				
 		    	
 				#create Token
-				
-					
-				@token = opentok.generate_token @session_id, data: @ipAddress
+				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
 
-				session[:uid] = current_user.uid
-				session[:ip] = @ipAddress
+				if @numberOfTimesIpIsInIpDb.size >= 0
+
+					@token = opentok.generate_token @session_id, data: @ipAddress
+					
+					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+	  				newIpToSaveInDb.save
+
+	    			puts "*****************created new token and saved it to DB"
+
+
+  				elsif @numberOfTimesIpIsInIpDb.size > 0
+  					
+  					puts "**Unable to create dual service token ****************"
+  				end
+
+
+				
 	    			
-    			puts "created new token"
 				
 		    
 
 
 		  	else
 
-		    	puts "----------@allSessions.length > 0, shows on"
+		    	puts "----------@allSessions.length > 0, shows on, Duplicate tab maybe??"
 
 	    	end
 
@@ -85,7 +99,7 @@ class GeneralController < ApplicationController
 	  		puts "------------user is signed in and NOT the admin aswell"
 
 
-		    if @allSessions.length == 0
+		    if @allSessions.size == 0
 
 		    	
 	    			
@@ -96,41 +110,41 @@ class GeneralController < ApplicationController
 		    	puts "-----non admin signed in and session exists in db"
 		    	puts "IP address is = "+ @ipAddress
 
-		    	@session_id = Session.first
+		    	
 
 		    	
-		    	@numberOfTimesIpIsInConnectDb = Ip.where("ipaddy = ?", @ipAddress)
+		    	#create Token
+				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
+
+				if @numberOfTimesIpIsInIpDb.size >= 0
+
+					@session_id = Session.first.session
 
 
+					puts "SEEEESSSION  " + @session_id
 
-
-
-
-		    	
-		    	
-		    	
-		    	
-		   		
-
-		   		
-				#create Token
-				if @numberOfTimesIpIsInConnectDb.length == 0
-					
 					@token = opentok.generate_token @session_id, data: @ipAddress
-					session[:uid] = current_user.uid
-					session[:ip] = @ipAddress
-		    			
-	    			puts "created new token"
-    			else
-    				puts "only 1ipallowed"
 
-				end
+
+
+
+					
+					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+	  				newIpToSaveInDb.save
+
+	    			puts "*****************created new token and saved it to DB"
+
+
+  				elsif @numberOfTimesIpIsInIpDb.size < 0
+  					
+  					puts "**Unable to create dual service token ****************"
+  				end
 	    	end
 
     	end
 
 
-  		puts "neither one ?????????????????????????"
+  		puts "past the big logic block"
   		 
 		if user_signed_in?
 			puts "user is signed in"
@@ -148,43 +162,33 @@ class GeneralController < ApplicationController
   	end
 
 
-  	def handle_connectionCreated(event)
+  	def deleteSessions
 
-	  puts "==================hanble connection crated action Starting"
-	  
-	  tokenData = params[:connection][:data]
+  		allSessions = Session.all
 
-	 
+  		allSessions.delete_all
 
-	  #puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin hcc event is " + params[:connection][:id]
+  		redirect_to admins_path
 
 
-	  
-
-	  newIpToSaveInDb = Ip.new(:ip => ipString)
-	  newIpToSaveInDb.save
-	  puts "saved " + tokenData + " to DB"
-	end
-
-	def handle_connectionDestroyed(event)
-	  
-	  #tokenData = params[:connection][:data]
-
-	  #ipString = tokenData.partition('@').last
-
-
-	  #ipSearchResult = Connect.where("ip = ?", ipString)
-
-#	  if ipSearchResult.length > 0
-#
-#
-  	puts "IP(s) have been purged**************not"
-#	  	ipSearchResult.destroy_all
-#	  else
-#	  	puts "NO IP(s) have been harmed in the making of the notice********"
- # 	  end
 
 	end
+
+
+	def deleteIps
+
+  		allIps = Ip.all
+
+  		allIps.delete_all
+
+  		redirect_to admins_path
+
+
+
+	end
+
+
+
 
 
 	def judge
