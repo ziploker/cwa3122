@@ -1,12 +1,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
-  config.action_mailer.default_url_options = { host: 'https://cwa3122live.herokuapp.com', port: 3000 }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'https://cwa3122live.herokuapp.com', protocol: 'http' }
+  
   config.action_mailer.smtp_settings = {
   address:              ENV['smtp_server'],
   port:                 ENV['smtp_port'],
-  domain:               'cwalive',
+  
   user_name:            ENV['sendgrid_username'],
   password:             ENV['sendgrid_password'],
   authentication:       'plain',
