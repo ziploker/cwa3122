@@ -71,8 +71,8 @@ $(document).ready(function (){
 				    puts = "some other error happened";
 
 				} else {
-					//session.publish(publisher, handleError);
-					console.log("Session.connect TryingTo");
+					session.publish(publisher, handleError);
+					console.log("admin connected to session");
 				}
 			});
 
@@ -160,10 +160,8 @@ $(document).ready(function (){
 
 				} else {
 					//session.publish(publisher, handleError);
-					console.log("Session.connect else");
+					console.log("connected to session");
 				
-				session.subscribe(stream, 'subscriber');
-
 
 
 
