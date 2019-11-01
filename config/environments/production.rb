@@ -2,15 +2,18 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
   config.action_mailer.default_url_options = { host: 'https://cwa3122live.herokuapp.com', protocol: 'http' }
-  
+
+
   config.action_mailer.smtp_settings = {
   address:              ENV['smtp_server'],
-  port:                 ENV['smtp_port'],
+  port:                 25,
   
   user_name:            ENV['sendgrid_username'],
   password:             ENV['sendgrid_password'],
   authentication:       'plain',
-  enable_starttls_auto: true  } 
+  enable_starttls_auto: true  }
+
+
   #In production, :host should be set to the actual host of your application.
 
   # Code is not reloaded between requests.
