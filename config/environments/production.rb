@@ -6,7 +6,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address:              ENV['smtp_server'],
   port:                 ENV['smtp_port'],
-  domain:               'https://cwa3122live.herokuapp.com'
+  domain:               'https://cwa3122live.herokuapp.com',
   user_name:            ENV['sendgrid_username'],
   password:             ENV['sendgrid_password'],
   authentication:       'plain',
