@@ -120,7 +120,7 @@ class GeneralController < ApplicationController
 
 		    	
 
-		    	@session_id = Session.first.session
+		    	@existing_session_id = Session.last.session
 
 		    	#temporarily, ALWAYS create token
 				#@token = opentok.generate_token @session_id, data: @ipAddress
@@ -142,12 +142,12 @@ class GeneralController < ApplicationController
 
 					
 
-					@token = opentok.generate_token @session_id, data: @ipAddress
+					@token = opentok.generate_token @existing_session_id, data: @ipAddress
 
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				#newIpToSaveInDb.save
 
-	    			puts "*****************created new token and saved it to DB"
+	    			puts "*****************created new token with existing session and saved iP addy to DB"
 
 
   				elsif @numberOfTimesIpIsInIpDb.size > 0

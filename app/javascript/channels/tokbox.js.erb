@@ -140,11 +140,11 @@ $(document).ready(function (){
 
 
 
-			var session = OT.initSession(api_key, session_id);
+			var session = OT.initSession(api_key, existing_session_id);
 
 			console.log("api key currently is = " + api_key);
 
-			console.log("session_id_currently is = " + session_id);
+			console.log("session_id_currently is = " + existing_session_id);
 
 			// Connect to the session
 			session.connect(token, function(error) {
@@ -161,15 +161,22 @@ $(document).ready(function (){
 				} else {
 					//session.publish(publisher, handleError);
 					console.log("Session.connect else");
+				
+				session.subscribe(stream, 'subscriber');
+
+
+
+
+
+
+
+
 				}
 			});
 
 
 			
-
-
-
-
+			
 
 
 			//forign user connects to the session
