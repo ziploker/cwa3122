@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
   config.action_mailer.default_url_options = { host: 'https://cwa3122live.herokuapp.com', port: 3000 }
-
+  config.action_mailer.smtp_settings = { port: 25 }
   #In production, :host should be set to the actual host of your application.
 
   # Code is not reloaded between requests.
