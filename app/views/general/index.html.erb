@@ -10,11 +10,7 @@
 
 
 	    
-	    <%= @ipAddress %>
-
-	    <%= @api_key %>
-
-	    <%= @api_secret %>
+	    
 
 
 	</section>
@@ -41,8 +37,29 @@
 
 	<section id="chat_section">
 		
-	
-		<p>sdfsdfsdfsdfs</p>
+		<div id="chat_window">
+        	
+        	<div id="text_area">
+            	<ul>
+            		<li> [welcome to Florida Toker webcam chat] </li>
+            		
+            	</ul>
+        	</div>
+            	
+            	
+    	</div>	
+	    	
+    	<div id="msg">
+			<%= text_field_tag 'message', nil, placeholder: 'speak here...' %>
+			<%= button_tag(type: 'submit') do %>
+				<%=		content_tag(:strong, 'SEND!') %>
+			<% 	end %>
+
+
+
+
+			 
+		</div><p>sdfsdfsdfsdfs</p>
 
 
 

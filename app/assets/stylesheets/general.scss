@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html{
-	margin: 0;
+
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
 	padding: 0;
 }
 
@@ -15,6 +19,7 @@ html{
 .default_wrapper{
 	
   	min-height: 100vh;
+
   	display: grid;
 
 
@@ -86,6 +91,10 @@ header{
 	background-color: blue;
 	
 	grid-area: video;
+
+	//justify-self: center;
+
+	
 
 
 }

@@ -1,12 +1,22 @@
 #videos {
-    max-width: 640px; /*can be in percentage also.*/
-    min-width: 200px;
-    height: 340px;
+    max-width: 640px; 
+
+    //min-width: 427px;
+    //min-width: 340px;
+    
+    height: 360px;
+
+
     margin: 0 auto;
     padding: 10px;
-    position: relative;
+    //position: relative;
+
+   
     
 }
+
+
+
 
 #subscriber {
     width: 100%;
@@ -16,3 +26,24 @@
     //clear: both;
 }
 
+
+
+@media screen and (max-width: 620px){
+
+    #videos {
+
+        max-width: 427px;
+
+        //min-width: 427px;
+        //min-width: 340px;
+        
+        height: 240px;
+
+
+        margin: 0 auto;
+        padding: 10px;
+        //position: relative;
+
+    }
+
+}
