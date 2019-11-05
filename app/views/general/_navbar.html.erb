@@ -47,8 +47,7 @@
 <div id="avatar">
   <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
 
-    <%= puts "user.avatar.attached = " + current_user.avatar.attached?.to_s %>
-    <%= puts "user.avatar.varible = " + current_user.avatar.variable?.to_s %>
+    
 
                 
     <%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
@@ -56,8 +55,7 @@
 
   <% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
 
-    <%= puts "no.avatar.attached = " + current_user.avatar.attached?.to_s %>
-    <%= puts "no.avatar.varible = " + current_user.avatar.variable?.to_s %>
+    
 
     <%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
 

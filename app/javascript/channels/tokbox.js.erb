@@ -127,8 +127,11 @@ $(document).ready(function (){
 		  		
 		  		//alert(NN.lastIndexOf("_"));
 		  		
+		  		$('#text_area ul').append("<li><img src= " + event.data.url + "></li>");
 
-		  		$('#text_area ul').append('<li><span class="textmsg">' +event.data+'</span></li>');
+
+
+		  		$('#text_area ul').append('<li><span class="textmsg">' +event.data.msg+'</span></li>');
 		  		$('#text_area').scrollTop(  $('#text_area')[0].scrollHeight   );
 
 		  		console.log("signal_triggered_in_demo");
@@ -152,7 +155,8 @@ $(document).ready(function (){
 
 
 		    			//data: nick + ": " + $('#message').val()
-		    			data: $('#message').val()
+		    			data: { msg: $('#message').val(),
+		    			url: avatar}
 		  			},
 		  			function(error) {
 		    			if (error) {
