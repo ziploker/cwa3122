@@ -26,6 +26,12 @@ class GeneralController < ApplicationController
 	    if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable?
 	    	@avatar = url_for(current_user.avatar)
     	end
+
+    	if user_signed_in?
+    		@first = current_user.first_name
+    		@last = current_user.last_name
+
+		end
 	    
 	    opentok = OpenTok::OpenTok.new @api_key, @api_secret
 	    
