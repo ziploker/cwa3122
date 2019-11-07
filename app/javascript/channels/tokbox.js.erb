@@ -19,6 +19,8 @@ $(document).ready(function (){
     var watchers = 0;
 	var streamers = 0;
 
+	var dt = new Date();
+
 	
 
 
@@ -127,8 +129,16 @@ $(document).ready(function (){
 		  		
 		  		//alert(NN.lastIndexOf("_"));
 		  		
+		  		$('#text_area ul').append("<li><img src= " + event.data.url + "></li>");
 
-		  		$('#text_area ul').append('<li><span class="textmsg">' +event.data+'</span></li>');
+		  		$('#text_area ul').append("<li><span>" + event.data.time + "</span></li>");
+
+		  		$('#text_area ul').append("<li><span>" + first + "</span></li>");
+
+		  		$('#text_area ul').append("<li><span>" + last + "</span></li>");
+
+
+		  		$('#text_area ul').append('<li><span class="textmsg">' +event.data.msg+'</span></li>');
 		  		$('#text_area').scrollTop(  $('#text_area')[0].scrollHeight   );
 
 		  		console.log("signal_triggered_in_demo");
@@ -143,16 +153,23 @@ $(document).ready(function (){
 		  		
 
 		  		//var nick = NN.substr(0, NN.lastIndexOf("@"));
-        
+        		datetext = dt.getHours()+":"+dt.getMinutes();
+
+        		var T = formatAMPM(dt);
+
 
 
 		        session.signal(
-		  			{
+		  			{	
+
+		  				
+						
+
+
 		    			
-
-
-		    			//data: nick + ": " + $('#message').val()
-		    			data: $('#message').val()
+		    			data: { msg: $('#message').val(),
+		    			url: avatar,
+		    			time: T}
 		  			},
 		  			function(error) {
 		    			if (error) {
@@ -394,5 +411,17 @@ $(document).ready(function (){
 		}
 	  
 	});
+
+
+	function formatAMPM(date) {
+	  var hours = date.getHours();
+	  var minutes = date.getMinutes();
+	  var ampm = hours >= 12 ? 'p' : 'a';
+	  hours = hours % 12;
+	  hours = hours ? hours : 12; // the hour '0' should be '12'
+	  minutes = minutes < 10 ? '0'+minutes : minutes;
+	  var formatedTime = hours + ':' + minutes + ampm;
+	  return formatedTime;
+	}
 
 });
