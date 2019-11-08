@@ -9,6 +9,7 @@ html, body {
     overflow-x: hidden;
     margin: 0;
 	padding: 0;
+	font-family: 'Roboto', sans-serif;
 }
 
 .uid{
@@ -136,7 +137,7 @@ header{
 	display: grid;
 
 	grid-template-columns: 1em 1fr 1em;
-	grid-template-rows: 1em 1fr 3em;
+	grid-template-rows: 1em 500px 3em;
 
 	grid-template-areas:
 		". . ."
@@ -151,13 +152,67 @@ header{
 #chat_window{
 
 	grid-area: chats;
-	background-color: green;
+	background-color: purple;
+	
 
+	overflow: scroll;
+
+	display: grid;
+	grid-template-columns: repeat(3, min-content);
+	//grid-template-rows: min-content;
+	//align-content: center;
+	grid-auto-rows: min-content;
+	grid-row-gap: .6em;
+	grid-column-gap: 1.2em;
+	
+	
+	
+	
 
 		
 }
 
+.chat_img img{
+
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+
 #msg{
 
 	grid-area: msg;
+}
+
+
+.chat_img{
+	
+	//background-color: red;
+	justify-self: start;
+	
+
+	
+
+}
+
+
+.chat_name{
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	justify-self: start;
+	font-size: .78em;
+	color: #a8a8a8;
+	
+
+}
+
+.chat_msg{
+	//background-color: blue;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+
+	justify-self: start;
+
 }
