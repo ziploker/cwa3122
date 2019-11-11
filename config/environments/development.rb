@@ -1,5 +1,8 @@
 Rails.application.configure do
 
+   # Automatically inject JavaScript needed for LiveReload
+  #config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
+
   #Rails.logger = Logger.new(STDOUT)
   #config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
 

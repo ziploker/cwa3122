@@ -10,6 +10,58 @@ html, body {
     margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
+	background: #f9f9f9;
+}
+
+
+#videos {
+    max-width: 640px; 
+
+    //min-width: 427px;
+    //min-width: 340px;
+    
+    height: 360px;
+
+
+    margin: 0 auto;
+    padding: 10px;
+    //position: relative;
+
+   
+    
+}
+
+
+
+
+#subscriber {
+    width: 100%;
+    height: 100%;
+    background: black;
+    //float: left;
+    //clear: both;
+}
+
+
+
+@media screen and (max-width: 620px){
+
+    #videos {
+
+        max-width: 427px;
+
+        //min-width: 427px;
+        //min-width: 340px;
+        
+        height: 240px;
+
+
+        margin: 0 auto;
+        padding: 10px;
+        //position: relative;
+
+    }
+
 }
 
 .uid{
@@ -26,14 +78,17 @@ html, body {
 
 	
 	grid-template-columns: 1em 1fr 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) minmax(25px, 30px) 1fr;
+	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
 	grid-template-areas:
 
-		". header ."
-		". video ."
-		". info ."
-		". chat ."
+		"header header header"
+		"video video video"
+		"  .    chat   .  "
+		"  .     msg    . "
+
 		
+
+
 }
 
 .admin_wrapper{
@@ -46,7 +101,7 @@ html, body {
 	grid-template-rows: minmax(40px, 50px) 1fr ;
 	grid-template-areas:
 
-		". header ."
+		"header header header"
 		". admin ."
 		
 		
@@ -64,7 +119,7 @@ html, body {
 	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) minmax(min-content, max-content);
 	grid-template-areas:
 
-		".header."
+		"header header header"
 		". headline ."
 		". login ."
 		
@@ -75,7 +130,7 @@ html, body {
 
 header{
 
- 	background-color: red;
+ 	background-color: #ffffff;
  	
  	grid-area: header;
 
@@ -89,7 +144,7 @@ header{
 
 #video_section{
 
-	background-color: blue;
+	//background-color: blue;
 	
 	grid-area: video;
 
@@ -102,16 +157,28 @@ header{
 
 #info_section{
 
-	background-color: pink;
+	background-color: #fff;
+	border-bottom: 1px solid #e0e0e0;
+	//border-left: 1px solid #e0e0e0;
+	//border-right: 1px solid #e0e0e0;
+
 	
-	grid-area: info;
+	
 }
 
 #chat_section{
 
-	background-color: yellow;
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
 	
 	grid-area: chat;
+}
+
+#chat_window{
+
+	min-height: 12em;
 }
 
 #admin_section{
@@ -128,31 +195,76 @@ header{
 
 
 
+@media only screen and (min-width: 1015px){
+
+	.default_wrapper{
+	
+  	min-height: 100vh;
+
+	  	display: grid;
+
+
+		
+		grid-template-columns: 1em minmax(min-content, max-content) minmax(min-content, 33.333vw) 1em;
+		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) 1fr;
+		grid-template-areas:
+
+			"header header header header"
+			"  .      .     .   .   "
+			"  .    video   chat    .   "
+			"  .      .       .      .  "
+			
+			
+	}	
+
+
+	#videos{
+
+		margin: 0;
+
+		max-width: 640px; 
+
+	    //min-width: 427px;
+	    //min-width: 340px;
+	    
+	    height: 360px;
+
+
+	    
+	    //padding: 10px;
+	}
+
+	#video_section{
+
+		//justify-self: start;
+	}
+
+	#subscriber{
+
+		padding: 0;
+	}
+
+	#chat_section{
+
+		padding: 10px;
+	}
+
+	
+}
 
 
 //start chat section
 
 #chat_section{
 
-	display: grid;
-
-	grid-template-columns: 1em 1fr 1em;
-	grid-template-rows: 1em 500px 3em;
-
-	grid-template-areas:
-		". . ."
-
-		". chats ."
-
-		". msg ."
-		
+	
 
 }
 
 #chat_window{
 
-	grid-area: chats;
-	background-color: purple;
+	
+	background-color: #f9f9f9;
 	
 
 	overflow: scroll;
@@ -172,6 +284,13 @@ header{
 		
 }
 
+.chat_img{
+
+	padding: 5px;
+	justify-self: center;
+	align-self: center;
+}
+
 .chat_img img{
 
 	width: 20px;
@@ -179,10 +298,21 @@ header{
 	border-radius: 50%;
 }
 
+.chat_name{
+	//padding: 5px;
+	justify-self: center;
+	align-self: center;
+
+}
+
+
 
 #msg{
 
 	grid-area: msg;
+	align-self: end;
+
+	
 }
 
 

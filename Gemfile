@@ -50,6 +50,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0', group: :development
+
+  gem 'guard'
+  
+  gem 'guard-livereload', '~> 2.5', require: false
+  
 end
 
 
