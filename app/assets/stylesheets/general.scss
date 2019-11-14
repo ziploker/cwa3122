@@ -215,7 +215,7 @@ header{
 	overflow-y: scroll;
 
 	display: grid;
-	grid-template-columns: repeat(3, min-content);
+	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr );
 	//grid-template-rows: min-content;
 	//align-content: center;
 	grid-auto-rows: min-content;
@@ -310,8 +310,8 @@ header{
 
 
 
-	width: 40em;
-
+	//width: 40em;
+	max-width: 100%;
 
 
 
