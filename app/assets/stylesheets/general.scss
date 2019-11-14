@@ -162,6 +162,8 @@ header{
 	//border-left: 1px solid #e0e0e0;
 	//border-right: 1px solid #e0e0e0;
 
+	height: 50px;
+
 	
 	
 }
@@ -173,13 +175,11 @@ header{
 	border-bottom: 1px solid #e0e0e0;
 	border-top: 1px solid #e0e0e0;
 	
+	
 	grid-area: chat;
 }
 
-#chat_window{
 
-	min-height: 12em;
-}
 
 #admin_section{
 	grid-area: admin;
@@ -205,7 +205,7 @@ header{
 
 
 		
-		grid-template-columns: 1em minmax(min-content, max-content) minmax(min-content, 33.333vw) 1em;
+		grid-template-columns: 1fr minmax(min-content, 683px) minmax(300px, 500px) 1fr;
 		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) 1fr;
 		grid-template-areas:
 
@@ -220,7 +220,7 @@ header{
 
 	#videos{
 
-		margin: 0;
+		margin: 0 auto;
 
 		max-width: 640px; 
 
@@ -236,7 +236,11 @@ header{
 
 	#video_section{
 
-		//justify-self: start;
+		//justify-self: center;
+		//align-self: center;
+		//justify-items: stretch;	
+		//margin: 0 auto;
+
 	}
 
 	#subscriber{
@@ -246,7 +250,8 @@ header{
 
 	#chat_section{
 
-		padding: 10px;
+		margin: 10px;
+
 	}
 
 	
@@ -257,7 +262,7 @@ header{
 
 #chat_section{
 
-	
+	min-height: 12em;
 
 }
 
@@ -267,7 +272,7 @@ header{
 	background-color: #f9f9f9;
 	
 
-	overflow: scroll;
+	overflow-y: scroll;
 
 	display: grid;
 	grid-template-columns: repeat(3, min-content);
@@ -275,8 +280,14 @@ header{
 	//align-content: center;
 	grid-auto-rows: min-content;
 	grid-row-gap: .6em;
-	grid-column-gap: 1.2em;
+	grid-column-gap: .5em;
+
+
+	min-height: 12em;
 	
+
+
+
 	
 	
 	
@@ -300,8 +311,8 @@ header{
 
 .chat_name{
 	//padding: 5px;
-	justify-self: center;
-	align-self: center;
+	justify-self: start;
+	align-self: start;
 
 }
 
@@ -320,6 +331,7 @@ header{
 	
 	//background-color: red;
 	justify-self: start;
+	align-self: start;
 	
 
 	
@@ -331,18 +343,39 @@ header{
 	//background-color: yellow;
 	overflow: hidden;
     white-space: nowrap;
-	justify-self: start;
+	
 	font-size: .78em;
 	color: #a8a8a8;
+	
 	
 
 }
 
 .chat_msg{
 	//background-color: blue;
-	word-wrap: break-word;
+
+
+	
+	overflow-x: hidden;
+	
 	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+
+
+	width: 100%;
+
+
+
+
 
 	justify-self: start;
+	align-self: center;
 
 }
