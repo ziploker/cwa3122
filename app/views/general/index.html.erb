@@ -22,7 +22,7 @@
 		
 		<div id="info_section">
 		
-			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in?%>
+			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
 
 				<%= link_to delete_all_sessionsV2_path do %>
 					<div id="deleteSession">DELETE_SESSION</div>
@@ -31,8 +31,11 @@
 				
 
 
-			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in?%>
+			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 				<div id="publisherStart">Start Publishing</div>
+			
+			<% else %>
+				<div id="try2Connect">Connect</div>
 			<%end%>
 
 			<div class="Chat">Chat<span class="arrow">&#9660;</span></div>
