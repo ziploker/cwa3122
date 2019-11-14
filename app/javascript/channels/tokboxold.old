@@ -58,6 +58,7 @@ $(document).ready(function (){
 				    puts = "some other error happened";
 
 				} else {
+					
 					session.publish(publisher, handleError);
 					console.log("admin connected to session");
 				}
@@ -161,13 +162,16 @@ $(document).ready(function (){
 
 		}else {
 
+			
+
+
+
+
 			var session = OT.initSession(api_key, existing_session_id);
 
 			console.log("api key currently is = " + api_key);
 
 			console.log("session_id_currently is = " + existing_session_id);
-
-			
 
 			// Connect to the session
 			session.connect(token, function(error) {
@@ -184,16 +188,29 @@ $(document).ready(function (){
 				} else {
 					//session.publish(publisher, handleError);
 					console.log("connected to session");
+				
+
+
+
+
+
+
+
 				}
 			});
 
 
 			
+			
+
+
 			//forign user connects to the session
 			session.on("connectionCreated", function(event){
-				console.log("nonadmin connectionCreated========" + event);
+				console.log("connectionCreated========" + event);
 				
-			});
+				
+	      		
+	        });
 
 			// Subscribe to a newly created stream
 			session.on('streamCreated', function(event) {
@@ -209,7 +226,7 @@ $(document).ready(function (){
 			});
 
 			
-			//// Create a publisher
+			// Create a publisher
 			//var publisher = OT.initPublisher('subscriber', {
 			//	insertMode: 'append',
 			//	width: '100%',
@@ -220,15 +237,21 @@ $(document).ready(function (){
 			session.on("signal", function(event) {
 		  		console.log("Signal sent from connection " + JSON.stringify(event));
 		  		// Process the event.data property, if there is any data.
+		  		//$('#text_area').append("\n" + event.data);
+
+		  		//var NN = event.data
+		  		//alert(NN);
+
+		  		//var nick = NN.substr(0, NN.lastIndexOf("@"));
+
+		  		
+		  		//alert(NN.lastIndexOf("_"));
 		  		
 
-		  		$('#chat_window').append('<div class="chat_img"><img src= ' + event.data.url + '></div>');
-				$('#chat_window').append('<div class="chat_name">' + first + ' ' + last + '</div>');
-				$('#chat_window').append('<div class="chat_msg">' +event.data.msg+ '</div>');
-		  		$('#chat_window').scrollTop(  $('#chat_window')[0].scrollHeight );
+		  		$('#text_area ul').append('<li><span class="textmsg">' +event.data+'</span></li>');
+		  		$('#text_area').scrollTop(  $('#text_area')[0].scrollHeight   );
 
-		  		console.log("*******************************" + $('#chat_window')[0].scrollHeight );
-		  		console.log("*******************************" + $('#chat_window')[0].scrollTop );
+		  		console.log("signal_triggered_in_demo");
 			});
 
 
@@ -236,17 +259,20 @@ $(document).ready(function (){
 
 			window.sendMSG = function() {       
    
-		   		datetext = dt.getHours()+":"+dt.getMinutes();
+		   		//var NN = session.connection.data
+		  		
 
-        		var T = formatAMPM(dt);
+		  		//var nick = NN.substr(0, NN.lastIndexOf("@"));
+        
 
-				
-				session.signal(
-		  			{	
 
-		  				data: { msg: $('#message').val(),
-		    			url: avatar,
-		    			time: T}
+		        session.signal(
+		  			{
+		    			
+
+
+		    			//data: nick + ": " + $('#message').val()
+		    			data: $('#message').val()
 		  			},
 		  			function(error) {
 		    			if (error) {
@@ -263,12 +289,39 @@ $(document).ready(function (){
 				$('#message').val("");
 				
 		    };
+
+
+
+
 		}
+
+
+
+
+
+
+
+
 	}
 
 
 
 	
+		        
+		        
+		       
+				
+				
+				
+				
+				
+				
+	
+
+
+
+
+
 	// if admin is logged in, and wants to start publishing
 	$('#publisherStart').click( function (){
 
@@ -285,6 +338,9 @@ $(document).ready(function (){
 
 
 	
+
+	
+
 	//if non-admin user is logged in, start initalSession()
 	if (goodToGo == "true" && isAdmin == "false"){
 		console.log("is admin is false and user logged in gogogogogo");
@@ -293,16 +349,12 @@ $(document).ready(function (){
 	}
 
 
-	
 	$('#msg button').click( function(){
 				
 		console.log('buttonclicked');
 		sendMSG();
 	});
 	
-	
-
-
 	$('#message').keyup(function(event){
 		if(event.keyCode == 13){
 			console.log('enterHitt');
@@ -310,9 +362,6 @@ $(document).ready(function (){
 		}
 	  
 	});
-
-
-	
 
 
 	function formatAMPM(date) {
