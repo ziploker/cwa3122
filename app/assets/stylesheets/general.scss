@@ -195,67 +195,7 @@ header{
 
 
 
-@media only screen and (min-width: 1015px){
 
-	.default_wrapper{
-	
-  	min-height: 100vh;
-
-	  	display: grid;
-
-
-		
-		grid-template-columns: 1fr minmax(min-content, 683px) minmax(300px, 500px) 1fr;
-		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) 1fr;
-		grid-template-areas:
-
-			"header header header header"
-			"  .      .     .   .   "
-			"  .    video   chat    .   "
-			"  .      .       .      .  "
-			
-			
-	}	
-
-
-	#videos{
-
-		margin: 0 auto;
-
-		max-width: 640px; 
-
-	    //min-width: 427px;
-	    //min-width: 340px;
-	    
-	    height: 360px;
-
-
-	    
-	    //padding: 10px;
-	}
-
-	#video_section{
-
-		//justify-self: center;
-		//align-self: center;
-		//justify-items: stretch;	
-		//margin: 0 auto;
-
-	}
-
-	#subscriber{
-
-		padding: 0;
-	}
-
-	#chat_section{
-
-		margin: 10px;
-
-	}
-
-	
-}
 
 
 //start chat section
@@ -283,7 +223,7 @@ header{
 	grid-column-gap: .5em;
 
 
-	min-height: 12em;
+	height: 20em;
 	
 
 
@@ -297,7 +237,7 @@ header{
 
 .chat_img{
 
-	padding: 5px;
+	padding: 2px 5px 5px;
 	justify-self: center;
 	align-self: center;
 }
@@ -313,6 +253,7 @@ header{
 	//padding: 5px;
 	justify-self: start;
 	align-self: start;
+	padding-top: 2.5px;
 
 }
 
@@ -369,13 +310,166 @@ header{
 
 
 
-	width: 100%;
+	width: 40em;
 
 
 
 
 
 	justify-self: start;
-	align-self: center;
+	align-self: start;
 
+}
+
+
+#deleteSession, #publisherStart{
+
+	text-decoration: none;
+	background-color: red;
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	//margin: 0 auto;
+	//float: right;
+
+	line-height: 50px;
+ 	 white-space: nowrap;
+
+
+ 	color:#444;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    //vertical-align:middle;
+    //max-width: 100px;
+    //padding: 5px;
+    //text-align: center;
+
+}
+
+#deleteSession:hover, #publisherStart:hover{
+
+	color:red;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+.Chat{
+
+	display: inline-block;
+	width: min-content;
+	line-height: 50px;
+ 	 white-space: nowrap;
+ 	 padding-left: 8px;
+ 	 padding-left: 20px;
+
+}
+
+.menu{
+
+	display: inline-block;
+	float: right;
+	
+}
+.menu svg{
+
+	width: 20px;
+	padding-top: 14px;
+	padding-right: 20px;
+
+
+}
+
+
+
+
+@media only screen and (min-width: 1015px){
+
+	.default_wrapper{
+	
+  		min-height: 100vh;
+
+	  	display: grid;
+
+
+		
+		grid-template-columns: 1fr minmax(min-content, 650px) minmax(300px, 420px) 1fr;
+		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) 1fr;
+		grid-template-areas:
+
+			"header header header header"
+			"  .      .     .   .   "
+			"  .    video   chat    .   "
+			"  .      .       .      .  "
+			
+			
+	}	
+
+
+	#videos{
+
+		margin: 0 auto;
+
+		max-width: 640px; 
+
+	    //min-width: 427px;
+	    //min-width: 340px;
+	    
+	    height: 360px;
+
+
+	    
+	    //padding: 10px;
+	}
+
+	#video_section{
+
+		//justify-self: center;
+		//align-self: center;
+		//justify-items: stretch;	
+		//margin: 0 auto;
+
+	}
+
+	#subscriber{
+
+		padding: 0;
+	}
+
+	#chat_section{
+
+		margin: 10px;
+
+	}
+
+	.chat_msg{
+		//background-color: blue;
+
+
+		
+		overflow-x: hidden;
+		
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+
+		/* Adds a hyphen where the word breaks, if supported (No Blink) */
+		-ms-hyphens: auto;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		hyphens: auto;
+
+
+
+		width: 15em;
+
+
+
+
+
+		justify-self: start;
+		align-self: start;
+	}
+
+
+	
 }

@@ -22,23 +22,29 @@
 		
 		<div id="info_section">
 		
-		<% if @showDeleteSessionInsteadOfStartPublishing == "true" %>
+			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in?%>
 
-			<%= link_to delete_all_sessionsV2_path do %>
-				<div id="deleteSession">DELETE_SESSION</div>
-				<% @showDeleteSessionInsteadOfStartPublishing = "false" %>
-			<% end %>
-			
-
-
-		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false" %>
-			<div id="publisherStart">Start Publishing</div>
-		<%end%>
+				<%= link_to delete_all_sessionsV2_path do %>
+					<div id="deleteSession">DELETE_SESSION</div>
+					<% @showDeleteSessionInsteadOfStartPublishing = "false" %>
+				<% end %>
+				
 
 
+			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in?%>
+				<div id="publisherStart">Start Publishing</div>
+			<%end%>
+
+			<div class="Chat">Chat<span class="arrow">&#9660;</span></div>
+
+
+			<div class="menu"><%= render :partial => 'threedots' %>
+</div>
 
 
 		</div>
+
+
 		
 		<div id="chat_window">
 
@@ -60,14 +66,7 @@
         	
 		
 
-    		
-        	
-		<div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">test</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">sdsdsd</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">sdsdsdsd</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">ffffff</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">fffff</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">sdsfsf</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">sdfsdfsdsdfsdfsdfsdfszdfs</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg"><span>ddddddddddddddddddddfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgddddddddddddsfcsfereferferfer</span></div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">sdsfsfdfgdgb</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">drfefrtfrtf</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">erfefet</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">etgetgte</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">tgrtgrtg</div><div class="chat_img"><img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg"></div><div class="chat_name">AlejandroRaffo</div><div class="chat_msg">rtgrtgrgrgrygrygrygry</div>
-    		
-
-        	
-            	
-        	
+    	
     		
 
     		
