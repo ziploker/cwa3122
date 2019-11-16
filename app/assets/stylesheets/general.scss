@@ -194,12 +194,13 @@ header{
 
 	margin: 10px;
 
-
+	grid-gap: 10px;
 
 	display: grid;
 	grid-template-columns: minmax(100px, 1fr);
-	grid-template-rows: 50px minmax(100px, 275px) 38px;
+	grid-template-rows: 50px minmax(300px, 1fr) 38px;
 
+	
 	grid-template-areas:
 		"chatBanner"
 		"chatArea"
@@ -231,12 +232,15 @@ header{
 	overflow-y: scroll;
 
 	display: grid;
-	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr );
+	grid-template-columns: 10px repeat(2, min-content) minmax(150px, 1fr ) 10px;
 	//grid-template-rows: min-content;
 	//align-content: center;
 	grid-auto-rows: min-content;
 	grid-row-gap: .6em;
-	grid-column-gap: .5em;
+	grid-column-gap: 10px;
+
+	grid-template-areas:
+		". row_avatar row_name row_message . ";
 
 
 	//height: 59vh;
@@ -259,8 +263,12 @@ header{
 .chat_img{
 
 	padding: 2px 5px 5px;
-	justify-self: center;
-	align-self: center;
+	
+
+	//background-color: red;
+	justify-self: start;
+	align-self: start;
+	grid-area: row_avatar;
 }
 
 .chat_img img{
@@ -275,27 +283,8 @@ header{
 	justify-self: start;
 	align-self: start;
 	padding-top: 2.5px;
+	grid-area: row_name;
 
-}
-
-
-
-
-
-
-.chat_img{
-	
-	//background-color: red;
-	justify-self: start;
-	align-self: start;
-	
-
-	
-
-}
-
-
-.chat_name{
 	//background-color: yellow;
 	overflow: hidden;
     white-space: nowrap;
@@ -307,7 +296,12 @@ header{
 
 }
 
+
+
+
 .chat_msg{
+	
+
 	//background-color: blue;
 
 
@@ -327,15 +321,14 @@ header{
 
 	//width: 40em;
 	max-width: 100%;
-
-
-
-
+	
 	justify-self: start;
 	align-self: start;
 
-}
+	grid-area: row_message;
 
+
+}
 
 #deleteSession, #publisherStart, #try2Connect{
 
