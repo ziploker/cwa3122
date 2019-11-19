@@ -5,8 +5,17 @@
  * Version: 1.2.0
  * Copyright 2019 Bolarinwa Olakunle
  */
-(function ($) {
+
+$(document).ready(function (){
+
+
+console.log("bbbbbbbbbbbbbbbb44444444444444444444444");
+
+    
     $.fn.jQTArea = function (options) {
+        
+        console.log("aaaaaaaab44444444444444444444444");
+
         var
             defaults =
                 {
@@ -15,6 +24,8 @@
                     setExtR: false // calculate setExt in reverse
                 },
             plugin = $.extend({}, defaults, options);
+
+        
 
         this.each(function () {
             var
@@ -28,6 +39,7 @@
             // bind events to textarea
             if (getTextarea.is('input')) {
                 getTextarea.bind("keyup focus change", function () {
+                            console.log("gfgfgfgfgfgfgfg");
 
                     // validate on event trigger
                     fnValidate($(this));
@@ -35,6 +47,9 @@
             }
 
             function fnValidate(e) {
+
+                console.log("gggggggggggggggggggggggggg");
+
                 var
                     // get input
                     calPerc,
@@ -78,4 +93,20 @@
 
         return this;
     }
-})(jQuery);
+
+
+
+    // Initiate plugin
+    $(".my_message").find("input").jQTArea({
+        // Set Max input for Textarea
+        setLimit: 100,
+        // Set Animation to Width (W) or Height (H)
+        setExt: "W",
+        // setExt val in reverse eg, 80% instead of 20%
+        setExtR: false
+    });
+
+
+
+
+});

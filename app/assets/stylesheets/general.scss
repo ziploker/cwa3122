@@ -197,7 +197,7 @@ header{
 	grid-gap: 10px;
 
 	display: grid;
-	grid-template-columns: minmax(100px, 1fr);
+	grid-template-columns: 1fr;
 	grid-template-rows: 50px minmax(300px, 1fr) 38px;
 
 	
@@ -259,16 +259,16 @@ header{
 
 	background-color: #fff;
 	display: grid;
-	grid-template-columns: repeat(2, min-content) 1fr  ;
-	grid-template-rows: min-content, min-content;
+	grid-template-columns: min-content min-content minmax(0, min-content) min-content min-content  ;
+	//grid-template-rows: min-content, min-content;
 	//align-content: center;
 	grid-auto-rows: min-content;
 	grid-row-gap: .6em;
 	grid-column-gap: 10px;
 
 	grid-template-areas:
-		"my_avatar my_name . "
-		"my_message my_message my_message";
+		"my_avatar my_name my_message my_count my_button"
+		"stats stats stats stats stats"
 
 	
 }
@@ -361,11 +361,24 @@ header{
 	//grid-area: row_message;
 
 	//margin: 20px;
+
+
 }
 
-.my_message{
+
+.stats{
+
+	grid-area: stats;
+}
+
+input{
 
 	grid-area: my_message;
+}
+
+button{
+
+	grid-area: my_button;
 }
 
 #deleteSession, #publisherStart, #try2Connect{
@@ -549,5 +562,23 @@ input{
     //    transform: translateY(-26px) scale(.75);
     //    + .border
     //        transform: scaleX(1);
+
+}
+
+
+
+.jQTAreaCount {
+// class to show input count
+}
+.jQTAreaCountR {
+    // class to show input count in reverse
+}
+.jQTAreaValue {
+    // Class to show max value set
+}
+.jQTAreaExt {
+    // Set the height or width property to 100%
+    background-color: black;
+    height: 5px;
 
 }

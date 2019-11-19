@@ -132,7 +132,7 @@
     	<div id="msg">
 
 
-    		<div class="my_avatar">
+    		<div class="my_avatar chat_img">
 
     			<% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
 					
@@ -155,26 +155,40 @@
 
     		</div>
 			
+			
 			<% if user_signed_in? %>
-				<div class="my_name"> <%=current_user.first_name %> <%=current_user.last_name%>
-				<% end %>
-				
-			</div>
+				<div class="my_name"> <%=current_user.first_name %> <%=current_user.last_name%></div>
+			<% end %>
+					
+			
 			
 
 			
 			<div class="my_message">
 				<%= text_field_tag 'message', nil, placeholder: 'say something...' %>
-				<%= button_tag(type: 'submit') do %>
-					<%=		content_tag(:strong, 'SEND!') %>
-				<% 	end %>
+				
 			</div>
 
 			
+			<%= button_tag(type: 'submit') do %>
+					<%=		content_tag(:strong, 'SEND!') %>
+				<% 	end %>
 			
 
-			
+			<div class="stats">
 
+
+				
+				<span>
+					<em class="jQTAreaCount"></em> / <em class="jQTAreaValue"></em>
+				</span>
+					
+					
+				<p class="jQTAreaExt"></p>
+				
+
+
+			</div>
 
 
 
@@ -186,6 +200,10 @@
 
 
 	</section>
+
+
+
+
 
 	
 
