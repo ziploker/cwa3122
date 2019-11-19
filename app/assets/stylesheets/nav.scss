@@ -30,7 +30,7 @@ header{
 #avatar{
 
 	grid-area: avatar;
-	align-self: end;
+	align-self: center;
 	justify-self: end;
 	margin-right: .5em;
 	margin-bottom: 3px;
@@ -52,7 +52,7 @@ header{
 nav{
 	
 	grid-area: nav;
-	align-self: end;
+	align-self: center;
 	justify-self: end;
 	padding-bottom: 2px;
 	width: min-content;

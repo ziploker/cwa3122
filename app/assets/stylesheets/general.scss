@@ -224,15 +224,14 @@ header{
 }
 
 #chat_window{
-
-	
 	background-color: #f9f9f9;
 	
 
 	overflow-y: scroll;
 
 	display: grid;
-	grid-template-columns: 10px repeat(2, min-content) minmax(150px, 1fr ) 10px;
+	padding: 5px 15px 0px 0px;
+	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr ) ;
 	//grid-template-rows: min-content;
 	//align-content: center;
 	grid-auto-rows: min-content;
@@ -240,12 +239,13 @@ header{
 	grid-column-gap: 10px;
 
 	grid-template-areas:
-		". row_avatar row_name row_message . ";
+		"row_avatar row_name row_message";
 
 
 	//height: 59vh;
 
 	grid-area: chatArea;
+	
 	
 }
 
@@ -256,6 +256,19 @@ header{
 	align-self: end;
 
 	grid-area: chatSend;
+
+	background-color: #fff;
+	display: grid;
+	grid-template-columns: repeat(2, min-content) 1fr  ;
+	grid-template-rows: min-content, min-content;
+	//align-content: center;
+	grid-auto-rows: min-content;
+	grid-row-gap: .6em;
+	grid-column-gap: 10px;
+
+	grid-template-areas:
+		"my_avatar my_name . "
+		"my_message my_message my_message";
 
 	
 }
@@ -268,22 +281,28 @@ header{
 	//background-color: red;
 	justify-self: start;
 	align-self: start;
-	grid-area: row_avatar;
+	//grid-area: row_avatar;
 }
 
-.chat_img img{
+.my_avatar{
+
+	grid-area: my_avatar
+}
+
+.chat_img img, .my_avatar img{
 
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
 }
 
+
 .chat_name{
 	//padding: 5px;
 	justify-self: start;
 	align-self: start;
 	padding-top: 2.5px;
-	grid-area: row_name;
+	//grid-area: row_name;
 
 	//background-color: yellow;
 	overflow: hidden;
@@ -296,7 +315,21 @@ header{
 
 }
 
+.my_name{
+	grid-area: my_name;
 
+	justify-self: start;
+	align-self: start;
+	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+}
 
 
 .chat_msg{
@@ -325,9 +358,14 @@ header{
 	justify-self: start;
 	align-self: start;
 
-	grid-area: row_message;
+	//grid-area: row_message;
 
+	//margin: 20px;
+}
 
+.my_message{
+
+	grid-area: my_message;
 }
 
 #deleteSession, #publisherStart, #try2Connect{
@@ -464,7 +502,8 @@ header{
 
 
 
-		width: 15em;
+		//width: 15em;
+		max-width: 100%;
 
 
 
@@ -476,4 +515,39 @@ header{
 
 
 	
+}
+
+
+input{
+
+
+
+	-webkit-appearance: none;
+    //width: 100%;
+    border: 0;
+    font-family: inherit;
+    //padding: 12px 0;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid #C8CCD4;
+    background-color: #fff;
+    //border-radius: 0;
+    //color: #223254;
+    //transition: all .15s ease;
+    //&:hover
+      //background: rgba(#223254,.03);
+    //&:not(:placeholder-shown)
+      //+ span
+       // color #5A667F;
+        //transform: translateY(-26px) scale(.75);
+    //&:focus
+    //  background: none;
+    //  outline: none;
+    //  + span
+    //    color #0077FF;
+    //    transform: translateY(-26px) scale(.75);
+    //    + .border
+    //        transform: scaleX(1);
+
 }

@@ -25,6 +25,7 @@
 			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
 
 				<%= link_to delete_all_sessionsV2_path do %>
+					
 					<div id="deleteSession">Delete Session</div>
 					
 				<% end %>
@@ -32,17 +33,22 @@
 
 
 			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
+				
 				<div id="publisherStart">Start Publishing</div>
 			
 			<% else %>
+				
 				<div id="try2Connect">Connect</div>
+			
 			<%end%>
+
+			
+
 
 			<div class="Chat">Chat<span class="arrow">&#9660;</span></div>
 
 
-			<div class="menu"><%= render :partial => 'threedots' %>
-</div>
+			<div class="menu"><%= render :partial => 'threedots' %></div>
 
 
 		</div>
@@ -81,13 +87,7 @@
 
     		
         	
-		<div class="chat_img">
-			<img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9edc7e670c5752b24c748e1876169763927f2848/833320.jpg">
-		</div>
-
-		<div class="chat_name">Alejandro Raffo</div>
-
-		<div class="chat_msg">sdssdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfdf</div>
+		
 
         	
             	
@@ -107,7 +107,22 @@
     		
 
     		
-        	
+        	<div class="chat_img">
+        		<img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ee0352585bfb0b874e4ca0ff303ec2f01327c76/letters.jpg">
+        	</div>
+
+        	<div class="chat_name">John Doh</div>
+
+        	<div class="chat_msg">sdsdsd</div>
+
+
+        	<div class="chat_img">
+        		<img src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ee0352585bfb0b874e4ca0ff303ec2f01327c76/letters.jpg">
+        	</div>
+
+        	<div class="chat_name">sdfsd Doh</div>
+
+        	<div class="chat_msg">444444dfdfgdfgdfgdfgdfgdfdfdfdfvdfvdfvdfvfvfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfgdfg4444sdsdsd</div>
 		
 
     		
@@ -115,10 +130,50 @@
 		</div>
 	    	
     	<div id="msg">
-			<%= text_field_tag 'message', nil, placeholder: 'speak here...' %>
-			<%= button_tag(type: 'submit') do %>
-				<%=		content_tag(:strong, 'SEND!') %>
-			<% 	end %>
+
+
+    		<div class="my_avatar">
+
+    			<% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
+					
+					<%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
+                
+
+  				<% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
+
+    
+					<%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
+
+				<% else %>
+
+    				<%= image_tag("/assets/man100px.png") %>
+
+
+  				<% end %>
+
+
+
+    		</div>
+			
+			<% if user_signed_in? %>
+				<div class="my_name"> <%=current_user.first_name %> <%=current_user.last_name%>
+				<% end %>
+				
+			</div>
+			
+
+			
+			<div class="my_message">
+				<%= text_field_tag 'message', nil, placeholder: 'say something...' %>
+				<%= button_tag(type: 'submit') do %>
+					<%=		content_tag(:strong, 'SEND!') %>
+				<% 	end %>
+			</div>
+
+			
+			
+
+			
 
 
 
