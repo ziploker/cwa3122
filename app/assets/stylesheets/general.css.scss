@@ -259,7 +259,7 @@ header{
 
 	background-color: #fff;
 	display: grid;
-	grid-template-columns: min-content min-content 1fr min-content min-content  ;
+	grid-template-columns: min-content min-content 1fr min-content min-content 20px  ;
 	grid-template-rows: min-content min-content min-content;
 	//align-content: center;
 	//grid-auto-rows: min-content;
@@ -267,9 +267,9 @@ header{
 	//grid-column-gap: 10px;
 
 	grid-template-areas:
-		"my_avatar   my_name       .           .          .      "
-		"    .     my_message  my_message  my_message  my_message"
-		"    .         .        my_stats    my_stats    my_button";
+		"my_avatar   my_name       .           .          .        . "
+		"    .     my_message  my_message  my_message  my_message  . "
+		"    .         .        my_stats    my_stats    my_button  . ";
 
 	
 }
@@ -368,7 +368,7 @@ header{
 
 input{
 
-	max-width: 95%;
+	max-width: 100%;
 }
 
 
@@ -386,16 +386,23 @@ input{
 .my_message{
 
 	grid-area: my_message;
-
+	
+	padding-bottom: 3px;
+	//@include underline-from-center;
 }
 
+input {
+	
+	//https://jsfiddle.net/6xjyw21m/
+	
+}
 
 
 .send_button{
 	width: 20px;
 	height: 20px;
 	grid-area: my_button;
-	padding: 10px 20px;
+	padding: 10px 0 10px 5px;
 }
 
 
@@ -603,4 +610,38 @@ input{
     background-color: black;
     height: 5px;
 
+}
+
+
+
+
+input[type=text], select {
+  border: none;
+  border-bottom: 2px solid darkgrey;
+  background-color: inherit;
+  display: block;
+  width: 100%;
+  margin: none;
+}
+
+input[type=text]:focus, select:focus {
+  outline: none;
+}
+
+
+
+.line {
+  height: 2px;
+  width: 0px;
+  position: absolute;
+  background-color: darkgrey;
+  display: inline-block;
+  transition: .3s width ease-in-out;
+  position: relative;
+  top: -14px;
+}
+
+input[type=text]:focus+.line, select:focus+.line {
+  width: 100%;
+  background-color: #02add7;
 }

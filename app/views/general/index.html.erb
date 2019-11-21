@@ -25,14 +25,8 @@
 			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
 
 				<%= link_to delete_all_sessionsV2_path do %>
-					
-					<div id="deleteSession">Delete Session</div>
-					
-				<% end %>
-				
-
-
-			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
+					<div id="deleteSession"> Delete Session</div>
+				<% end %><% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 				
 				<div id="publisherStart">Start Publishing</div>
 			
@@ -158,6 +152,11 @@
 			
 			<% if user_signed_in? %>
 				<div class="my_name"> <%=current_user.first_name %> <%=current_user.last_name%></div>
+
+			<% else %>
+				<div class="my_name"> ...log in</div>
+
+				
 			<% end %>
 					
 			
@@ -165,7 +164,9 @@
 
 			
 			<div class="my_message">
-				<%= text_field_tag 'message', nil, placeholder: 'Say something...', class: 'chat_message' %>
+				<%= text_field_tag 'message', nil, placeholder: 'Say something...', class: 'line-animation' %>
+
+				<div class="line"></div>
 				
 			</div>
 
