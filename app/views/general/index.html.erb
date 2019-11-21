@@ -165,14 +165,16 @@
 
 			
 			<div class="my_message">
-				<%= text_field_tag 'message', nil, placeholder: 'say something...' %>
+				<%= text_field_tag 'message', nil, placeholder: 'Say something...', class: 'chat_message' %>
 				
 			</div>
 
 			
-			<%= button_tag(type: 'submit') do %>
-					<%=		content_tag(:strong, 'SEND!') %>
-				<% 	end %>
+			
+				
+					
+			
+			
 			
 
 			<div class="stats">
@@ -184,10 +186,17 @@
 				</span>
 					
 					
-				<p class="jQTAreaExt"></p>
+				  <!--<p class="jQTAreaExt"></p> -->
 				
 
 
+			</div>
+
+
+			<div class="send_button">
+
+
+				<%= image_submit_tag("send.png", alt: 'Send') %>
 			</div>
 
 

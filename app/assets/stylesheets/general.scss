@@ -259,16 +259,17 @@ header{
 
 	background-color: #fff;
 	display: grid;
-	grid-template-columns: min-content min-content minmax(0, min-content) min-content min-content  ;
-	//grid-template-rows: min-content, min-content;
+	grid-template-columns: min-content min-content 1fr min-content min-content  ;
+	grid-template-rows: min-content min-content min-content;
 	//align-content: center;
-	grid-auto-rows: min-content;
-	grid-row-gap: .6em;
-	grid-column-gap: 10px;
+	//grid-auto-rows: min-content;
+	//grid-row-gap: .6em;
+	//grid-column-gap: 10px;
 
 	grid-template-areas:
-		"my_avatar my_name my_message my_count my_button"
-		"stats stats stats stats stats"
+		"my_avatar   my_name       .           .          .      "
+		"    .     my_message  my_message  my_message  my_message"
+		"    .         .        my_stats    my_stats    my_button";
 
 	
 }
@@ -319,7 +320,7 @@ header{
 	grid-area: my_name;
 
 	justify-self: start;
-	align-self: start;
+	align-self: center;
 	padding-top: 2.5px;
 	//grid-area: row_name;
 
@@ -351,7 +352,7 @@ header{
 	hyphens: auto;
 
 
-
+	//border:1px solid #CCC;
 	//width: 40em;
 	max-width: 100%;
 	
@@ -365,21 +366,39 @@ header{
 
 }
 
+input{
+
+	max-width: 95%;
+}
+
 
 .stats{
 
-	grid-area: stats;
+	grid-area: my_stats;
+
+	justify-self: end;
+	align-self: center;
+	padding-right: 10px;
+	font-size: .75rem;
+	padding: 10px;
 }
 
-input{
+.my_message{
 
 	grid-area: my_message;
+
 }
 
-button{
 
+
+.send_button{
+	width: 20px;
+	height: 20px;
 	grid-area: my_button;
+	padding: 10px 20px;
 }
+
+
 
 #deleteSession, #publisherStart, #try2Connect{
 
@@ -412,6 +431,8 @@ button{
 	color:red;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
 }
+
+
 
 .Chat{
 
@@ -531,10 +552,10 @@ button{
 }
 
 
-input{
+.chat_message{
 
 
-
+	width: 100%;
 	-webkit-appearance: none;
     //width: 100%;
     border: 0;
@@ -544,6 +565,7 @@ input{
     font-size: 16px;
     font-weight: 500;
     border-bottom: 2px solid #C8CCD4;
+    //margin-right: 12px;
     background-color: #fff;
     //border-radius: 0;
     //color: #223254;
