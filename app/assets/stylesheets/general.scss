@@ -191,6 +191,7 @@ header{
 	
 	
 	grid-area: chat;
+	//grid-area: video;
 
 	margin: 10px;
 
@@ -198,7 +199,7 @@ header{
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 50px minmax(300px, 1fr) 38px;
+	grid-template-rows: 50px minmax(300px, 300px) minmax(min-content, max-content);
 
 	
 	grid-template-areas:
@@ -218,16 +219,32 @@ header{
 	//height: 50px;
 
 	grid-area: chatBanner;
+	//display: none;
 
 	
 	
 }
 
+
 #chat_window{
+
+	
+	
+
 	background-color: #f9f9f9;
+	//background: rgba(0,0,0, 0.5);
+	//z-index: 420;
+	
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+
+	max-height: 100%;
 	
 
 	overflow-y: scroll;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+
 
 	display: grid;
 	padding: 5px 15px 0px 0px;
