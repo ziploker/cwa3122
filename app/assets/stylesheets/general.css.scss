@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+/////////////////    htmL - body - header - resets etc.. ////////
 
 html, body {
     max-width: 100%;
@@ -13,84 +13,32 @@ html, body {
 	background: #f9f9f9;
 }
 
+header{
 
-#videos {
-    max-width: 640px; 
+ 	background-color: #ffffff;
+ 	
+ 	grid-area: header;
 
-    //min-width: 427px;
-    //min-width: 340px;
-    
-    height: 360px;
-
-
-    //margin: 0 auto;
-    //padding: 10px;
-    //position: relative;
-    grid-area: screen;
-
-
-   
-    
+ 	justify-self: stretch;
+  	align-self: stretch;
 }
 
 
-
-
-#subscriber {
-    width: 100%;
-    height: 100%;
-    background: black;
-    //float: left;
-    //clear: both;
-}
-
-
-
-@media screen and (max-width: 620px){
-
-    #videos {
-
-        max-width: 427px;
-
-        //min-width: 427px;
-        //min-width: 340px;
-        
-        height: 240px;
-
-
-        //margin: 0 auto;
-        padding: 10px;
-        //position: relative;
-
-    }
-
-}
-
-.uid{
-
-	font-size: .57em;
-}
+////////////////////// PAGE WRAPPERS and overlays /////////////////////////////
 
 .default_wrapper{
 	
   	min-height: 100vh;
 
   	display: grid;
-
-
-	
 	grid-template-columns: 1em 1fr 1em;
 	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
 	grid-template-areas:
 
 		"header header header"
-		". video ."
-		"  .    chat   .  "
-		"  .     .    . "
-
-		
-
-
+		"  .    video     .  "
+		"  .    chat      .  "
+		"  .      .       .  ";
 }
 
 
@@ -99,25 +47,20 @@ html, body {
   	min-height: 100vh;
 
   	display: grid;
-
-
-	
-	grid-template-columns: 1em 1fr 1em;
+  	grid-template-columns: 1em 1fr 1em;
 	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
 	grid-template-areas:
 
 		"header header header"
 		"  .    video     .  "
-		"  .      .       .  "
-
-		
-
-
+		"  .      .       .  ";
 }
+
 
 .admin_wrapper{
 	
   	min-height: 100vh;
+  	
   	display: grid;
 	justify-self: center;
 	align-self: center;
@@ -126,14 +69,14 @@ html, body {
 	grid-template-areas:
 
 		"header header header"
-		". admin ."
-		
-		
+		"  .    admin    .   "
 }
+
 
 .devise_wrapper{
 	
   	min-height: 100vh;
+  	
   	display: grid;
 
   	justify-items: center;
@@ -144,79 +87,133 @@ html, body {
 	grid-template-areas:
 
 		"header header header"
-		". headline ."
-		". login ."
-		
-
-		
-		
+		"  .   headline   .  "
+		"  .     login    .  ";
 }
 
-header{
-
- 	background-color: #ffffff;
- 	
- 	grid-area: header;
-
- 	justify-self: stretch;
-  	align-self: stretch;
- }
 
 
 
-
+////////////////   VIDEO SECTiON   /////////////////////
 
 #video_section{
 
-	//background-color: blue;
-	
 	grid-area: video;
-
-	//justify-self: center;
-
 
 	display: grid;
 
-  	//justify-items: center;
-  	//align-items: center;
-	
-	grid-template-columns: 1fr;
-	grid-template-rows: 20px minmax(min-content, max-content);
+  	grid-template-columns: minmax(0, min-content);
+	grid-template-rows: 20px minmax(min-content, max-content) minmax(min-content, max-content);
 	grid-template-areas:
 
-		"bar"
-		"screen";
-		
+		"  bar  "
+		" screen"
+		"  talk ";
+}
 
+
+.bar{
+	
+	background-color: pink;
+	grid-area: bar;
+	width: 640px;
+}
+
+#videos {
+    
+    max-width: 640px; 
+	height: 360px;
+	grid-area: screen;
+
+    //margin: 0 auto;
+ }
+
+
+//makes video smaller (640width to 427width)
+@media screen and (max-width: 620px){
+
+    #videos {
+
+        max-width: 427px;
+		height: 240px;
+		padding: 10px;
+
+        //margin: 0 auto;
+	}
+
+}
+
+
+#subscriber {
+    
+    width: 100%;
+    height: 100%;
+    background: black;
+}
+
+#talk{
+
+	align-self: end;
+
+	grid-area: talk;
+
+	background-color: #fff;
+	display: grid;
+	grid-template-columns: min-content min-content minmax(100px, 1fr) 1fr min-content;
 	
 
+	//align-content: center;
+	grid-auto-rows: min-content;
+	//grid-row-gap: .6em;
+	//grid-column-gap: 10px;
+
+	grid-template-areas:
+		"my_avatar   my_name   my_message  my_message  my_stats   my_button ";
+
+		
+}
+
+
+.my_name_overlay{
+
+	align-self: start;
+	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+
+}
+
+.stats_overlay{
+
+	justify-self: end;
+	align-self: start;
+	padding-right: 10px;
+	font-size: .75rem;
+	//padding: 10px;
+
+	overflow: hidden;
+    white-space: nowrap;
+}
+
+.send_button_overlay{
+
+	width: 20px;
+	height: 20px;
+	grid-area: my_button;
+	//padding: 10px 0 10px 5px;
 
 }
 
 
 
 
-
-
-
-#admin_section{
-	grid-area: admin;
-}
-
-.upload-preview img{
-
-	height: 50px;
-	width: 50px;
-
-
-}
-
-
-
-
-
-
-//start chat section
+////////////////////////   CHat SECTiON   ///////////////////
 
 #chat_section{
 
@@ -259,15 +256,36 @@ header{
 	grid-area: chatBanner;
 	//display: none;
 
+}
+
+.Chat{
+
+	display: inline-block;
+	width: min-content;
+	line-height: 50px;
+ 	 white-space: nowrap;
+ 	 padding-left: 8px;
+ 	 padding-left: 20px;
+
+}
+
+.menu{
+
+	display: inline-block;
+	float: right;
 	
-	
+}
+.menu svg{
+
+	width: 20px;
+	padding-top: 14px;
+	padding-right: 20px;
+
+
 }
 
 
 #chat_window{
-
-	
-	
 
 	background-color: #f9f9f9;
 	//background: rgba(0,0,0, 0.5);
@@ -300,9 +318,62 @@ header{
 	//height: 59vh;
 
 	grid-area: chatArea;
-	
-	
 }
+
+
+.chat_img{
+
+	padding: 2px 5px 5px;
+	
+
+	//background-color: red;
+	justify-self: start;
+	align-self: start;
+	//grid-area: row_avatar;
+}
+
+.chat_name{
+	//padding: 5px;
+	justify-self: start;
+	align-self: start;
+	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+}
+
+
+.chat_msg{
+	
+	overflow-x: hidden;
+	
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+
+	//border:1px solid #CCC;
+	//width: 40em;
+	max-width: 100%;
+	
+	justify-self: start;
+	align-self: start;
+
+	//grid-area: row_message;
+}
+
+
+
 
 
 #msg{
@@ -325,20 +396,9 @@ header{
 		"my_avatar   my_name       .           .          .        . "
 		"    .     my_message  my_message  my_message  my_message  . "
 		"    .         .        my_stats    my_stats    my_button  . ";
-
-	
 }
 
-.chat_img{
 
-	padding: 2px 5px 5px;
-	
-
-	//background-color: red;
-	justify-self: start;
-	align-self: start;
-	//grid-area: row_avatar;
-}
 
 .my_avatar{
 
@@ -353,23 +413,7 @@ header{
 }
 
 
-.chat_name{
-	//padding: 5px;
-	justify-self: start;
-	align-self: start;
-	padding-top: 2.5px;
-	//grid-area: row_name;
 
-	//background-color: yellow;
-	overflow: hidden;
-    white-space: nowrap;
-	
-	font-size: .78em;
-	color: #a8a8a8;
-	
-	
-
-}
 
 .my_name{
 	grid-area: my_name;
@@ -388,37 +432,12 @@ header{
 }
 
 
-.chat_msg{
+.my_message{
+
+	grid-area: my_message;
 	
-
-	//background-color: blue;
-
-
-	
-	overflow-x: hidden;
-	
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-
-	/* Adds a hyphen where the word breaks, if supported (No Blink) */
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	hyphens: auto;
-
-
-	//border:1px solid #CCC;
-	//width: 40em;
-	max-width: 100%;
-	
-	justify-self: start;
-	align-self: start;
-
-	//grid-area: row_message;
-
-	//margin: 20px;
-
-
+	padding-bottom: 3px;
+	//@include underline-from-center;
 }
 
 input{
@@ -436,20 +455,25 @@ input{
 	padding-right: 10px;
 	font-size: .75rem;
 	padding: 10px;
+
+	overflow: hidden;
+    white-space: nowrap;
 }
 
-.my_message{
 
-	grid-area: my_message;
-	
-	padding-bottom: 3px;
-	//@include underline-from-center;
+.jQTAreaCount {
+// class to show input count
 }
-
-input {
-	
-	//https://jsfiddle.net/6xjyw21m/
-	
+.jQTAreaCountR {
+    // class to show input count in reverse
+}
+.jQTAreaValue {
+    // Class to show max value set
+}
+.jQTAreaExt {
+    // Set the height or width property to 100%
+    background-color: black;
+    height: 5px;
 }
 
 
@@ -462,7 +486,12 @@ input {
 
 
 
-#deleteSession, #publisherStart, #try2Connect, .toggle_chat, .options{
+
+
+/////////////////////  button  styLe    /////////////  
+
+
+.btn{
 
 	text-decoration: none;
 	background-color: red;
@@ -493,7 +522,10 @@ input {
 
 }
 
-#deleteSession:hover, #publisherStart:hover, #try2Connect:hover, .toggle_chat:hover, .opions:hover{
+#deleteSession:hover, 
+#publisherStart:hover, 
+#try2Connect:hover, 
+.toggle_chat:hover{
 
 	color:red;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
@@ -501,33 +533,11 @@ input {
 
 
 
-.Chat{
-
-	display: inline-block;
-	width: min-content;
-	line-height: 50px;
- 	 white-space: nowrap;
- 	 padding-left: 8px;
- 	 padding-left: 20px;
-
-}
-
-.menu{
-
-	display: inline-block;
-	float: right;
-	
-}
-.menu svg{
-
-	width: 20px;
-	padding-top: 14px;
-	padding-right: 20px;
 
 
-}
 
 
+//////////////////   for BiG screens 1015px or biggger    ///////////
 
 
 @media only screen and (min-width: 1015px){
@@ -547,32 +557,37 @@ input {
 			"header header header header"
 			"  .      .       .     .   "
 			"  .    video   chat    .   "
-			"  .      .       .     .   "
-			
-			
+			"  .      .       .     .   ";
 	}	
 
 
+	
 	.overlay{
 	
-  	min-height: 100vh;
+	  	min-height: 100vh;
 
-  	display: grid;
+	  	display: grid;
 
-
-	
-	grid-template-columns: 1em 1fr 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
-	grid-template-areas:
-
-		"header header header"
-		"  .    video     .  "
-		"  .      .       .  "
 
 		
+		grid-template-columns: 1em 1fr 1em;
+		grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+		grid-template-areas:
+
+			"header header header"
+			"  .    video     .  "
+			"  .      .       .  ";
+	}
 
 
-}
+	.bar{
+
+
+
+		background-color: pink;
+		grid-area: bar;
+		width: 640px;
+	}
 
 
 	#videos{
@@ -592,24 +607,7 @@ input {
 	    grid-area: screen;
 	}
 
-	#video_section{
-
-		//justify-self: center;
-		//align-self: center;
-		//justify-items: stretch;	
-		//margin: 0 auto;
-
-	}
-
-	.bar{
-
-
-
-		background-color: pink;
-		grid-area: bar;
-		width: 640px;
-	}
-
+	
 	#subscriber{
 
 		padding: 0;
@@ -651,60 +649,13 @@ input {
 }
 
 
-.chat_message{
-
-
-	width: 100%;
-	-webkit-appearance: none;
-    //width: 100%;
-    border: 0;
-    font-family: inherit;
-    //padding: 12px 0;
-    height: 20px;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: 2px solid #C8CCD4;
-    //margin-right: 12px;
-    background-color: #fff;
-    //border-radius: 0;
-    //color: #223254;
-    //transition: all .15s ease;
-    //&:hover
-      //background: rgba(#223254,.03);
-    //&:not(:placeholder-shown)
-      //+ span
-       // color #5A667F;
-        //transform: translateY(-26px) scale(.75);
-    //&:focus
-    //  background: none;
-    //  outline: none;
-    //  + span
-    //    color #0077FF;
-    //    transform: translateY(-26px) scale(.75);
-    //    + .border
-    //        transform: scaleX(1);
-
-}
 
 
 
-.jQTAreaCount {
-// class to show input count
-}
-.jQTAreaCountR {
-    // class to show input count in reverse
-}
-.jQTAreaValue {
-    // Class to show max value set
-}
-.jQTAreaExt {
-    // Set the height or width property to 100%
-    background-color: black;
-    height: 5px;
-
-}
 
 
+
+////////////////  Chat text box border ANIMATION ///////////////////
 
 
 input[type=text], select {
@@ -736,4 +687,13 @@ input[type=text]:focus, select:focus {
 input[type=text]:focus+.line, select:focus+.line {
   width: 100%;
   background-color: #02add7;
+
+
 }
+
+
+
+
+
+
+

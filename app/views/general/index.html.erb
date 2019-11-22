@@ -1,21 +1,102 @@
 
-	<section id="video_section">
-		
-		<div class="bar">T</div>
-		<div id="videos">
-	        <div id="subscriber"></div>
+<section id="video_section">
+	
+	<div class="bar">T</div>
+	
+	<div id="videos">
+        <div id="subscriber"></div>
+        
+    </div>
+
+
+    <div id="talk">
+
+    	<div class="my_avatar chat_img">
+
+			<% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
+				
+				<%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
 	        
-	    </div>
+
+			<% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
+
+
+				<%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
+
+			<% else %>
+
+				<%= image_tag("/assets/man100px.png") %>
+
+
+			<% end %>
 
 
 
+		</div>
+			
+			
+			<% if user_signed_in? %>
+				
+				<div class="my_name_overlay"> <%=current_user.first_name %> <%=current_user.last_name%></div>
+
+			<% else %>
+				
+				<div class="my_name_overlay"> ...log in</div>
+
+				
+			<% end %>
+					
+			
+			
+
+			
+			<div class="my_message">
+				<%= text_field_tag 'message', nil, placeholder: 'Say something...', class: 'line-animation' %>
+
+				<div class="line"></div>
+				
+			</div>
+
+			
+			
+				
+					
+			
+			
+			
+
+			<div class="stats_overlay">
 
 
-	    
-	    
+				
+				<span>
+					<em class="jQTAreaCount"></em> / <em class="jQTAreaValue"></em>
+				</span>
+					
+					
+				  <!--<p class="jQTAreaExt"></p> -->
+				
 
 
-	</section>
+			</div>
+
+
+			<div class="send_button_overlay">
+
+
+				<%= image_submit_tag("send.png", alt: 'Send') %>
+			</div>
+
+
+
+	</div>
+
+
+    
+    
+
+
+</section>
 
 	
 
@@ -27,18 +108,18 @@
 			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
 
 				<%= link_to delete_all_sessionsV2_path do %>
-					<div id="deleteSession"> Delete Session</div>
+					<div id="deleteSession" class="btn"> Delete Session</div>
 				<% end %><% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 				
-				<div id="publisherStart">Start Publishing</div>
+				<div id="publisherStart" class="btn">Start Publishing</div>
 			
 			<% else %>
 				
-				<div id="try2Connect">Connect</div>
+				<div id="try2Connect" class="btn">Connect</div>
 			
 			<%end%>
 
-			<span class="toggle_chat">toggle chat</span>
+			<span class="toggle_chat btn">toggle chat</span>
 
 
 			<div class="Chat">Chat<span class="arrow">&#9660;</span></div>
