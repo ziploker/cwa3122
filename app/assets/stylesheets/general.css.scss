@@ -23,9 +23,11 @@ html, body {
     height: 360px;
 
 
-    margin: 0 auto;
-    padding: 10px;
+    //margin: 0 auto;
+    //padding: 10px;
     //position: relative;
+    grid-area: screen;
+
 
    
     
@@ -56,7 +58,7 @@ html, body {
         height: 240px;
 
 
-        margin: 0 auto;
+        //margin: 0 auto;
         padding: 10px;
         //position: relative;
 
@@ -85,6 +87,28 @@ html, body {
 		". video ."
 		"  .    chat   .  "
 		"  .     .    . "
+
+		
+
+
+}
+
+
+.overlay{
+	
+  	min-height: 100vh;
+
+  	display: grid;
+
+
+	
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+	grid-template-areas:
+
+		"header header header"
+		"  .    video     .  "
+		"  .      .       .  "
 
 		
 
@@ -149,6 +173,20 @@ header{
 	grid-area: video;
 
 	//justify-self: center;
+
+
+	display: grid;
+
+  	//justify-items: center;
+  	//align-items: center;
+	
+	grid-template-columns: 1fr;
+	grid-template-rows: 20px minmax(min-content, max-content);
+	grid-template-areas:
+
+		"bar"
+		"screen";
+		
 
 	
 
@@ -304,7 +342,7 @@ header{
 
 .my_avatar{
 
-	grid-area: my_avatar
+	grid-area: my_avatar;
 }
 
 .chat_img img, .my_avatar img{
@@ -424,7 +462,7 @@ input {
 
 
 
-#deleteSession, #publisherStart, #try2Connect{
+#deleteSession, #publisherStart, #try2Connect, .toggle_chat, .options{
 
 	text-decoration: none;
 	background-color: red;
@@ -448,9 +486,14 @@ input {
     //padding: 5px;
     //text-align: center;
 
+    -webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+
 }
 
-#deleteSession:hover, #publisherStart:hover, #try2Connect:hover{
+#deleteSession:hover, #publisherStart:hover, #try2Connect:hover, .toggle_chat:hover, .opions:hover{
 
 	color:red;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
@@ -502,17 +545,39 @@ input {
 		grid-template-areas:
 
 			"header header header header"
-			"  .      .     .   .   "
+			"  .      .       .     .   "
 			"  .    video   chat    .   "
-			"  .      .       .      .  "
+			"  .      .       .     .   "
 			
 			
 	}	
 
 
+	.overlay{
+	
+  	min-height: 100vh;
+
+  	display: grid;
+
+
+	
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+	grid-template-areas:
+
+		"header header header"
+		"  .    video     .  "
+		"  .      .       .  "
+
+		
+
+
+}
+
+
 	#videos{
 
-		margin: 0 auto;
+		//margin: 0 auto;
 
 		max-width: 640px; 
 
@@ -524,6 +589,7 @@ input {
 
 	    
 	    //padding: 10px;
+	    grid-area: screen;
 	}
 
 	#video_section{
@@ -533,6 +599,15 @@ input {
 		//justify-items: stretch;	
 		//margin: 0 auto;
 
+	}
+
+	.bar{
+
+
+
+		background-color: pink;
+		grid-area: bar;
+		width: 640px;
 	}
 
 	#subscriber{

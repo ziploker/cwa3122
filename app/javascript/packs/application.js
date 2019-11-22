@@ -13,6 +13,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("channels/tokbox.js.erb")
 require("channels/plugin-jqtarea.js")
+require("channels/chat_overlay.js.erb")
 
 
 

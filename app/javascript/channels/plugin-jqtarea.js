@@ -8,12 +8,7 @@
 
 $(document).ready(function (){
 
-    var parent = document.getElementById('chat_section');
-    var child = document.getElementById('chat_window');
     
-    child.style.paddingRight = child.offsetWidth - child.clientWidth + "px";
-
-    alert(child.offsetWidth + " - " + child.clientWidth);
 
 
 console.log("bbbbbbbbbbbbbbbb44444444444444444444444");

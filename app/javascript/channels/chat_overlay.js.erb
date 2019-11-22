@@ -1,0 +1,19 @@
+$(document).ready(function (){
+
+	$(".toggle_chat").click(function(){
+
+		//alert(document.getElementById("default_wrapper").className);
+		
+		if (document.getElementById("default_wrapper").className == "default_wrapper"){
+
+			$(".default_wrapper").attr('class', 'overlay');
+			$("#chat_section").hide();
+
+		}else if (document.getElementById("default_wrapper").className == "overlay"){
+
+			$(".overlay").attr('class', 'default_wrapper');
+		
+		}
+	});
+
+});
