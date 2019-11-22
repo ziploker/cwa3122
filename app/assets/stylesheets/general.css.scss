@@ -103,7 +103,7 @@ header{
 	display: grid;
 
   	grid-template-columns: minmax(0, min-content);
-	grid-template-rows: 20px minmax(min-content, max-content) minmax(min-content, max-content);
+	grid-template-rows: 20px 360px minmax(min-content, max-content);
 	grid-template-areas:
 
 		"  bar  "
@@ -130,18 +130,18 @@ header{
 
 
 //makes video smaller (640width to 427width)
-@media screen and (max-width: 620px){
+//@media screen and (max-width: 620px){
 
-    #videos {
+//    #videos {
 
-        max-width: 427px;
-		height: 240px;
-		padding: 10px;
+//        max-width: 427px;
+//		height: 240px;
+//		padding: 10px;
 
         //margin: 0 auto;
-	}
+//	}
 
-}
+//}
 
 
 #subscriber {
@@ -149,6 +149,43 @@ header{
     width: 100%;
     height: 100%;
     background: black;
+}
+
+
+#overlay{
+
+
+	background-color: #f9f9f9;
+	background: rgba(0,0,0, 0.5);
+	z-index: 420;
+	
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+
+	max-height: 100%;
+	
+
+	overflow-y: scroll;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+
+
+	display: grid;
+	padding: 5px 15px 0px 0px;
+	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr ) ;
+	//grid-template-rows: min-content;
+	//align-content: center;
+	grid-auto-rows: min-content;
+	grid-row-gap: .6em;
+	grid-column-gap: 10px;
+
+	grid-template-areas:
+		"row_avatar_overlay row_name_overlay row_message_overlay";
+
+
+	//height: 59vh;
+
+	grid-area: screen;
 }
 
 #talk{
@@ -173,6 +210,57 @@ header{
 		
 }
 
+
+.chat_img_overlay{
+
+	padding: 2px 5px 5px;
+	
+
+	//background-color: red;
+	justify-self: start;
+	align-self: start;
+	//grid-area: row_avatar;
+}
+
+.chat_name_overlay{
+	//padding: 5px;
+	justify-self: start;
+	align-self: start;
+	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+}
+
+
+.chat_msg_overlay{
+	
+	overflow-x: hidden;
+	
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+
+	//border:1px solid #CCC;
+	//width: 40em;
+	max-width: 100%;
+	
+	justify-self: start;
+	align-self: start;
+
+	//grid-area: row_message;
+}
 
 .my_name_overlay{
 
@@ -234,7 +322,7 @@ header{
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 50px minmax(300px, 300px) minmax(min-content, max-content);
+	grid-template-rows: 50px 300px minmax(min-content, max-content);
 
 	
 	grid-template-areas:

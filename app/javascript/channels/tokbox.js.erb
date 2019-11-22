@@ -108,6 +108,15 @@ $(document).ready(function (){
 
 		  		console.log("*******************************" + $('#chat_window')[0].scrollHeight );
 		  		console.log("*******************************" + $('#chat_window')[0].scrollTop );
+
+
+		  		$('#overlay').append('<div class="chat_img_overlay"><img src= ' + event.data.url + '></div>');
+				$('#overlay').append('<div class="chat_name_overlay">' + first + ' ' + last + '</div>');
+				$('#overlay').append('<div class="chat_msg_overlay">' +event.data.msg+ '</div>');
+		  		$('#overlay').scrollTop(  $('#overlay')[0].scrollHeight );
+
+		  		console.log("*******************************" + $('#overlay')[0].scrollHeight );
+		  		console.log("*******************************" + $('#overlay')[0].scrollTop );
 			});
 
 
@@ -119,7 +128,6 @@ $(document).ready(function (){
 
         		var T = formatAMPM(dt);
 
-				
 				session.signal(
 		  			{	
 
@@ -134,8 +142,8 @@ $(document).ready(function (){
 		                   		+ "): " + error.message);
 		    			} else {
 		      				console.log("signal sent.");
-		      				$(".jQTAreaExt").width(0);
-		      				$(".jQTAreaCount").html(0);
+		      				//$(".jQTAreaExt").width(0);
+		      				//$(".jQTAreaCount").html(0);
 
 		    			}
 		  			}
@@ -232,6 +240,15 @@ $(document).ready(function (){
 
 		  		console.log("*******************************" + $('#chat_window')[0].scrollHeight );
 		  		console.log("*******************************" + $('#chat_window')[0].scrollTop );
+			
+		  		$('#overlay').append('<div class="chat_img_overlay"><img src= ' + event.data.url + '></div>');
+				$('#overlay').append('<div class="chat_name_overlay">' + first + ' ' + last + '</div>');
+				$('#overlay').append('<div class="chat_msg_overlay">' +event.data.msg+ '</div>');
+		  		$('#overlay').scrollTop(  $('#overlay')[0].scrollHeight );
+
+		  		console.log("*******************************" + $('#overlay')[0].scrollHeight );
+		  		console.log("*******************************" + $('#overlay')[0].scrollTop );
+
 			});
 
 
@@ -297,7 +314,7 @@ $(document).ready(function (){
 
 
 	
-	$('#msg button').click( function(){
+	$('.send_button').click( function(){
 				
 		console.log('buttonclicked');
 		sendMSG();
