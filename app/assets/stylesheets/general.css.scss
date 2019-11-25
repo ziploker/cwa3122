@@ -47,6 +47,7 @@ header{
   	min-height: 100vh;
 
   	display: grid;
+
   	grid-template-columns: 1em 1fr 1em;
 	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
 	grid-template-areas:
@@ -114,9 +115,15 @@ header{
 
 .bar{
 	
-	background-color: pink;
+	background-color: green;
 	grid-area: bar;
-	width: 640px;
+	//width: 520px;
+	overflow: hidden;
+}
+
+#deleteSession_overlay{
+
+	//height: 20px;
 }
 
 #videos {
@@ -182,7 +189,7 @@ header{
 	grid-template-areas:
 		"row_avatar_overlay row_name_overlay row_message_overlay";
 
-
+	scrollbar-width: none;
 	//height: 59vh;
 
 	grid-area: screen;
@@ -193,6 +200,8 @@ header{
 	align-self: end;
 
 	grid-area: talk;
+
+	padding-top: 8px;
 
 	background-color: #fff;
 	display: grid;
@@ -205,12 +214,14 @@ header{
 	//grid-column-gap: 10px;
 
 	grid-template-areas:
-		"my_avatar   my_name   my_message  my_message  my_stats   my_button ";
+		"my_avatar_oL   my_name_oL   my_message_oL  my_message_oL  my_stats_oL   my_button_oL ";
 
 		
 }
 
 
+
+////////////////////// img name message => in the chat windows///////
 .chat_img_overlay{
 
 	padding: 2px 5px 5px;
@@ -262,11 +273,30 @@ header{
 	//grid-area: row_message;
 }
 
+
+
+/////////////// img name message => in the bottom SEND msg section  ///////
+
+
+.my_avatar{
+
+	grid-area: my_avatar_oL;
+	padding-left: 5px;
+}
+
+.my_avatar img{
+
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
 .my_name_overlay{
 
 	align-self: start;
+	padding-left: 5px;
 	padding-top: 2.5px;
-	//grid-area: row_name;
+	grid-area: my_name_oL;
 
 	//background-color: yellow;
 	overflow: hidden;
@@ -277,25 +307,34 @@ header{
 
 }
 
+.my_message_overlay{
+
+	grid-area: my_message_oL;
+	padding-left: 5px;
+	
+	//padding-bottom: 3px;
+	//@include underline-from-center;
+
+}
+
 .stats_overlay{
 
 	justify-self: end;
 	align-self: start;
-	padding-right: 10px;
 	font-size: .75rem;
-	//padding: 10px;
+	padding: 10px;
 
 	overflow: hidden;
     white-space: nowrap;
+    grid-area: my_stats_oL;
 }
 
 .send_button_overlay{
 
 	width: 20px;
 	height: 20px;
-	grid-area: my_button;
-	//padding: 10px 0 10px 5px;
-
+	grid-area: my_button_oL;
+	padding: 7.5px 10px 5px 0px;
 }
 
 
@@ -316,7 +355,7 @@ header{
 	grid-area: chat;
 	//grid-area: video;
 
-	margin: 10px;
+	//margin: 10px;
 
 	grid-gap: 10px;
 
@@ -493,7 +532,7 @@ header{
 	grid-area: my_avatar;
 }
 
-.chat_img img, .my_avatar img{
+.chat_img img{
 
 	width: 20px;
 	height: 20px;
@@ -610,6 +649,37 @@ input{
 
 }
 
+.btnV2{
+
+	text-decoration: none;
+	background-color: red;
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	//margin: 0 auto;
+	//float: right;
+
+	line-height: 18px;
+ 	 white-space: nowrap;
+
+
+ 	color:#444;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    //vertical-align:middle;
+    //max-width: 100px;
+    //padding: 5px;
+    //text-align: center;
+
+    -webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+
+}
+
 #deleteSession:hover, 
 #publisherStart:hover, 
 #try2Connect:hover, 
@@ -650,13 +720,13 @@ input{
 
 
 	
-	.overlay{
+	.default_wrapper_overlay{
 	
 	  	min-height: 100vh;
 
 	  	display: grid;
 
-
+	  	justify-items: center;
 		
 		grid-template-columns: 1em 1fr 1em;
 		grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
@@ -674,7 +744,7 @@ input{
 
 		background-color: pink;
 		grid-area: bar;
-		width: 640px;
+		max-width: 620px;
 	}
 
 
@@ -764,7 +834,7 @@ input[type=text]:focus, select:focus {
 .line {
   height: 2px;
   width: 0px;
-  position: absolute;
+  //position: absolute;
   background-color: darkgrey;
   display: inline-block;
   transition: .3s width ease-in-out;

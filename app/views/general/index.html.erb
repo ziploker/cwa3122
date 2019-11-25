@@ -1,7 +1,30 @@
 
 <section id="video_section">
 	
-	<div class="bar">T</div>
+	<div class="bar">
+
+		<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
+
+				<%= link_to delete_all_sessionsV2_path do %>
+					<div id="deleteSession" class="btnV2"> Delete Session</div>
+				<% end %><span class="toggle_chat btnV2">toggle chat</span>
+
+			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%><div id="publisherStart" class="btnV2">Start Publishing</div><span class="toggle_chat btnV2">toggle chat</span>
+			
+			<% elsif user_signed_in? %>
+
+
+				
+				<div id="try2Connect" class="btnV2">Connect</div>
+				
+				<span class="toggle_chat btnV2">toggle chat</span>
+			
+			<%end%>
+
+
+
+
+	</div>
 	
 	<div id="videos">
         <div id="subscriber"></div>
@@ -19,7 +42,7 @@
 
     <div id="talk">
 
-    	<div class="my_avatar chat_img">
+    	<div class="my_avatar_overlay chat_img">
 
 			<% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
 				
@@ -58,7 +81,7 @@
 			
 
 			
-			<div class="my_message">
+			<div class="my_message_overlay">
 				<%= text_field_tag 'message_overlay', nil, placeholder: 'Say something...', class: 'line-animation' %>
 
 				<div class="line"></div>
@@ -113,25 +136,10 @@
 		
 		<div id="info_section">
 		
-			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
-
-				<%= link_to delete_all_sessionsV2_path do %>
-					<div id="deleteSession" class="btn"> Delete Session</div>
-				<% end %><% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
-				
-				<div id="publisherStart" class="btn">Start Publishing</div>
 			
-			<% else %>
-				
-				<div id="try2Connect" class="btn">Connect</div>
 			
-			<%end%>
-
-			<span class="toggle_chat btn">toggle chat</span>
-
-
+			
 			<div class="Chat">Chat<span class="arrow">&#9660;</span></div>
-
 
 			<div class="menu"><%= render :partial => 'threedots' %></div>
 

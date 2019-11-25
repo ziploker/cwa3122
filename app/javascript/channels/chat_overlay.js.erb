@@ -1,17 +1,29 @@
 $(document).ready(function (){
 
+	
+	$('#overlay').hide();
+	$('#talk').hide();
+
+
 	$(".toggle_chat").click(function(){
 
 		//alert(document.getElementById("default_wrapper").className);
 		
 		if (document.getElementById("default_wrapper").className == "default_wrapper"){
 
-			$(".default_wrapper").attr('class', 'overlay');
+			$(".default_wrapper").attr('class', 'default_wrapper_overlay');
 			$("#chat_section").hide();
+			$('#overlay').show();
+			$('#talk').show();
 
-		}else if (document.getElementById("default_wrapper").className == "overlay"){
 
-			$(".overlay").attr('class', 'default_wrapper');
+
+		}else if (document.getElementById("default_wrapper").className == "default_wrapper_overlay"){
+
+			$(".default_wrapper_overlay").attr('class', 'default_wrapper');
+			$("#chat_section").show();
+			$('#overlay').hide();
+			$('#talk').hide();
 		
 		}
 	});

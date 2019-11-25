@@ -41,7 +41,7 @@ console.log("bbbbbbbbbbbbbbbb44444444444444444444444");
             // bind events to textarea
             if (getTextarea.is('input')) {
                 getTextarea.bind("keyup focus change", function () {
-                            console.log("gfgfgfgfgfgfgfg");
+                            //console.log("gfgfgfgfgfgfgfg");
 
                     // validate on event trigger
                     fnValidate($(this));
@@ -50,7 +50,7 @@ console.log("bbbbbbbbbbbbbbbb44444444444444444444444");
 
             function fnValidate(e) {
 
-                console.log("gggggggggggggggggggggggggg");
+                //console.log("gggggggggggggggggggggggggg");
 
                 var
                     // get input
