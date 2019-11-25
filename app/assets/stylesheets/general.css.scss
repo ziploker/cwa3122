@@ -29,9 +29,9 @@ header{
 .default_wrapper{
 	
   	min-height: 100vh;
-
+  	justify-items: center;
   	display: grid;
-	grid-template-columns: 1em 1fr 1em;
+	grid-template-columns: 1em minmax(222px, 1fr) 1em;
 	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
 	grid-template-areas:
 
@@ -42,21 +42,24 @@ header{
 }
 
 
-.overlay{
+
+
+.default_wrapper_overlay{
 	
-  	min-height: 100vh;
+	  	min-height: 100vh;
+	  	justify-items: center;
+	  	display: grid;
 
-  	display: grid;
+	  	justify-items: center;
+		
+		grid-template-columns: 1em minmax(222px, 1fr) 1em;
+		grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+		grid-template-areas:
 
-  	grid-template-columns: 1em 1fr 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
-	grid-template-areas:
-
-		"header header header"
-		"  .    video     .  "
-		"  .      .       .  ";
-}
-
+			"header header header"
+			"  .    video     .  "
+			"  .      .       .  ";
+	}
 
 .admin_wrapper{
 	
@@ -103,13 +106,13 @@ header{
 
 	display: grid;
 
-  	grid-template-columns: minmax(0, min-content);
+  	grid-template-columns: 1em minmax(0, 640px) 1em;
 	grid-template-rows: 20px 360px minmax(min-content, max-content);
 	grid-template-areas:
 
-		"  bar  "
-		" screen"
-		"  talk ";
+		" . bar .  "
+		" . screen ."
+		"  . talk . ";
 }
 
 
@@ -117,8 +120,9 @@ header{
 	
 	background-color: green;
 	grid-area: bar;
-	//width: 520px;
-	overflow: hidden;
+	width: 100%;
+	//overflow: hidden;
+
 }
 
 #deleteSession_overlay{
@@ -128,7 +132,7 @@ header{
 
 #videos {
     
-    max-width: 640px; 
+    //max-width: 640px; 
 	height: 360px;
 	grid-area: screen;
 
@@ -723,13 +727,13 @@ input{
 	.default_wrapper_overlay{
 	
 	  	min-height: 100vh;
-
+	  	justify-items: center;
 	  	display: grid;
 
 	  	justify-items: center;
 		
 		grid-template-columns: 1em 1fr 1em;
-		grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+		grid-template-rows: minmax(40px, 50px) minmax(420px, 1fr) 1fr;
 		grid-template-areas:
 
 			"header header header"
@@ -744,7 +748,7 @@ input{
 
 		background-color: pink;
 		grid-area: bar;
-		max-width: 620px;
+		width: 100%;
 	}
 
 
