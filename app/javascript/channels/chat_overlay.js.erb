@@ -28,4 +28,14 @@ $(document).ready(function (){
 		}
 	});
 
+
+
+
+	var chk1 = $("input[type='checkbox'][class='expand_menu_checkbox']");
+	var chk2 = $("input[type='checkbox'][class='hamburger_to_x_checkbox']");
+
+	chk1.on('change', function(){
+  		chk2.prop('checked',this.checked);
+	});
+
 });

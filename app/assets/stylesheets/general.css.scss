@@ -361,11 +361,11 @@ header{
 
 	//margin: 10px;
 
-	grid-gap: 10px;
+	//grid-gap: 10px;
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 50px 300px minmax(min-content, max-content);
+	grid-template-rows: minmax(min-content, max-content) 300px minmax(min-content, max-content);
 
 	
 	grid-template-areas:
@@ -402,8 +402,8 @@ header{
 
 .menu{
 
-	display: inline-block;
-	float: right;
+	//display: inline-block;
+	//float: right;
 	
 }
 .menu svg{
@@ -854,8 +854,119 @@ input[type=text]:focus+.line, select:focus+.line {
 }
 
 
+////////////    menu hamburger for chat ///////
+
+.expand_menu_button, .hamburger_to_x_checkbox{
+	display: none;
+}
+
+
+
+.hamburger_menu_label{
+
+	float: right;
+	height: 50px;
+	display: inline-block;
+	line-height: 50px;
+	vertical-align: middle;
+	padding-right: 20px;
+	cursor: pointer;
+
+}
+
+
+
+.menu{
+
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	background-color: pink;
+	width: 200px;
+	grid-area: chatArea;
+	z-index: 2222;
+	justify-self: end;
+	padding-top: -60px;
+	max-height: 0;
+	transition: max-height .2s ease-out;
+
+
+}
+
+.menu a{
+
+	display: block;
+	outline: 1px solid red;
+	padding: 20px;
+	border-right: 1px solid green;
+
+
+}
+
+.menu a:hover{
+
+	background-color: orange;
+}
+
+
+.hamburger_menu{
+
+	background-color: red;
+	display: inline-block;
+	height: 2px;
+	width: 18px;
+	position: relative;
+	transition:backround .2s ease-out;
+	
+	vertical-align: middle;
+}
+
+.hamburger_menu:before{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: all .2s ease-out;
+	top: 5px;
+}
+
+.hamburger_menu:after{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: -5px;
+	transition: all .2s ease-out;
+}
+
+
+
+.expand_menu_checkbox:checked ~ .menu{
+
+	max-height: 300px;
+}
 
 
 
 
+.hamburger_to_x_checkbox:checked ~ .hamburger_menu_label .hamburger_menu{
+ 	background: transparent;
+}
+
+.hamburger_to_x_checkbox:checked ~ .hamburger_menu_label .hamburger_menu:before{
+	transform: rotate(-45deg);
+	top: 0;
+	
+}
+
+.hamburger_to_x_checkbox:checked ~ .hamburger_menu_label .hamburger_menu:after{
+
+	transform: rotate(45deg);
+	top: 0;
+}
 
