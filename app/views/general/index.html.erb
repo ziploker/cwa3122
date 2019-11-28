@@ -3,30 +3,60 @@
 	
 	<div class="bar">
 
-		<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
-
-				<%= link_to delete_all_sessionsV2_path do %>
-					<div id="deleteSession" class="btnV2"> Delete Session</div>
-				<% end %><span class="toggle_chat btnV2">toggle chat</span>
-
-			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%><div id="publisherStart" class="btnV2">Start Publishing</div><span class="toggle_chat btnV2">toggle chat</span>
+		
+		<label class="hamburger_menu_label_overlay" for="expand_menu_checkbox_overlay" >
+			<span class="hamburger_menu_overlay"></span>
 			
-			<% elsif user_signed_in? %>
-
-
-				
-				<div id="try2Connect" class="btnV2">Connect</div>
-				
-				<span class="toggle_chat btnV2">toggle chat</span>
-			
-			<%end%>
-
+		</label>
 
 
 
 	</div>
 	
 	<div id="videos">
+
+		
+		<input class="expand_menu_checkbox_overlay" type="checkbox" id="expand_menu_checkbox_overlay" />
+
+		<ul class="menu_overlay">
+
+
+
+		<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
+
+			<li>
+				<a href="/general/deleteSessionsV2", class="btnV2">Reset</a>
+					
+			</li>
+			<li>
+
+				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			</li>
+
+		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
+
+			
+			<li>
+				<a href="#" class="publisherStart" class="btnV2">Start Publishing</a>
+			</li>
+			<li>
+				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			</li>
+			
+		<% elsif user_signed_in? %>
+
+			<li>
+				<a href="/" class="try2Connect" class="btnV2">Connect</a>
+			</li>
+			<li>
+				
+				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			</li>
+			
+		<%end%>
+
+		
+	</ul>
         <div id="subscriber"></div>
         
     </div>
@@ -135,7 +165,7 @@
 
 	
 
-	<!--######################### INFO SECTION ########-->
+	<!--######################### INFO SECTION START########-->
 	<div id="info_section">
 	
 		<div class="Chat">Chat<span class="arrow">&#9660;</span></div>
@@ -148,18 +178,49 @@
 		</label>
 
 	</div>
-
+	<!--######################### INFO SECTION END########-->
 	
 
 	<input class="expand_menu_checkbox" type="checkbox" id="expand_menu_checkbox" />
 	
 	<ul class="menu">
 
-		<li><a href="#dont"> Dont </a></li>
-		<li><a href="#dfsfgdfg"> drferg </a></li>
-		<li><a href="#rergdfg"> dfgdfg </a></li>
-		<li><a href="#dfgdfg"> dfgdfg </a></li>
 
+
+		<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
+
+			<li>
+				<a href="/general/deleteSessionsV2", class="btnV2">Reset</a>
+					
+			</li>
+			<li>
+
+				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			</li>
+
+		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
+
+			
+			<li>
+				<a href="#" class="publisherStart" class="btnV2">Start Publishing</a>
+			</li>
+			<li>
+				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			</li>
+			
+		<% elsif user_signed_in? %>
+
+			<li>
+				<a href="/" class="try2Connect" class="btnV2">Connect</a>
+			</li>
+			<li>
+				
+				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			</li>
+			
+		<%end%>
+
+		
 	</ul>
 
 	

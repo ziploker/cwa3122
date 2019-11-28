@@ -107,12 +107,27 @@ header{
 	display: grid;
 
   	grid-template-columns: 1em minmax(0, 640px) 1em;
-	grid-template-rows: 20px 360px minmax(min-content, max-content);
+	grid-template-rows: 25px 360px minmax(min-content, max-content);
 	grid-template-areas:
 
 		" . bar .  "
 		" . screen ."
 		"  . talk . ";
+}
+
+#video_section_full{
+
+	grid-area: video;
+
+	display: grid;
+
+  	grid-template-columns: 1em minmax(0, 640px) 1em;
+	grid-template-rows: 360px ;
+	grid-template-areas:
+
+		
+		" . screen .";
+		
 }
 
 
@@ -121,7 +136,7 @@ header{
 	background-color: green;
 	grid-area: bar;
 	width: 100%;
-	//overflow: hidden;
+	
 
 }
 
@@ -406,14 +421,7 @@ header{
 	//float: right;
 	
 }
-.menu svg{
 
-	width: 20px;
-	padding-top: 14px;
-	padding-right: 20px;
-
-
-}
 
 
 #chat_window{
@@ -684,9 +692,9 @@ input{
 
 }
 
-#deleteSession:hover, 
-#publisherStart:hover, 
-#try2Connect:hover, 
+.deleteSession:hover, 
+.publisherStart:hover, 
+.try2Connect:hover, 
 .toggle_chat:hover{
 
 	color:red;
@@ -856,7 +864,9 @@ input[type=text]:focus+.line, select:focus+.line {
 
 ////////////    menu hamburger for chat ///////
 
-.expand_menu_button, .hamburger_to_x_checkbox{
+.expand_menu_checkbox, 
+.expand_menu_checkbox_overlay, 
+.hamburger_to_x_checkbox{
 	display: none;
 }
 
@@ -894,7 +904,27 @@ input[type=text]:focus+.line, select:focus+.line {
 
 }
 
-.menu a{
+.menu_overlay{
+
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	background-color: pink;
+	width: 200px;
+	grid-area: chatArea;
+	z-index: 421;
+	//justify-self: end;
+	//padding-top: -60px;
+	max-height: 0;
+	transition: max-height .2s ease-out;
+	position: relative;
+	float: right;
+
+
+}
+
+.menu a, .menu_overlay a{
 
 	display: block;
 	outline: 1px solid red;
@@ -904,7 +934,7 @@ input[type=text]:focus+.line, select:focus+.line {
 
 }
 
-.menu a:hover{
+.menu a:hover, .menu_overlay a:hover{
 
 	background-color: orange;
 }
@@ -951,6 +981,11 @@ input[type=text]:focus+.line, select:focus+.line {
 	max-height: 300px;
 }
 
+.expand_menu_checkbox_overlay:checked ~ .menu_overlay{
+
+	max-height: 300px;
+}
+
 
 
 
@@ -970,3 +1005,51 @@ input[type=text]:focus+.line, select:focus+.line {
 	top: 0;
 }
 
+/////////////////////////////
+
+
+.hamburger_menu_label_overlay{
+
+	float: right;
+	//height: 50px;
+	display: inline-block;
+	line-height: 25px;
+	vertical-align: middle;
+	padding-right: 20px;
+	cursor: pointer;
+
+}
+
+.hamburger_menu_overlay{
+
+	background-color: red;
+	display: inline-block;
+	height: 2px;
+	width: 18px;
+	position: relative;
+	transition:backround .2s ease-out;
+	
+	vertical-align: middle;
+}
+
+.hamburger_menu_overlay:before{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: all .2s ease-out;
+	top: 3px;
+}
+
+.hamburger_menu_overlay:after{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: -3px;
+	transition: all .2s ease-out;
+}
