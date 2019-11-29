@@ -1,9 +1,10 @@
 $(document).ready(function (){
 
-	
+	$('.bar').hide();
 	$('#overlay').hide();
 	$('#talk').hide();
-	$('.bar').hide();
+	
+
 
 
 	$(".toggle_chat").click(function(){
@@ -13,20 +14,34 @@ $(document).ready(function (){
 		if (document.getElementById("default_wrapper").className == "default_wrapper"){
 
 			$(".default_wrapper").attr('class', 'default_wrapper_overlay');
+			$(".video_section").attr('class', 'video_section_overlay');
+			
+			$('.expand_menu_checkbox').prop('checked', false);
+			$('.hamburger_to_x_checkbox').prop('checked', false);
+
+
+
 			$("#chat_section").hide();
+			
+			$('.bar').show();
 			$('#overlay').show();
 			$('#talk').show();
-			$('.bar').show();
+			
 
 
 
 		}else if (document.getElementById("default_wrapper").className == "default_wrapper_overlay"){
 
 			$(".default_wrapper_overlay").attr('class', 'default_wrapper');
+			$(".video_section_overlay").attr('class', 'video_section');
+
+			$('.expand_menu_checkbox_overlay').prop('checked', false);
 			$("#chat_section").show();
+			
+			$('.bar').hide();
 			$('#overlay').hide();
 			$('#talk').hide();
-			$('.bar').hide();
+			//$('.bar').hide();
 		
 		}
 	});

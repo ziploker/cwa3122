@@ -100,7 +100,23 @@ header{
 
 ////////////////   VIDEO SECTiON   /////////////////////
 
-#video_section{
+.video_section{
+
+	grid-area: video;
+
+	display: grid;
+
+  	grid-template-columns: 1em minmax(0, 640px) 1em;
+	grid-template-rows: 360px;
+	grid-template-areas:
+
+		
+		" . screen .";
+		
+}
+
+
+.video_section_overlay{
 
 	grid-area: video;
 
@@ -115,28 +131,13 @@ header{
 		"  . talk . ";
 }
 
-#video_section_full{
-
-	grid-area: video;
-
-	display: grid;
-
-  	grid-template-columns: 1em minmax(0, 640px) 1em;
-	grid-template-rows: 360px ;
-	grid-template-areas:
-
-		
-		" . screen .";
-		
-}
-
 
 .bar{
 	
 	background-color: green;
 	grid-area: bar;
 	width: 100%;
-	
+	//overflow: hidden;
 
 }
 
@@ -187,13 +188,13 @@ header{
 	
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none; 
+	scrollbar-width: none;
 
 	max-height: 100%;
 	
 
 	overflow-y: scroll;
-	overflow: -moz-scrollbars-none;
-	-ms-overflow-style: none; 
+	
 
 
 	display: grid;
@@ -208,7 +209,7 @@ header{
 	grid-template-areas:
 		"row_avatar_overlay row_name_overlay row_message_overlay";
 
-	scrollbar-width: none;
+	
 	//height: 59vh;
 
 	grid-area: screen;
@@ -421,7 +422,14 @@ header{
 	//float: right;
 	
 }
+.menu svg{
 
+	width: 20px;
+	padding-top: 14px;
+	padding-right: 20px;
+
+
+}
 
 
 #chat_window{
@@ -432,6 +440,7 @@ header{
 	
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none; 
+	scrollbar-width: none;
 
 	max-height: 100%;
 	
@@ -692,9 +701,9 @@ input{
 
 }
 
-.deleteSession:hover, 
-.publisherStart:hover, 
-.try2Connect:hover, 
+#deleteSession:hover, 
+#publisherStart:hover, 
+#try2Connect:hover, 
 .toggle_chat:hover{
 
 	color:red;
@@ -864,9 +873,7 @@ input[type=text]:focus+.line, select:focus+.line {
 
 ////////////    menu hamburger for chat ///////
 
-.expand_menu_checkbox, 
-.expand_menu_checkbox_overlay, 
-.hamburger_to_x_checkbox{
+.expand_menu_checkbox, .expand_menu_checkbox_overlay, .hamburger_to_x_checkbox{
 	display: none;
 }
 
@@ -884,22 +891,36 @@ input[type=text]:focus+.line, select:focus+.line {
 
 }
 
+.hamburger_menu_label_overlay{
+
+	float: right;
+	height: 25px;
+	display: inline-block;
+	line-height: 25px;
+	vertical-align: middle;
+	padding-right: 20px;
+	cursor: pointer;
+
+}
+
 
 
 .menu{
 
 	margin: 0;
 	padding: 0;
+	position: relative;
 	list-style: none;
 	overflow: hidden;
 	background-color: pink;
 	width: 200px;
 	grid-area: chatArea;
-	z-index: 2222;
+	z-index: 22292;
 	justify-self: end;
 	padding-top: -60px;
-	max-height: 0;
+	//max-height: 0;
 	transition: max-height .2s ease-out;
+	height: auto;
 
 
 }
@@ -912,14 +933,14 @@ input[type=text]:focus+.line, select:focus+.line {
 	overflow: hidden;
 	background-color: pink;
 	width: 200px;
-	grid-area: chatArea;
-	z-index: 421;
+	//grid-area: chatArea;
+	z-index: 2222;
 	//justify-self: end;
 	//padding-top: -60px;
 	max-height: 0;
 	transition: max-height .2s ease-out;
-	position: relative;
 	float: right;
+	position: relative;
 
 
 }
@@ -934,7 +955,7 @@ input[type=text]:focus+.line, select:focus+.line {
 
 }
 
-.menu a:hover, .menu_overlay a:hover{
+.menu a:hover, , .menu_overlay a:hover{
 
 	background-color: orange;
 }
@@ -975,11 +996,48 @@ input[type=text]:focus+.line, select:focus+.line {
 }
 
 
+.hamburger_menu_overlay{
+
+	background-color: red;
+	display: inline-block;
+	height: 2px;
+	width: 18px;
+	position: relative;
+	transition:backround .2s ease-out;
+	
+	vertical-align: middle;
+}
+
+.hamburger_menu_overlay:before{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: all .2s ease-out;
+	top: 4px;
+}
+
+.hamburger_menu_overlay:after{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: -4px;
+	transition: all .2s ease-out;
+}
+
+
 
 .expand_menu_checkbox:checked ~ .menu{
 
 	max-height: 300px;
 }
+
+
 
 .expand_menu_checkbox_overlay:checked ~ .menu_overlay{
 
@@ -1005,51 +1063,3 @@ input[type=text]:focus+.line, select:focus+.line {
 	top: 0;
 }
 
-/////////////////////////////
-
-
-.hamburger_menu_label_overlay{
-
-	float: right;
-	//height: 50px;
-	display: inline-block;
-	line-height: 25px;
-	vertical-align: middle;
-	padding-right: 20px;
-	cursor: pointer;
-
-}
-
-.hamburger_menu_overlay{
-
-	background-color: red;
-	display: inline-block;
-	height: 2px;
-	width: 18px;
-	position: relative;
-	transition:backround .2s ease-out;
-	
-	vertical-align: middle;
-}
-
-.hamburger_menu_overlay:before{
-	background-color: red;
-	content: "";
-	display: block;
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transition: all .2s ease-out;
-	top: 3px;
-}
-
-.hamburger_menu_overlay:after{
-	background-color: red;
-	content: "";
-	display: block;
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: -3px;
-	transition: all .2s ease-out;
-}
