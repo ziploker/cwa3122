@@ -380,14 +380,14 @@ header{
 	//grid-gap: 10px;
 
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: minmax(min-content, max-content) 300px minmax(min-content, max-content);
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: minmax(min-content, max-content) 300px minmax(min-content, max-content) minmax(min-content, max-content);
 
 	
 	grid-template-areas:
-		"chatBanner"
-		"chatArea"
-		"chatSend"
+		"chatBanner chatBanner"
+		"chatArea chatOverlayMenu"
+		"chatSend chatSend";
 
 }
 
@@ -914,7 +914,7 @@ input[type=text]:focus+.line, select:focus+.line {
 	overflow: hidden;
 	background-color: pink;
 	width: 200px;
-	grid-area: chatArea;
+	grid-area: chatOverlayMenu;
 	z-index: 22292;
 	justify-self: end;
 	padding-top: -60px;
