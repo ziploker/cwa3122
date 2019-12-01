@@ -102,7 +102,7 @@ $(document).ready(function (){
 		  		
 
 		  		$('#chat_window').append('<div class="chat_img"><img src= ' + event.data.url + '></div>');
-				$('#chat_window').append('<div class="chat_name">' + first + ' ' + last + '</div>');
+				$('#chat_window').append('<div class="chat_name">' + event.data.first + ' ' + event.data.last + '</div>');
 				$('#chat_window').append('<div class="chat_msg">' +event.data.msg+ '</div>');
 		  		$('#chat_window').scrollTop(  $('#chat_window')[0].scrollHeight );
 
@@ -111,7 +111,7 @@ $(document).ready(function (){
 
 
 		  		$('#overlay').append('<div class="chat_img_overlay"><img src= ' + event.data.url + '></div>');
-				$('#overlay').append('<div class="chat_name_overlay">' + first + ' ' + last + '</div>');
+				$('#overlay').append('<div class="chat_name_overlay">' + event.data.first + ' ' + event.data.last + '</div>');
 				$('#overlay').append('<div class="chat_msg_overlay">' +event.data.msg+ '</div>');
 		  		$('#overlay').scrollTop(  $('#overlay')[0].scrollHeight );
 
@@ -234,7 +234,7 @@ $(document).ready(function (){
 		  		
 
 		  		$('#chat_window').append('<div class="chat_img"><img src= ' + event.data.url + '></div>');
-				$('#chat_window').append('<div class="chat_name">' + first + ' ' + last + '</div>');
+				$('#chat_window').append('<div class="chat_name">' + event.data.first + ' ' + event.data.last + '</div>');
 				$('#chat_window').append('<div class="chat_msg">' +event.data.msg+ '</div>');
 		  		$('#chat_window').scrollTop(  $('#chat_window')[0].scrollHeight );
 
@@ -242,7 +242,7 @@ $(document).ready(function (){
 		  		console.log("*******************************" + $('#chat_window')[0].scrollTop );
 			
 		  		$('#overlay').append('<div class="chat_img_overlay"><img src= ' + event.data.url + '></div>');
-				$('#overlay').append('<div class="chat_name_overlay">' + first + ' ' + last + '</div>');
+				$('#overlay').append('<div class="chat_name_overlay">' + event.data.first + ' ' + event.data.last + '</div>');
 				$('#overlay').append('<div class="chat_msg_overlay">' +event.data.msg+ '</div>');
 		  		$('#overlay').scrollTop(  $('#overlay')[0].scrollHeight );
 
@@ -266,6 +266,8 @@ $(document).ready(function (){
 
 		  				data: { msg: $('#message').val(),
 		    			url: avatar,
+		    			first: first,
+		    			last: last,
 		    			time: T}
 		  			},
 		  			function(error) {

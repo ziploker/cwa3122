@@ -129,7 +129,7 @@ header{
 
 	display: grid;
 
-  	grid-template-columns: minmax(0, max-content);
+  	grid-template-columns: minmax(0, 720px);
 	grid-template-rows: 25px 360px minmax(min-content, max-content);
 	grid-template-areas:
 
@@ -405,6 +405,8 @@ header{
 	border-right: 1px solid #e0e0e0;
 	border-bottom: 1px solid #e0e0e0;
 	border-top: 1px solid #e0e0e0;
+
+	width: 100%;
 
 	
 
@@ -751,10 +753,7 @@ input{
 
 }
 
-#deleteSession:hover, 
-#publisherStart:hover, 
-#try2Connect:hover, 
-.toggle_chat:hover{
+a:hover{
 
 	color:red;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
@@ -964,7 +963,7 @@ input[type=text]:focus+.line, select:focus+.line {
 	right: 0;
 	list-style: none;
 	overflow: hidden;
-	background-color: pink;
+	
 	width: 200px;
 	
 	z-index: 22292;
@@ -982,7 +981,7 @@ input[type=text]:focus+.line, select:focus+.line {
 	padding: 0;
 	list-style: none;
 	overflow: hidden;
-	background-color: pink;
+	
 	width: 200px;
 	//grid-area: chatArea;
 	z-index: 2222;
@@ -999,7 +998,7 @@ input[type=text]:focus+.line, select:focus+.line {
 .menu a, .menu_overlay a{
 
 	display: block;
-	outline: 1px solid red;
+	//outline: 1px solid red;
 	padding: 20px;
 	border-right: 1px solid green;
 
@@ -1008,7 +1007,7 @@ input[type=text]:focus+.line, select:focus+.line {
 
 .menu a:hover, , .menu_overlay a:hover{
 
-	background-color: orange;
+	//background-color: red;
 }
 
 
