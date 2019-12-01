@@ -37,8 +37,8 @@ header{
 
 		"header header header"
 		"  .    video     .  "
-		"  .    chat      .  "
-		"  .      .       .  ";
+		"  .    chat      .  ";
+		
 }
 
 
@@ -57,8 +57,8 @@ header{
 		grid-template-areas:
 
 			"header header header"
-			"  .    video     .  "
-			"  .      .       .  ";
+			"  .    video     .  ";
+			
 	}
 
 .admin_wrapper{
@@ -102,7 +102,9 @@ header{
 
 .video_section{
 
+	margin: 20px 0px 10px 0px;
 	grid-area: video;
+
 
 	display: grid;
 
@@ -118,26 +120,33 @@ header{
 
 .video_section_overlay{
 
+	margin: 20px 0px;
+
 	grid-area: video;
+
+	border: 1px solid #e0e0e0;
+	
 
 	display: grid;
 
-  	grid-template-columns: 1em minmax(0, 640px) 1em;
+  	grid-template-columns: minmax(0, max-content);
 	grid-template-rows: 25px 360px minmax(min-content, max-content);
 	grid-template-areas:
 
-		" . bar .  "
-		" . screen ."
-		"  . talk . ";
+		" bar  "
+		" screen"
+		" talk ";
 }
 
 
 .bar{
 	
-	background-color: green;
+	//background-color: green;
 	grid-area: bar;
 	width: 100%;
 	//overflow: hidden;
+
+	
 
 }
 
@@ -151,6 +160,12 @@ header{
     //max-width: 640px; 
 	height: 360px;
 	grid-area: screen;
+
+	
+
+	-webkit-box-shadow: 0 3px 2px #777;
+	-moz-box-shadow: 0 3px 2px #777;
+	box-shadow: 0 3px 2px #777;
 
     //margin: 0 auto;
  }
@@ -176,14 +191,20 @@ header{
     width: 100%;
     height: 100%;
     background: black;
+    background-image: url("meeting.jpg");
+     background-size: cover;
 }
 
 
 #overlay{
 
 
-	background-color: #f9f9f9;
-	background: rgba(0,0,0, 0.5);
+	//background-color: #f9f9f9;
+	//background: rgba(0,0,0, 0.5);
+	background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
+	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
+	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
 	z-index: 420;
 	
 	overflow: -moz-scrollbars-none;
@@ -213,9 +234,19 @@ header{
 	//height: 59vh;
 
 	grid-area: screen;
+
+
+
+
+
 }
 
 #talk{
+
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
 
 	align-self: end;
 
@@ -266,6 +297,7 @@ header{
 	
 	font-size: .78em;
 	color: #a8a8a8;
+	font-weight: 400
 }
 
 
@@ -291,6 +323,9 @@ header{
 	align-self: start;
 
 	//grid-area: row_message;
+
+	color: #fff;
+	font-weight: 500;
 }
 
 
@@ -298,10 +333,10 @@ header{
 /////////////// img name message => in the bottom SEND msg section  ///////
 
 
-.my_avatar{
+.my_avatar_overlay{
 
 	grid-area: my_avatar_oL;
-	padding-left: 5px;
+	padding-left: 10px;
 }
 
 .my_avatar img{
@@ -342,7 +377,7 @@ header{
 	justify-self: end;
 	align-self: start;
 	font-size: .75rem;
-	padding: 10px;
+	padding: 7px;
 
 	overflow: hidden;
     white-space: nowrap;
@@ -354,7 +389,7 @@ header{
 	width: 20px;
 	height: 20px;
 	grid-area: my_button_oL;
-	padding: 7.5px 10px 5px 0px;
+	padding: 1px 10px 5px 0px;
 }
 
 
@@ -364,12 +399,18 @@ header{
 
 #chat_section{
 
-	//min-height: 12em;
+	margin: 20px 0px;
 
 	border-left: 1px solid #e0e0e0;
 	border-right: 1px solid #e0e0e0;
 	border-bottom: 1px solid #e0e0e0;
 	border-top: 1px solid #e0e0e0;
+
+	
+
+	//-webkit-box-shadow: 0 3px 2px #777;
+	//-moz-box-shadow: 0 3px 2px #777;
+	//box-shadow: 0 3px 2px #777;
 	
 	
 	grid-area: chat;
@@ -381,13 +422,13 @@ header{
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: minmax(min-content, max-content) 300px minmax(min-content, max-content);
+	grid-template-rows: 51px 300px minmax(min-content, max-content);
 
 	
 	grid-template-areas:
 		"chatBanner"
 		"chatArea"
-		"chatSend"
+		"chatSend";
 
 }
 
@@ -402,7 +443,7 @@ header{
 
 	grid-area: chatBanner;
 	//display: none;
-
+	position: relative;
 }
 
 .Chat{
@@ -453,25 +494,27 @@ header{
 	display: grid;
 	padding: 5px 15px 0px 0px;
 	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr ) ;
+	//grid-template-rows: minmax(min-content, max-content);
 	//grid-template-rows: min-content;
 	//align-content: center;
 	grid-auto-rows: min-content;
 	grid-row-gap: .6em;
 	grid-column-gap: 10px;
 
-	grid-template-areas:
-		"row_avatar row_name row_message";
-
+	//grid-template-areas:
+		//"row_avatar row_name row_message";
+		//"menuOL menuOL menuOL";
 
 	//height: 59vh;
 
 	grid-area: chatArea;
+	//position: relative;
 }
 
 
 .chat_img{
 
-	padding: 2px 5px 5px;
+	padding-left: 10px;
 	
 
 	//background-color: red;
@@ -531,10 +574,12 @@ header{
 
 	grid-area: chatSend;
 
+	border-top: 1px solid #e0e0e0;
+
 	background-color: #fff;
 	display: grid;
 	grid-template-columns: min-content min-content 1fr min-content min-content 20px  ;
-	grid-template-rows: min-content min-content min-content;
+	grid-template-rows: min-content 25px min-content;
 	//align-content: center;
 	//grid-auto-rows: min-content;
 	//grid-row-gap: .6em;
@@ -551,6 +596,7 @@ header{
 .my_avatar{
 
 	grid-area: my_avatar;
+	padding-top: 5px;
 }
 
 .chat_img img{
@@ -569,6 +615,7 @@ header{
 	justify-self: start;
 	align-self: center;
 	padding-top: 2.5px;
+	padding-left: 10px;
 	//grid-area: row_name;
 
 	//background-color: yellow;
@@ -584,8 +631,11 @@ header{
 
 	grid-area: my_message;
 	
-	padding-bottom: 3px;
+	//padding-bottom: 3px;
+	padding-left: 10px;
 	//@include underline-from-center;
+	//line-height: 8px;
+	
 }
 
 input{
@@ -730,13 +780,13 @@ input{
 
 		
 		grid-template-columns: 1fr minmax(min-content, 650px) minmax(300px, 420px) 1fr;
-		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) 1fr;
+		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) ;
 		grid-template-areas:
 
 			"header header header header"
 			"  .      .       .     .   "
-			"  .    video   chat    .   "
-			"  .      .       .     .   ";
+			"  .    video   chat    .   ";
+			
 	}	
 
 
@@ -750,12 +800,12 @@ input{
 	  	justify-items: center;
 		
 		grid-template-columns: 1em 1fr 1em;
-		grid-template-rows: minmax(40px, 50px) minmax(420px, 1fr) 1fr;
+		grid-template-rows: minmax(40px, 50px) minmax(420px, max-content) ;
 		grid-template-areas:
 
 			"header header header"
-			"  .    video     .  "
-			"  .      .       .  ";
+			"  .    video     .  ";
+			
 	}
 
 
@@ -763,7 +813,7 @@ input{
 
 
 
-		background-color: pink;
+		//background-color: pink;
 		grid-area: bar;
 		width: 100%;
 	}
@@ -773,7 +823,7 @@ input{
 
 		//margin: 0 auto;
 
-		max-width: 640px; 
+		//max-width: 640px; 
 
 	    //min-width: 427px;
 	    //min-width: 340px;
@@ -909,18 +959,19 @@ input[type=text]:focus+.line, select:focus+.line {
 
 	margin: 0;
 	padding: 0;
-	position: relative;
+	position: absolute;
+	top: 50;
+	right: 0;
 	list-style: none;
 	overflow: hidden;
 	background-color: pink;
 	width: 200px;
-	grid-area: chatArea;
+	
 	z-index: 22292;
-	justify-self: end;
-	padding-top: -60px;
-	//max-height: 0;
+	
+	max-height: 0;
 	transition: max-height .2s ease-out;
-	height: auto;
+	
 
 
 }
