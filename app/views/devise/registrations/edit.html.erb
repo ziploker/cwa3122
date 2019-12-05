@@ -1,6 +1,6 @@
 <div class="devise_headline">
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>Edit account</h2>
 
 </div>
 
@@ -21,34 +21,35 @@
 
     
     <!-- <div class="devise_upper"> -->
+    <label id="edit_uid_label" class="edit_label" for="user_uid">uid</label> 
+    <%= f.input_field :uid, required: true, autofocus: true, disabled: true, :input_html => { :value => current_user.uid } %>
 
-    <%= f.input :uid, required: true, autofocus: true, disabled: true, :input_html => { :value => current_user.uid } %>
-
-    <%= f.input :first_name, required: true, :input_html => { :value => current_user.first_name } %>
     
+    <label id="edit_first_name_label" class="edit_label" for="user_first_name">first name</label> 
+    <%= f.input_field :first_name, required: true, :input_html => { :value => current_user.first_name } %>
+    
+    <label id="edit_last_name_label" class="edit_label" for="user_last_name">last name</label> 
+    <%= f.input_field :last_name, required: true, :input_html => { :value => current_user.last_name } %>
 
-    <%= f.input :last_name, required: true, :input_html => { :value => current_user.last_name } %>
 
-
-    <%= f.input :email, autocomplete: "email", disabled: true %>
+    <label id="edit_email_label" class="edit_label" for="user_email">email</label> 
+    <%= f.input_field :email, autocomplete: "email", disabled: true %>
    
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br/>
     <% end %>
 
-    <%= f.label :current_password %> 
-    <%= f.password_field :current_password, label: false, autocomplete: "current-password" %><br/>
+    <label id="edit_current_label" class="edit_label" for="user_current_password">current password</label> 
+    <%= f.password_field :current_password, label: false, autocomplete: "current-password" %>
 
-    <%= f.label "change password" %>
+    
+    <label id="edit_change_label" class="edit_label" for="user_change_password">new password</label> 
+    <%= f.password_field :password, autocomplete: "new-password", label: false %>
     
     
-    <%= f.password_field :password, autocomplete: "new-password", label: false %><br/>
-    
-    
-
-    <%= f.label "confirm new password" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %><br/>
+    <label id="edit_confirm_label" class="edit_label" for="user_confirm_new_password">confirm password</label> 
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %>
 
 
     <!--</div>-->
@@ -69,11 +70,10 @@
 
 
 
-    <div class="avatar_wrapper_current">
+    <label id="edit_avatar_label" class="button_to_change_avatar" for="fileSwitch">change avatar??</label>
 
 
-
-      <div class="upload-preview">
+      <div id="edit_avatar" class="upload-preview">
         
 
 
@@ -96,24 +96,23 @@
         <% end %>
 
       </div>
-    </div>
-  
+    
 
 
-      <div class="upload_button">
+     
        
         
         <%= f.file_field :avatar, class: "file", id: "fileSwitch" %>
-        <label for="fileSwitch">change avatar??</label>
+        
 
 
-      </div> 
+      
 
-      <div class="devise_signup">
-        <%= f.button :submit, "Sign up" %>
-      </div>   
+      
+        <%= f.button :submit, "Confirm Changes", id: "edit_button" %>
+       
 
-   </div>
+  
  
 
 
@@ -127,7 +126,7 @@
 
 
 
-  <br/>
+ 
 
 </div>
 
