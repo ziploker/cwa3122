@@ -1,0 +1,1114 @@
+// Place all the styles related to the General controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/////////////////    htmL - body - header - resets etc.. ////////
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	background: #f9f9f9;
+}
+
+header{
+
+ 	background-color: #ffffff;
+ 	
+ 	grid-area: header;
+
+ 	justify-self: stretch;
+  	align-self: stretch;
+}
+
+
+////////////////////// PAGE WRAPPERS and overlays /////////////////////////////
+
+.default_wrapper{
+	
+  	min-height: 100vh;
+  	justify-items: center;
+  	display: grid;
+	grid-template-columns: 1em minmax(222px, 1fr) 1em;
+	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
+	grid-template-areas:
+
+		"header header header"
+		"  .    video     .  "
+		"  .    chat      .  ";
+		
+}
+
+
+
+
+.default_wrapper_overlay{
+	
+	  	min-height: 100vh;
+	  	justify-items: center;
+	  	display: grid;
+
+	  	justify-items: center;
+		
+		grid-template-columns: 1em minmax(222px, 1fr) 1em;
+		grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+		grid-template-areas:
+
+			"header header header"
+			"  .    video     .  ";
+			
+	}
+
+.admin_wrapper{
+	
+  	min-height: 100vh;
+  	
+  	display: grid;
+	justify-self: center;
+	align-self: center;
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) 1fr ;
+	grid-template-areas:
+
+		"header header header"
+		"  .    admin    .   "
+}
+
+
+.devise_wrapper{
+	
+  	min-height: 100vh;
+  	
+  	display: grid;
+
+  	justify-items: center;
+  	align-items: center;
+	
+	grid-template-columns: 1em 1fr 1em;
+	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) minmax(min-content, max-content);
+	grid-template-areas:
+
+		"header header header"
+		"  .   headline   .  "
+		"  .     login    .  ";
+}
+
+
+
+
+////////////////   VIDEO SECTiON   /////////////////////
+
+.video_section{
+
+	margin: 20px 0px 10px 0px;
+	grid-area: video;
+
+
+	display: grid;
+
+  	grid-template-columns: 1em minmax(0, 640px) 1em;
+	grid-template-rows: 360px;
+	grid-template-areas:
+
+		
+		" . screen .";
+		
+}
+
+
+.video_section_overlay{
+
+	margin: 20px 0px;
+
+	grid-area: video;
+
+	border: 1px solid #e0e0e0;
+	
+
+	display: grid;
+
+  	grid-template-columns: minmax(0, 720px);
+	grid-template-rows: 25px 360px minmax(min-content, max-content);
+	grid-template-areas:
+
+		" bar  "
+		" screen"
+		" talk ";
+}
+
+
+.bar{
+	
+	//background-color: green;
+	grid-area: bar;
+	width: 100%;
+	//overflow: hidden;
+
+	
+
+}
+
+#deleteSession_overlay{
+
+	//height: 20px;
+}
+
+#videos {
+    
+    //max-width: 640px; 
+	height: 360px;
+	grid-area: screen;
+
+	
+
+	-webkit-box-shadow: 0 3px 2px #777;
+	-moz-box-shadow: 0 3px 2px #777;
+	box-shadow: 0 3px 2px #777;
+
+    //margin: 0 auto;
+ }
+
+
+//makes video smaller (640width to 427width)
+//@media screen and (max-width: 620px){
+
+//    #videos {
+
+//        max-width: 427px;
+//		height: 240px;
+//		padding: 10px;
+
+        //margin: 0 auto;
+//	}
+
+//}
+
+
+#subscriber {
+    
+    width: 100%;
+    height: 100%;
+    background: black;
+    background-image: url("meeting.jpg");
+     background-size: cover;
+}
+
+
+#overlay{
+
+
+	//background-color: #f9f9f9;
+	//background: rgba(0,0,0, 0.5);
+	background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
+	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
+	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
+	z-index: 420;
+	
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+	scrollbar-width: none;
+
+	max-height: 100%;
+	
+
+	overflow-y: scroll;
+	
+
+
+	display: grid;
+	padding: 5px 15px 0px 0px;
+	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr ) ;
+	//grid-template-rows: min-content;
+	//align-content: center;
+	grid-auto-rows: min-content;
+	grid-row-gap: .6em;
+	grid-column-gap: 10px;
+
+	grid-template-areas:
+		"row_avatar_overlay row_name_overlay row_message_overlay";
+
+	
+	//height: 59vh;
+
+	grid-area: screen;
+
+
+
+
+
+}
+
+#talk{
+
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
+
+	align-self: end;
+
+	grid-area: talk;
+
+	padding-top: 8px;
+
+	background-color: #fff;
+	display: grid;
+	grid-template-columns: min-content min-content minmax(100px, 1fr) 1fr min-content;
+	
+
+	//align-content: center;
+	grid-auto-rows: min-content;
+	//grid-row-gap: .6em;
+	//grid-column-gap: 10px;
+
+	grid-template-areas:
+		"my_avatar_oL   my_name_oL   my_message_oL  my_message_oL  my_stats_oL   my_button_oL ";
+
+		
+}
+
+
+
+////////////////////// img name message => in the chat windows///////
+.chat_img_overlay{
+
+	padding: 2px 5px 5px;
+	
+
+	//background-color: red;
+	justify-self: start;
+	align-self: start;
+	//grid-area: row_avatar;
+}
+
+.chat_name_overlay{
+	//padding: 5px;
+	justify-self: start;
+	align-self: start;
+	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+	font-weight: 400
+}
+
+
+.chat_msg_overlay{
+	
+	overflow-x: hidden;
+	
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+
+	//border:1px solid #CCC;
+	//width: 40em;
+	max-width: 100%;
+	
+	justify-self: start;
+	align-self: start;
+
+	//grid-area: row_message;
+
+	color: #fff;
+	font-weight: 500;
+}
+
+
+
+/////////////// img name message => in the bottom SEND msg section  ///////
+
+
+.my_avatar_overlay{
+
+	grid-area: my_avatar_oL;
+	padding-left: 10px;
+}
+
+.my_avatar img{
+
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+.my_name_overlay{
+
+	align-self: start;
+	padding-left: 5px;
+	padding-top: 2.5px;
+	grid-area: my_name_oL;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+
+}
+
+.my_message_overlay{
+
+	grid-area: my_message_oL;
+	padding-left: 5px;
+	
+	//padding-bottom: 3px;
+	//@include underline-from-center;
+
+}
+
+.stats_overlay{
+
+	justify-self: end;
+	align-self: start;
+	font-size: .75rem;
+	padding: 7px;
+
+	overflow: hidden;
+    white-space: nowrap;
+    grid-area: my_stats_oL;
+}
+
+.send_button_overlay{
+
+	width: 20px;
+	height: 20px;
+	grid-area: my_button_oL;
+	padding: 1px 10px 5px 0px;
+}
+
+
+
+
+////////////////////////   CHat SECTiON   ///////////////////
+
+#chat_section{
+
+	margin: 20px 0px;
+
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
+
+	width: 100%;
+
+	
+
+	//-webkit-box-shadow: 0 3px 2px #777;
+	//-moz-box-shadow: 0 3px 2px #777;
+	//box-shadow: 0 3px 2px #777;
+	
+	
+	grid-area: chat;
+	//grid-area: video;
+
+	//margin: 10px;
+
+	//grid-gap: 10px;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 51px 300px minmax(min-content, max-content);
+
+	
+	grid-template-areas:
+		"chatBanner"
+		"chatArea"
+		"chatSend";
+
+}
+
+#info_section{
+
+	background-color: #fff;
+	border-bottom: 1px solid #e0e0e0;
+	//border-left: 1px solid #e0e0e0;
+	//border-right: 1px solid #e0e0e0;
+
+	//height: 50px;
+
+	grid-area: chatBanner;
+	//display: none;
+	position: relative;
+}
+
+.Chat{
+
+	display: inline-block;
+	width: min-content;
+	line-height: 50px;
+ 	 white-space: nowrap;
+ 	 padding-left: 8px;
+ 	 padding-left: 20px;
+
+}
+
+.menu{
+
+	//display: inline-block;
+	//float: right;
+	
+}
+.menu svg{
+
+	width: 20px;
+	padding-top: 14px;
+	padding-right: 20px;
+
+
+}
+
+
+#chat_window{
+
+	background-color: #f9f9f9;
+	//background: rgba(0,0,0, 0.5);
+	//z-index: 420;
+	
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+	scrollbar-width: none;
+
+	max-height: 100%;
+	
+
+	overflow-y: scroll;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+
+
+	display: grid;
+	padding: 5px 15px 0px 0px;
+	grid-template-columns: repeat(2, min-content) minmax(150px, 1fr ) ;
+	//grid-template-rows: minmax(min-content, max-content);
+	//grid-template-rows: min-content;
+	//align-content: center;
+	grid-auto-rows: min-content;
+	grid-row-gap: .6em;
+	grid-column-gap: 10px;
+
+	//grid-template-areas:
+		//"row_avatar row_name row_message";
+		//"menuOL menuOL menuOL";
+
+	//height: 59vh;
+
+	grid-area: chatArea;
+	//position: relative;
+}
+
+
+.chat_img{
+
+	padding-left: 10px;
+	
+
+	//background-color: red;
+	justify-self: start;
+	align-self: start;
+	//grid-area: row_avatar;
+}
+
+.chat_name{
+	//padding: 5px;
+	justify-self: start;
+	align-self: start;
+	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+}
+
+
+.chat_msg{
+	
+	overflow-x: hidden;
+	
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+
+	//border:1px solid #CCC;
+	//width: 40em;
+	max-width: 100%;
+	
+	justify-self: start;
+	align-self: start;
+
+	//grid-area: row_message;
+}
+
+
+
+
+
+#msg{
+
+	
+	align-self: end;
+
+	grid-area: chatSend;
+
+	border-top: 1px solid #e0e0e0;
+
+	background-color: #fff;
+	display: grid;
+	grid-template-columns: min-content min-content 1fr min-content min-content 20px  ;
+	grid-template-rows: min-content 25px min-content;
+	//align-content: center;
+	//grid-auto-rows: min-content;
+	//grid-row-gap: .6em;
+	//grid-column-gap: 10px;
+
+	grid-template-areas:
+		"my_avatar   my_name       .           .          .        . "
+		"    .     my_message  my_message  my_message  my_message  . "
+		"    .         .        my_stats    my_stats    my_button  . ";
+}
+
+
+
+.my_avatar{
+
+	grid-area: my_avatar;
+	padding-top: 5px;
+}
+
+.chat_img img{
+
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+
+
+
+.my_name{
+	grid-area: my_name;
+
+	justify-self: start;
+	align-self: center;
+	padding-top: 2.5px;
+	padding-left: 10px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+}
+
+
+.my_message{
+
+	grid-area: my_message;
+	
+	//padding-bottom: 3px;
+	padding-left: 10px;
+	//@include underline-from-center;
+	//line-height: 8px;
+	
+}
+
+input{
+
+	max-width: 100%;
+}
+
+
+.stats{
+
+	grid-area: my_stats;
+
+	justify-self: end;
+	align-self: center;
+	padding-right: 10px;
+	font-size: .75rem;
+	padding: 10px;
+
+	overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.jQTAreaCount {
+// class to show input count
+}
+.jQTAreaCountR {
+    // class to show input count in reverse
+}
+.jQTAreaValue {
+    // Class to show max value set
+}
+.jQTAreaExt {
+    // Set the height or width property to 100%
+    background-color: black;
+    height: 5px;
+}
+
+
+.send_button{
+	width: 20px;
+	height: 20px;
+	grid-area: my_button;
+	padding: 10px 0 10px 5px;
+}
+
+
+
+
+
+/////////////////////  button  styLe    /////////////  
+
+
+.btn{
+
+	text-decoration: none;
+	background-color: red;
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	//margin: 0 auto;
+	//float: right;
+
+	line-height: 50px;
+ 	 white-space: nowrap;
+
+
+ 	color:#444;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    //vertical-align:middle;
+    //max-width: 100px;
+    //padding: 5px;
+    //text-align: center;
+
+    -webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+
+}
+
+.btnV2{
+
+	text-decoration: none;
+	background-color: red;
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	//margin: 0 auto;
+	//float: right;
+
+	line-height: 18px;
+ 	 white-space: nowrap;
+
+
+ 	color:#444;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    //vertical-align:middle;
+    //max-width: 100px;
+    //padding: 5px;
+    //text-align: center;
+
+    -webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+
+}
+
+a:hover{
+
+	color:red;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+
+
+
+
+
+
+//////////////////   for BiG screens 1015px or biggger    ///////////
+
+
+@media only screen and (min-width: 1015px){
+
+	.default_wrapper{
+	
+  		min-height: 100vh;
+
+	  	display: grid;
+
+
+		
+		grid-template-columns: 1fr minmax(min-content, 650px) minmax(300px, 420px) 1fr;
+		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) ;
+		grid-template-areas:
+
+			"header header header header"
+			"  .      .       .     .   "
+			"  .    video   chat    .   ";
+			
+	}	
+
+
+	
+	.default_wrapper_overlay{
+	
+	  	min-height: 100vh;
+	  	justify-items: center;
+	  	display: grid;
+
+	  	justify-items: center;
+		
+		grid-template-columns: 1em 1fr 1em;
+		grid-template-rows: minmax(40px, 50px) minmax(420px, max-content) ;
+		grid-template-areas:
+
+			"header header header"
+			"  .    video     .  ";
+			
+	}
+
+
+	.bar{
+
+
+
+		//background-color: pink;
+		grid-area: bar;
+		width: 100%;
+	}
+
+
+	#videos{
+
+		//margin: 0 auto;
+
+		//max-width: 640px; 
+
+	    //min-width: 427px;
+	    //min-width: 340px;
+	    
+	    height: 360px;
+
+
+	    
+	    //padding: 10px;
+	    grid-area: screen;
+	}
+
+	
+	#subscriber{
+
+		padding: 0;
+	}
+
+	
+
+	.chat_msg{
+		//background-color: blue;
+
+
+		
+		overflow-x: hidden;
+		
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+
+		/* Adds a hyphen where the word breaks, if supported (No Blink) */
+		-ms-hyphens: auto;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		hyphens: auto;
+
+
+
+		//width: 15em;
+		max-width: 100%;
+
+
+
+
+
+		justify-self: start;
+		align-self: start;
+	}
+
+
+	
+}
+
+
+
+
+
+
+
+
+////////////////  Chat text box border ANIMATION ///////////////////
+
+
+input[type=text], select {
+  border: none;
+  border-bottom: 2px solid darkgrey;
+  background-color: inherit;
+  display: block;
+  width: 100%;
+  margin: none;
+}
+
+input[type=text]:focus, select:focus {
+  outline: none;
+}
+
+
+
+.line {
+  height: 2px;
+  width: 0px;
+  //position: absolute;
+  background-color: darkgrey;
+  display: inline-block;
+  transition: .3s width ease-in-out;
+  position: relative;
+  top: -14px;
+}
+
+input[type=text]:focus+.line, select:focus+.line {
+  width: 100%;
+  background-color: #02add7;
+
+
+}
+
+
+////////////    menu hamburger for chat ///////
+
+.expand_menu_checkbox, .expand_menu_checkbox_overlay, .hamburger_to_x_checkbox{
+	display: none;
+}
+
+
+
+.hamburger_menu_label{
+
+	float: right;
+	height: 50px;
+	display: inline-block;
+	line-height: 50px;
+	vertical-align: middle;
+	padding-right: 20px;
+	cursor: pointer;
+
+}
+
+.hamburger_menu_label_overlay{
+
+	float: right;
+	height: 25px;
+	display: inline-block;
+	line-height: 25px;
+	vertical-align: middle;
+	padding-right: 20px;
+	cursor: pointer;
+
+}
+
+
+
+.menu{
+
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 50;
+	right: 0;
+	list-style: none;
+	overflow: hidden;
+	
+	width: 200px;
+	
+	z-index: 22292;
+	
+	max-height: 0;
+	transition: max-height .2s ease-out;
+	
+
+
+}
+
+.menu_overlay{
+
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	
+	width: 200px;
+	//grid-area: chatArea;
+	z-index: 2222;
+	//justify-self: end;
+	//padding-top: -60px;
+	max-height: 0;
+	transition: max-height .2s ease-out;
+	float: right;
+	position: relative;
+
+
+}
+
+.menu a, .menu_overlay a{
+
+	display: block;
+	//outline: 1px solid red;
+	padding: 20px;
+	border-right: 1px solid green;
+
+
+}
+
+.menu a:hover, , .menu_overlay a:hover{
+
+	//background-color: red;
+}
+
+
+.hamburger_menu{
+
+	background-color: red;
+	display: inline-block;
+	height: 2px;
+	width: 18px;
+	position: relative;
+	transition:backround .2s ease-out;
+	
+	vertical-align: middle;
+}
+
+.hamburger_menu:before{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: all .2s ease-out;
+	top: 5px;
+}
+
+.hamburger_menu:after{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: -5px;
+	transition: all .2s ease-out;
+}
+
+
+.hamburger_menu_overlay{
+
+	background-color: red;
+	display: inline-block;
+	height: 2px;
+	width: 18px;
+	position: relative;
+	transition:backround .2s ease-out;
+	
+	vertical-align: middle;
+}
+
+.hamburger_menu_overlay:before{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: all .2s ease-out;
+	top: 4px;
+}
+
+.hamburger_menu_overlay:after{
+	background-color: red;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: -4px;
+	transition: all .2s ease-out;
+}
+
+
+
+.expand_menu_checkbox:checked ~ .menu{
+
+	max-height: 300px;
+}
+
+
+
+.expand_menu_checkbox_overlay:checked ~ .menu_overlay{
+
+	max-height: 300px;
+}
+
+
+
+
+.hamburger_to_x_checkbox:checked ~ .hamburger_menu_label .hamburger_menu{
+ 	background: transparent;
+}
+
+.hamburger_to_x_checkbox:checked ~ .hamburger_menu_label .hamburger_menu:before{
+	transform: rotate(-45deg);
+	top: 0;
+	
+}
+
+.hamburger_to_x_checkbox:checked ~ .hamburger_menu_label .hamburger_menu:after{
+
+	transform: rotate(45deg);
+	top: 0;
+}

@@ -49,7 +49,7 @@ form{
 		
 }
 
-#new_user.simple_form.new_user, #edit_user{
+#new_user.simple_form.new_user{
 
 	display: grid;
 
@@ -63,6 +63,11 @@ form{
 		"form form"
 		"avatar button"
 		"enter enter"
+}
+
+#edit_user{
+
+	
 }
 
 

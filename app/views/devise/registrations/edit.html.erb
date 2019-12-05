@@ -4,6 +4,8 @@
 
 </div>
 
+<%= render "devise/shared/error_messages", resource: resource %>
+
 <div class="devise_login">
 
 
@@ -11,14 +13,14 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(
   resource_name), html: { method: :put }) do |f| %>
     
-    <%= render "devise/shared/error_messages", resource: resource %>
+    
 
-    <%= f.error_notification %>
+    <!--<%= f.error_notification %>-->
 
 
 
     
-    <div class="devise_upper">
+    <!-- <div class="devise_upper"> -->
 
     <%= f.input :uid, required: true, autofocus: true, disabled: true, :input_html => { :value => current_user.uid } %>
 
@@ -49,7 +51,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %><br/>
 
 
-    </div>
+    <!--</div>-->
 
       
 
