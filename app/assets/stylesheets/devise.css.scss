@@ -117,9 +117,12 @@ form{
 
 #edit_user{
 
+	margin: 0;
+	padding: 0;
 	width: 100%;
 
 	display: grid;
+	grid-gap: 10px;
 
 	align-items: center;
 	
@@ -237,6 +240,7 @@ form{
 
 .devise_login{
 	grid-area: form;
+	//width: 97%;
 
 
 }
@@ -273,14 +277,15 @@ form{
 
 		
 	#edit_user{
-
+		margin: 0;
+		padding: 0;
 		width: 100%;
 
 		display: grid;
 
 		align-items: center;
 
-		grid-template-columns: 65% 35%;
+		grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
 
 		grid-template-areas:
 
@@ -400,10 +405,10 @@ form{
 	#edit_avatar{
 
 		grid-area: edit_avatar;
-		justify-self: center;
+		justify-self: start;
 		align-self: center;
 
-		margin: 8px 0px;
+		margin: 8px 8px;
 	}
 
 	#edit_button{
@@ -460,5 +465,9 @@ form{
 	    color: red;
     }
 
-    
+
+    .devise_login{
+	grid-area: form;
+	width: 88%;
+    }
 }
