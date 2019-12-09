@@ -216,23 +216,42 @@ form{
 
 #headline{
 
-	float: left;
+	
 	height: min-content;
 }
 
 
-#padlock{
-	height: 20px;
-	width: 20px;
-	float:right;		
+
+
+.devise_headline{
+	grid-area: headline;
+	align-content: center;
+
+	align-items: center;
+
+	padding: 20px;
+
+	display: grid;
+
+	grid-template-columns: minmax(0px, 1fr) minmax(0px, 2fr);
+	grid-template-rows: minmax(min-content, max-content);
+
 
 
 }
 
-.devise_headline{
-	grid-area: headline;
+.devise_headline img{
 
+	align-self: center;
+	justify-self: end;
+	padding-right: 8px;
+}
 
+.header_for_devise{
+	
+	align-self: center;
+	justify-self: start;
+	font-size: 1.4rem;
 }
 
 
