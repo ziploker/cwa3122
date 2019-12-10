@@ -336,7 +336,7 @@ form{
 
 	}
 
-	#edit_uid_label{
+	.uid_label{
 		grid-area: edit_uid_label;
 		justify-self: start;
 		align-self: end;
@@ -346,7 +346,7 @@ form{
 		grid-area: edit_uid;
 	}
 
-	#edit_first_name_label{
+	.first_name_label{
 		grid-area: edit_first_name_label;
 		justify-self: start;
 		align-self: end;
@@ -357,7 +357,7 @@ form{
 
 	}
 
-	#edit_last_name_label{
+	.last_name_label{
 
 		grid-area: edit_last_name_label;
 		justify-self: start;
@@ -368,7 +368,7 @@ form{
 		grid-area: edit_last_name;
 	}
 
-	#edit_email_label{
+	.email_label{
 		grid-area: edit_email_label;
 		justify-self: start;
 		align-self: end;
@@ -381,7 +381,7 @@ form{
 
 	}
 
-	#edit_current_label{
+	.current_label{
 		grid-area: edit_current_label;
 		justify-self: start;
 		align-self: end;
@@ -394,7 +394,7 @@ form{
 
 	}
 
-	#edit_change_label{
+	.change_label{
 		grid-area: edit_change_label;
 		justify-self: start;
 		align-self: end;
@@ -404,7 +404,7 @@ form{
 		grid-area: edit_change;
 	}
 
-	#edit_confirm_label{
+	.confirm_label{
 		grid-area: edit_confirm_label;
 		justify-self: start;
 		align-self: end;
@@ -415,13 +415,13 @@ form{
 		grid-area: edit_confirm;
 	}
 
-	#edit_avatar_label{
+	.avatar_label{
 		grid-area: edit_avatar_label;
 		justify-self: end;
 		align-self: center;
 	}
 
-	#edit_avatar{
+	.avatar{
 
 		grid-area: edit_avatar;
 		justify-self: start;

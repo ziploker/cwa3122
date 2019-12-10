@@ -22,18 +22,18 @@
 
     
     <!-- <div class="devise_upper"> -->
-    <label id="edit_uid_label" class="edit_label" for="user_uid">uid</label> 
+    <label class="edit_label uid_label" for="user_uid">uid</label> 
     <%= f.input_field :uid, required: true, autofocus: true, disabled: true, :input_html => { :value => current_user.uid } %>
 
     
-    <label id="edit_first_name_label" class="edit_label" for="user_first_name">first name</label> 
-    <%= f.input_field :first_name, required: true, :input_html => { :value => current_user.first_name } %>
+    <label class="edit_label first_name_label" for="user_first_name">first name</label> 
+    <%= f.input_field :first_name, required: true, disabled: true, :input_html => { :value => current_user.first_name } %>
     
-    <label id="edit_last_name_label" class="edit_label" for="user_last_name">last name</label> 
-    <%= f.input_field :last_name, required: true, :input_html => { :value => current_user.last_name } %>
+    <label class="edit_label last_name_label" for="user_last_name">last name</label> 
+    <%= f.input_field :last_name, required: true, disabled: true, :input_html => { :value => current_user.last_name } %>
 
 
-    <label id="edit_email_label" class="edit_label" for="user_email">email</label> 
+    <label class="edit_label email_label" for="user_email">email</label> 
     <%= f.input_field :email, autocomplete: "email", disabled: true %>
    
 
@@ -41,15 +41,15 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br/>
     <% end %>
 
-    <label id="edit_current_label" class="edit_label" for="user_current_password">current password</label> 
+    <label class="edit_label current_label" for="user_current_password">current password</label> 
     <%= f.password_field :current_password, label: false, autocomplete: "current-password" %>
 
     
-    <label id="edit_change_label" class="edit_label" for="user_change_password">new password</label> 
+    <label class="edit_label change_label" for="user_change_password">new password</label> 
     <%= f.password_field :password, autocomplete: "new-password", label: false %>
     
     
-    <label id="edit_confirm_label" class="edit_label" for="user_confirm_new_password">confirm password</label> 
+    <label class="edit_label confirm_label" for="user_confirm_new_password">confirm password</label> 
     <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %>
 
 
@@ -71,10 +71,10 @@
 
 
 
-    <label id="edit_avatar_label" class="button_to_change_avatar" for="fileSwitch">change avatar??</label>
+    <label class="button_to_change_avatar avatar_label" for="fileSwitch">change avatar??</label>
 
 
-      <div id="edit_avatar" class="upload-preview">
+      <div class="upload-preview avatar">
         
 
 
