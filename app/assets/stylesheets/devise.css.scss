@@ -99,21 +99,21 @@ form{
 		
 }
 
-#new_user.simple_form.new_user{
+//#new_user.simple_form.new_user{
 
-	display: grid;
+//	display: grid;
 
-  	justify-items: center;
-  	align-items: center;
+//  	justify-items: center;
+//  	align-items: center;
 	
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
-	grid-template-areas:
+//	grid-template-columns: 1fr 1fr;
+//	grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
+//	grid-template-areas:
 
-		"form form"
-		"avatar button"
-		"enter enter"
-}
+//		"form form"
+//		"avatar button"
+//		"enter enter"
+//}
 
 #edit_user{
 
@@ -147,7 +147,39 @@ form{
 
 }
 
-#edit_user .btn{
+#new_user{
+
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	display: grid;
+	grid-gap: 10px;
+
+	align-items: center;
+	
+	grid-template-columns: 1fr 1fr;
+	//grid-template-rows: min-content;
+	grid-template-areas:
+
+		"edit_uid_label          edit_uid"
+		"edit_first_name_label   edit_first_name"
+		"edit_last_name_label    edit_last_name"
+		"edit_email_label        edit_email"
+		
+		"edit_change_label       edit_change"
+		"edit_confirm_label      edit_confirm"
+		"edit_avatar_label       edit_avatar"
+		"edit_button             edit_button";
+
+	
+
+
+
+
+}
+
+#edit_button{
 
 	grid-area: edit_button;
 }
@@ -336,6 +368,46 @@ form{
 
 	}
 
+	#new_user{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+
+		display: grid;
+
+		align-items: center;
+
+		grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
+
+		grid-template-areas:
+
+			"edit_uid_label           edit_uid_label"
+			"edit_uid                 edit_uid" 
+			
+			"edit_first_name_label    edit_first_name_label"
+			"edit_first_name          edit_first_name"   
+			
+			"edit_last_name_label     edit_last_name_label"
+			"edit_last_name           edit_last_name"   
+			
+			"edit_email_label         edit_email_label"
+			"edit_email               edit_email"        
+			
+			
+			
+			"edit_change_label        edit_change_label"
+			"edit_change              edit_change"
+			
+			"edit_confirm_label       edit_confirm_label"  
+			"edit_confirm             edit_confirm"
+			
+			"edit_avatar_label        edit_avatar" 
+			
+			"edit_button              edit_button";
+
+
+	}
+
 	.uid_label{
 		grid-area: edit_uid_label;
 		justify-self: start;
@@ -430,7 +502,7 @@ form{
 		margin: 8px 8px;
 	}
 
-	#edit_button{
+	#edit_button.btn{
 		grid-area: edit_button;
 	}
 
