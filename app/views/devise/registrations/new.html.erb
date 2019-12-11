@@ -1,5 +1,7 @@
 
 
+
+
 <div class="devise_headline">
 
   <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
@@ -13,7 +15,7 @@
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-    <!--<% f.error_notification %>-->
+
 
     <!-- <div class="devise_upper"> -->
     <label class="edit_label uid_label" for="user_uid">uid</label> 
@@ -102,7 +104,7 @@
       
 
       
-        <%= f.button :submit, "Confirm Changes", id: "edit_button" %>
+        <%= f.button :submit, "Create Account", id: "edit_button" %>
        
 
   
@@ -117,15 +119,18 @@
 
   
 
-
+    <div><%= f.error_notification %></div><br/>
+    <% resource.errors.full_messages.each do |msg| %>
+      <div><%= msg %></div><br/>
+    <% end %>
 
 
   <% end %>
-
+  <%= render "devise/shared/links" %>
 </div>
 
 
-  <% render "devise/shared/links" %>
+  
 
 
 
