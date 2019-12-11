@@ -9,10 +9,10 @@ test:
  
 amazon:
   service: S3
-  access_key_id: ""
-  secret_access_key: ""
-  bucket: ""
-  region: "" # e.g. 'us-east-1'
+  access_key_id: ENV['access_key_id']
+  secret_access_key: ENV['secret_access_key']
+  bucket: ENV['bucket']
+  region: ENV['region'] 
 
 
 
