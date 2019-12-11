@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
-
+  config.require_master_key = true
   config.active_storage.service = :amazon
 
   config.action_mailer.delivery_method = :smtp
@@ -18,7 +18,6 @@ Rails.application.configure do
 
 
   #In production, :host should be set to the actual host of your application.
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
