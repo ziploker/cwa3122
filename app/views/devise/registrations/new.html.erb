@@ -20,17 +20,30 @@
     <!-- <div class="devise_upper"> -->
     <label class="edit_label uid_label" for="user_uid">uid</label> 
     <%= f.input_field :uid, required: true, autofocus: true %>
+    <% if resource.errors[:uid].any? %>
+    <span class="uid_error"><%= resource.errors[:uid][0] %> </span>
+    <% end %>
 
     
     <label class="edit_label first_name_label" for="user_first_name">first name</label> 
     <%= f.input_field :first_name, required: true %>
+    <% if resource.errors[:first_name].any? %>
+    <span class="first_name_error"><%= resource.errors[:first_name][0] %> </span>
+    <% end %>
+    
     
     <label class="edit_label last_name_label" for="user_last_name">last name</label> 
     <%= f.input_field :last_name, required: true %>
+    <% if resource.errors[:last_name].any? %>
+    <span class="last_name_error"><%= resource.errors[:last_name][0] %> </span>
+    <% end %>
 
 
     <label class="edit_label email_label" for="user_email">email</label> 
-    <%= f.input_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
+    <% if resource.errors[:email].any? %>
+    <span class="email_error">email <%= resource.errors[:email][0] %> </span>
+    <% end %>
    
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -39,12 +52,18 @@
 
    
     
-    <label class="edit_label change_label" for="user_change_password">password</label> 
+    <label class="edit_label change_label" for="user_change_password">create password</label> 
     <%= f.password_field :password, autocomplete: "new-password", label: false %>
+    <% if resource.errors[:password].any? %>
+    <span class="change_error"><%= resource.errors[:password][0] %> </span>
+    <% end %>
     
     
     <label class="edit_label confirm_label" for="user_confirm_new_password">confirm password</label> 
     <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %>
+    <% if resource.errors[:password_confirmation].any? %>
+    <span class="confirm_error"><%= resource.errors[:password_confirmation][0] %> </span>
+    <% end %>
 
 
     <!--</div>-->
@@ -91,6 +110,9 @@
         <% end %>
 
       </div>
+      <% if resource.errors[:avatar].any? %>
+        <span class="avatar_error"><%= resource.errors[:avatar][0] %> </span>
+      <% end %>
     
 
 
@@ -109,7 +131,10 @@
 
   
  
+        <% resource.errors.each do |x| %>
 
+          <span> <% x %> </span>
+        <% end%>
 
 
 
@@ -119,11 +144,8 @@
 
   
 
-    <div><%= f.error_notification %></div><br/>
-    <% resource.errors.full_messages.each do |msg| %>
-      <div><%= msg %></div><br/>
-    <% end %>
-
+   
+    
 
   <% end %>
   <%= render "devise/shared/links" %>

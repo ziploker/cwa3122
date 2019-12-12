@@ -158,19 +158,19 @@ form{
 
 	align-items: center;
 	
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	//grid-template-rows: min-content;
 	grid-template-areas:
 
-		"edit_uid_label          edit_uid"
-		"edit_first_name_label   edit_first_name"
-		"edit_last_name_label    edit_last_name"
-		"edit_email_label        edit_email"
+		"edit_uid_label          edit_uid                		uid_error"
+		"edit_first_name_label   edit_first_name         first_name_error"
+		"edit_last_name_label    edit_last_name          last_name_error"
+		"edit_email_label        edit_email                  email_error"
 		
-		"edit_change_label       edit_change"
-		"edit_confirm_label      edit_confirm"
-		"edit_avatar_label       edit_avatar"
-		"edit_button             edit_button";
+		"edit_change_label       edit_change                 change_error"
+		"edit_confirm_label      edit_confirm               confirm_error"
+		"edit_avatar_label       edit_avatar                  avatar_error"
+		"edit_button             edit_button                        .";
 
 	
 
@@ -178,6 +178,244 @@ form{
 
 
 }
+
+
+
+.uid_label{
+	grid-area: edit_uid_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_uid{
+	grid-area: edit_uid;
+}
+
+.first_name_label{
+	grid-area: edit_first_name_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_first_name{
+	grid-area: edit_first_name;
+
+}
+
+.last_name_label{
+
+	grid-area: edit_last_name_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_last_name{
+	grid-area: edit_last_name;
+}
+
+.email_label{
+	grid-area: edit_email_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_email{
+
+	grid-area: edit_email;
+
+
+}
+
+.current_label{
+	grid-area: edit_current_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_current_password{
+
+	grid-area: edit_current;
+
+
+}
+
+.change_label{
+	grid-area: edit_change_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_password{
+	grid-area: edit_change;
+}
+
+.confirm_label{
+	grid-area: edit_confirm_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_password_confirmation{
+
+	grid-area: edit_confirm;
+}
+
+.avatar_label{
+	grid-area: edit_avatar_label;
+	justify-self: end;
+	align-self: center;
+}
+
+.avatar{
+
+	grid-area: edit_avatar;
+	justify-self: start;
+	align-self: center;
+
+	margin: 8px 8px;
+}
+
+#edit_button.btn{
+	grid-area: edit_button;
+}
+
+
+
+.button_to_change_avatar{
+
+	margin-right: 8px;
+
+	padding: 2.5px 5px;
+
+	
+	text-decoration: none;
+	background-color: red;
+	//display: inline-block;
+	
+
+	//line-height: 50px;
+ 	 white-space: nowrap;
+
+
+ 	color:#444;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    //vertical-align:middle;
+    //max-width: 100px;
+    //padding: 5px;
+    //text-align: center;
+
+    -webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+
+
+}
+
+
+
+
+
+
+.edit_label {
+    //text-align: left;
+    //margin: 2px 10px;
+    margin-top: 18px;
+    white-space: nowrap;
+    font-size: .75rem;
+    color: red;
+}
+
+
+.devise_login{
+grid-area: form;
+width: 88%;
+}
+
+
+
+
+
+/////////////errors///////////
+
+
+
+.uid_error{
+
+	grid-area: uid_error;
+
+}
+
+.first_name_error{
+
+	grid-area: first_name_error;
+
+}
+
+.last_name_error{
+
+	grid-area: last_name_error;
+
+}
+
+.email_error{
+
+	grid-area: email_error;
+
+}
+
+.change_error{
+
+	grid-area: change_error;
+
+}
+
+.confirm_error{
+
+	grid-area: confirm_error;
+
+}
+
+.avatar_error{
+
+	grid-area: avatar_error;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #edit_button{
 
@@ -185,11 +423,10 @@ form{
 }
 
 
-.devise_upper{
-	//grid-area: form;
+
 	
 
-}
+
 
 .upload-preview img{
 	
