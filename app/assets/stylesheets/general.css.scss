@@ -88,7 +88,7 @@ header{
   	justify-items: center;
   	align-items: center;
 	
-	grid-template-columns: 1em minmax(200px, 1fr) 7.5em;
+	grid-template-columns: 1em minmax(200px, 1fr) 1em;
 	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
 	grid-template-areas:
 

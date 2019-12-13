@@ -561,7 +561,7 @@ width: 88%;
 
 
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 622px){
 
 		
 	#edit_user{
@@ -573,29 +573,29 @@ width: 88%;
 
 		align-items: center;
 
-		grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
+		grid-template-columns: minmax(0px, 1fr) minmax(100px, 1fr);
 
 		grid-template-areas:
 
-			"edit_uid_label           edit_uid_label"
+			"edit_uid_label           uid_error"
 			"edit_uid                 edit_uid" 
 			
-			"edit_first_name_label    edit_first_name_label"
+			"edit_first_name_label    first_name_error"
 			"edit_first_name          edit_first_name"   
 			
-			"edit_last_name_label     edit_last_name_label"
+			"edit_last_name_label     last_name_error"
 			"edit_last_name           edit_last_name"   
 			
-			"edit_email_label         edit_email_label"
+			"edit_email_label         email_error"
 			"edit_email               edit_email"        
 			
-			"edit_current_label       edit_current_label"
+			"edit_current_label       current_error"
 			"edit_current             edit_current"
 			
-			"edit_change_label        edit_change_label"
+			"edit_change_label        change_error"
 			"edit_change              edit_change"
 			
-			"edit_confirm_label       edit_confirm_label"  
+			"edit_confirm_label       confirm_error"  
 			"edit_confirm             edit_confirm"
 			
 			"edit_avatar_label        edit_avatar" 
@@ -614,28 +614,28 @@ width: 88%;
 
 		align-items: center;
 
-		grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
+		grid-template-columns: minmax(0px, min-content) minmax(0px, 1fr);
 
 		grid-template-areas:
 
-			"edit_uid_label           edit_uid_label"
+			"edit_uid_label           uid_error"
 			"edit_uid                 edit_uid" 
 			
-			"edit_first_name_label    edit_first_name_label"
+			"edit_first_name_label    first_name_error"
 			"edit_first_name          edit_first_name"   
 			
-			"edit_last_name_label     edit_last_name_label"
+			"edit_last_name_label     last_name_error"
 			"edit_last_name           edit_last_name"   
 			
-			"edit_email_label         edit_email_label"
+			"edit_email_label         email_error"
 			"edit_email               edit_email"        
 			
 			
 			
-			"edit_change_label        edit_change_label"
+			"edit_change_label        change_error"
 			"edit_change              edit_change"
 			
-			"edit_confirm_label       edit_confirm_label"  
+			"edit_confirm_label       confirm_error"  
 			"edit_confirm             edit_confirm"
 			
 			"edit_avatar_label        edit_avatar" 
@@ -798,4 +798,63 @@ width: 88%;
 	grid-area: form;
 	width: 88%;
     }
+
+
+
+
+    /////////////errors///////////
+
+
+
+	.uid_error{
+
+		grid-area: uid_error;
+		align-self: end;
+		justify-self: end;
+
+	}
+
+	.first_name_error{
+
+		grid-area: first_name_error;
+		align-self: end;
+		justify-self: end;
+
+	}
+
+	.last_name_error{
+
+		grid-area: last_name_error;
+		align-self: end;
+		justify-self: end;
+
+	}
+
+	.email_error{
+
+		grid-area: email_error;
+		align-self: end;
+		justify-self: end;
+	}
+
+	.change_error{
+
+		grid-area: change_error;
+		align-self: end;
+		justify-self: end;
+	}
+
+	.confirm_error{
+
+		grid-area: confirm_error;
+		align-self: end;
+		justify-self: end;
+	}
+
+	.avatar_error{
+
+		grid-area: avatar_error;
+		align-self: end;
+		justify-self: end;
+	}
 }
