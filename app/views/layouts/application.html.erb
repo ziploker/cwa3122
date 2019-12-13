@@ -99,13 +99,19 @@
               
       </header>
 
-      <% flash.each do |name, msg| %>
+      <div class="errors">
+
+        
+        <% flash.each do |name, msg| %>
         <div class = 'alert-<%=name%>'>
-          <%= msg %>
+          <%= msg %> 
         </div>
 
 
       <% end %>
+
+
+      </div>
 
     <%= yield %>
 

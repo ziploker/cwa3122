@@ -23,6 +23,11 @@ header{
   	align-self: stretch;
 }
 
+.errors{
+
+	grid-area: errors;
+}
+
 
 ////////////////////// PAGE WRAPPERS and overlays /////////////////////////////
 
@@ -32,10 +37,11 @@ header{
   	justify-items: center;
   	display: grid;
 	grid-template-columns: 1em minmax(222px, 1fr) 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
+	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
 	grid-template-areas:
 
 		"header header header"
+		".      errors ."
 		"  .    video     .  "
 		"  .    chat      .  ";
 		
@@ -97,6 +103,7 @@ header{
 		"  .   form   .  "
 		"  .    login    .  ";
 }
+
 
 
 

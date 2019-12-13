@@ -1,7 +1,3 @@
-
-
-
-
 <div class="devise_headline">
 
   <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
@@ -42,7 +38,7 @@
     <label class="edit_label email_label" for="user_email">email</label> 
     <%= f.email_field :email, autocomplete: "email" %>
     <% if resource.errors[:email].any? %>
-    <span class="email_error">email <%= resource.errors[:email][0] %> </span>
+    <span class="email_error"><%= resource.errors[:email][0] %> </span>
     <% end %>
    
 
@@ -84,7 +80,7 @@
 
 
 
-    <label class="button_to_change_avatar avatar_label" for="fileSwitch">change avatar??</label>
+    <label class="button_to_change_avatar avatar_label" for="fileSwitch">choose file</label>
 
 
       <div class="upload-preview avatar">

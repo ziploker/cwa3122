@@ -126,19 +126,21 @@ form{
 
 	align-items: center;
 	
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	//grid-template-rows: min-content;
 	grid-template-areas:
 
-		"edit_uid_label          edit_uid"
-		"edit_first_name_label   edit_first_name"
-		"edit_last_name_label    edit_last_name"
-		"edit_email_label        edit_email"
-		"edit_current_label      edit_current"
-		"edit_change_label       edit_change"
-		"edit_confirm_label      edit_confirm"
-		"edit_avatar_label       edit_avatar"
-		"edit_button             edit_button";
+		
+
+		"edit_uid_label          edit_uid                		uid_error"
+		"edit_first_name_label   edit_first_name         first_name_error"
+		"edit_last_name_label    edit_last_name          last_name_error"
+		"edit_email_label        edit_email                  email_error"
+		"edit_current_label      edit_current                   .       "
+		"edit_change_label       edit_change                 change_error"
+		"edit_confirm_label      edit_confirm               confirm_error"
+		"edit_avatar_label       edit_avatar                  avatar_error"
+		"edit_button             edit_button                        .";
 
 	
 
@@ -286,6 +288,7 @@ form{
 	margin-right: 8px;
 
 	padding: 2.5px 5px;
+	font-size: .75rem;
 
 	
 	text-decoration: none;
@@ -388,7 +391,10 @@ width: 88%;
 
 
 
+#new_user span{
 
+	font-size: .75em;
+}
 
 
 
@@ -606,7 +612,7 @@ width: 88%;
 	}
 
 	#new_user{
-		margin: 0;
+		margin: 0px 0px 20px 0px;
 		padding: 0;
 		width: 100%;
 
