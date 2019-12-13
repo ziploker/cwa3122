@@ -108,6 +108,19 @@ console.log("bbbbbbbbbbbbbbbb44444444444444444444444");
         setExtR: false
     });
 
+    // Initiate plugin
+    $(".my_message_overlay").find("input").jQTArea({
+        // Set Max input for Textarea
+        setLimit: 100,
+        // Set Animation to Width (W) or Height (H)
+        setExt: "W",
+        // setExt val in reverse eg, 80% instead of 20%
+        setExtR: false
+    });
+
+
+
+
 
 
 

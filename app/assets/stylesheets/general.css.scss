@@ -434,7 +434,7 @@ header{
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 51px 300px minmax(min-content, max-content);
+	grid-template-rows: 51px 215px minmax(min-content, max-content);
 
 	
 	grid-template-areas:
@@ -896,7 +896,7 @@ a:hover{
 ////////////////  Chat text box border ANIMATION ///////////////////
 
 
-#message, select {
+#message, #message_overlay, select {
   border: none;
   border-bottom: 2px solid darkgrey;
   background-color: inherit;
@@ -905,7 +905,7 @@ a:hover{
   margin: none;
 }
 
-#message:focus, select:focus {
+#message:focus, #message_overlay:focus, select:focus {
   outline: none;
 }
 
@@ -922,7 +922,7 @@ a:hover{
   top: -14px;
 }
 
-#message:focus+.line, select:focus+.line {
+#message:focus+.line, #message_overlay:focus+.line, select:focus+.line {
   width: 100%;
   background-color: #02add7;
 
