@@ -1122,3 +1122,26 @@ a:hover{
 	transform: rotate(45deg);
 	top: 0;
 }
+
+
+
+
+
+
+
+
+.expand_menu_checkbox_overlay:checked ~ .hamburger_menu_label_overlay .hamburger_menu_overlay{
+ 	background: transparent;
+}
+
+.expand_menu_checkbox_overlay:checked ~ .hamburger_menu_label_overlay .hamburger_menu_overlay:before{
+	transform: rotate(-45deg);
+	top: 0;
+	
+}
+
+.expand_menu_checkbox_overlay:checked ~ .hamburger_menu_label_overlay .hamburger_menu_overlay:after{
+
+	transform: rotate(45deg);
+	top: 0;
+}
