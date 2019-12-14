@@ -13,6 +13,11 @@ $(document).ready(function (){
 
 		//alert(document.getElementById("default_wrapper").className);
 		
+		
+
+		//default wrapper is when screen is big and videos on the left and chat
+		//is on the right
+
 		if (document.getElementById("default_wrapper").className == "default_wrapper"){
 
 			$(".default_wrapper").attr('class', 'default_wrapper_overlay');
@@ -30,7 +35,7 @@ $(document).ready(function (){
 			$('#talk').show();
 			
 
-
+		//default wrapper overlay is when chat is overlayed on video
 
 		}else if (document.getElementById("default_wrapper").className == "default_wrapper_overlay"){
 
@@ -38,6 +43,8 @@ $(document).ready(function (){
 			$(".video_section_overlay").attr('class', 'video_section');
 
 			$('.expand_menu_checkbox_overlay').prop('checked', false);
+			$('.expand_menu_checkbox_overlay_clone').prop('checked', false);
+
 			$("#chat_section").show();
 			
 			$('.bar').hide();
@@ -54,8 +61,16 @@ $(document).ready(function (){
 	var chk1 = $("input[type='checkbox'][class='expand_menu_checkbox']");
 	var chk2 = $("input[type='checkbox'][class='hamburger_to_x_checkbox']");
 
+	var chk3 = $("input[type='checkbox'][class='expand_menu_checkbox_overlay']");
+	var chk4 = $("input[type='checkbox'][class='expand_menu_checkbox_overlay_clone']");
+
 	chk1.on('change', function(){
   		chk2.prop('checked',this.checked);
 	});
+
+	chk3.on('change', function(){
+  		chk4.prop('checked',this.checked);
+	});
+
 
 });

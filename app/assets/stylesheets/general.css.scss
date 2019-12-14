@@ -37,7 +37,7 @@ header{
   	justify-items: center;
   	display: grid;
 	grid-template-columns: 1em minmax(222px, 1fr) 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) minmax(min-content, max-content) 1fr minmax(min-content, max-content);
+	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) minmax(min-content, max-content) 1fr ;
 	grid-template-areas:
 
 		"header header header"
@@ -789,10 +789,11 @@ a:hover{
 
 		
 		grid-template-columns: 1fr minmax(min-content, 650px) minmax(300px, 420px) 1fr;
-		grid-template-rows: minmax(40px, 50px) 10px minmax(min-content, max-content) ;
+		grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) 10px minmax(min-content, max-content) ;
 		grid-template-areas:
 
 			"header header header header"
+			" .      errors  errors   .  "
 			"  .      .       .     .   "
 			"  .    video   chat    .   ";
 			
@@ -813,8 +814,14 @@ a:hover{
 		grid-template-areas:
 
 			"header header header"
+			
 			"  .    video     .  ";
 			
+	}
+
+	.errors{
+
+		grid-area: errors;
 	}
 
 
@@ -932,9 +939,13 @@ a:hover{
 
 ////////////    menu hamburger for chat ///////
 
-.expand_menu_checkbox, .expand_menu_checkbox_overlay, .hamburger_to_x_checkbox{
+.expand_menu_checkbox, 
+.expand_menu_checkbox_overlay,
+.expand_menu_checkbox_overlay_clone,
+.hamburger_to_x_checkbox{
 	display: none;
 }
+
 
 
 
@@ -1099,10 +1110,12 @@ a:hover{
 
 
 
-.expand_menu_checkbox_overlay:checked ~ .menu_overlay{
+.expand_menu_checkbox_overlay_clone:checked ~ .menu_overlay{
 
 	max-height: 300px;
 }
+
+
 
 
 

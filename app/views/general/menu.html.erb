@@ -9,10 +9,7 @@
 				<a href="/general/deleteSessionsV2", class="btnV2">Reset</a>
 					
 			</li>
-			<li>
-
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
+			
 
 		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 
@@ -20,30 +17,19 @@
 			<li>
 				<a href="#" class="publisherStart" class="btnV2">Start Publishing</a>
 			</li>
-			<li>
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
+			
 			
 		<% elsif user_signed_in? %>
 
 			<li>
 				<a href="/" class="try2Connect" class="btnV2">Connect</a>
 			</li>
-			<li>
-				
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
-
-		<% else %>
-
-			<li>
-
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
 			
+
+		
 		<%end%>
 
-		<li>
+			<li>
 
 				<a href="#" class="toggle_chat btnV2">toggle chat</a>
 			</li>
