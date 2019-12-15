@@ -13,11 +13,6 @@
 		</label>
 
 
-
-	</div>
-	
-	<div id="videos">
-
 		<input class="expand_menu_checkbox_overlay_clone" type="checkbox" id="expand_menu_checkbox_overlay_clone" />
 
 		<ul class="menu_overlay">
@@ -64,6 +59,14 @@
 
 		
 	</ul>
+
+
+
+	</div>
+	
+	<div id="videos">
+
+		
         <div id="subscriber"></div>
         
     </div>
@@ -187,42 +190,42 @@
 
 
 
-		<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
+			<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
 
-			<li>
-				<a href="/general/deleteSessionsV2", class="btnV2">Reset</a>
-					
-			</li>
-			<li>
+				<li>
+					<a href="/general/deleteSessionsV2", class="btnV2">Reset</a>
+						
+				</li>
+				<li>
 
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
+					<a href="#" class="toggle_chat btnV2">toggle chat</a>
+				</li>
 
-		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
+			<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 
-			
-			<li>
-				<a href="#" class="publisherStart" class="btnV2">Start Publishing</a>
-			</li>
-			<li>
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
-			
-		<% elsif user_signed_in? %>
-
-			<li>
-				<a href="/" class="try2Connect" class="btnV2">Connect</a>
-			</li>
-			<li>
 				
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
-			</li>
-			
-		<%end%>
+				<li>
+					<a href="#" class="publisherStart" class="btnV2">Start Publishing</a>
+				</li>
+				<li>
+					<a href="#" class="toggle_chat btnV2">toggle chat</a>
+				</li>
+				
+			<% elsif user_signed_in? %>
 
-		<li>
+				<li>
+					<a href="/" class="try2Connect" class="btnV2">Connect</a>
+				</li>
+				<li>
+					
+					<a href="#" class="toggle_chat btnV2">toggle chat</a>
+				</li>
+				
+			<%end%>
 
-				<a href="#" class="toggle_chat btnV2">toggle chat</a>
+			<li>
+
+					<a href="#" class="toggle_chat btnV2">toggle chat</a>
 			</li>
 
 		

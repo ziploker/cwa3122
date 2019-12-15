@@ -611,7 +611,7 @@ header{
 	padding-top: 5px;
 }
 
-.chat_img img{
+.chat_img img, .chat_img_overlay img{
 
 	width: 20px;
 	height: 20px;
@@ -998,6 +998,8 @@ a:hover{
 
 .menu_overlay{
 
+	top: 25px;
+	left: 38px;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -1021,7 +1023,7 @@ a:hover{
 	display: block;
 	//outline: 1px solid red;
 	padding: 20px;
-	border-right: 1px solid green;
+	//border-right: 1px solid green;
 
 
 }
