@@ -31,6 +31,11 @@ class GeneralController < ApplicationController
     		@first = current_user.first_name
     		@last = current_user.last_name
 
+		else
+
+			@first = "test user"
+			@last = rand(2000)
+
 		end
 	    
 	    opentok = OpenTok::OpenTok.new @api_key, @api_secret
@@ -90,6 +95,9 @@ class GeneralController < ApplicationController
 					@token = opentok.generate_token @session_id, data: @ipAddress
 					
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+	  				
+
+					#uncomment this for production
 	  				#newIpToSaveInDb.save
 
 	    			puts "*****************created new token and saved it to DB"
@@ -164,6 +172,65 @@ class GeneralController < ApplicationController
   					puts "**Unable to create dual service token ****************"
   				end
 	    	end
+
+    	
+
+    	else #temporary option for demo 
+
+    		puts "----------non-Admin GUEST user logged in."
+
+	  		@goodToGo = "true"
+
+
+	  		if @allSessions.size == 0
+
+		    	puts "-----non admin GUEST signed in but no sessions in db, show is off"
+				
+		    else
+
+		    	puts "-----non admin GUEST signed in and session exists in db"
+		    	puts "IP address is = "+ @ipAddress
+
+		    	
+
+		    	@existing_session_id = Session.last.session
+
+		    	#temporarily, ALWAYS create token
+				#@token = opentok.generate_token @session_id, data: @ipAddress
+					
+				#newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+  				#newIpToSaveInDb.save
+
+    			#puts "***********created new token and saved ip to DB"
+    			#puts "***********non-Admin user logged in, sessions did exist so pulled existing session ID from db"
+
+
+
+
+
+		    	#create Token
+				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
+
+				if @numberOfTimesIpIsInIpDb.size == 0
+
+					
+
+					@token = opentok.generate_token @existing_session_id, data: @ipAddress
+
+					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+	  				#newIpToSaveInDb.save
+
+	    			puts "*****************created new token with existing session and saved iP addy to DB"
+
+
+  				elsif @numberOfTimesIpIsInIpDb.size > 0
+  					
+  					puts "**Unable to create dual service token ****************"
+  				end
+	    	end
+
+
+
 
     	end
 

@@ -216,7 +216,7 @@
 	</ul>
 
 	</div>
-	<!--######################### INFO SECTION END########-->
+	
 	
 
 	
@@ -274,7 +274,14 @@
 		<% if user_signed_in? %>
 			<div class="my_name"> <%=current_user.first_name %> <%=current_user.last_name%></div>
 
+		<% elsif @first != nil %>
+			
+
+			<div class="my_name"> <%=@first%> <%=@last%></div>
+
 		<% else %>
+
+
 			<div class="my_name"> ...log in</div>
 
 			

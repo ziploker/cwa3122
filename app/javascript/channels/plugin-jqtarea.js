@@ -11,12 +11,10 @@ $(document).ready(function (){
     
 
 
-console.log("bbbbbbbbbbbbbbbb44444444444444444444444");
 
     
     $.fn.jQTArea = function (options) {
         
-        console.log("aaaaaaaab44444444444444444444444");
 
         var
             defaults =
