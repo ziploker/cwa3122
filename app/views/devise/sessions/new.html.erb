@@ -5,16 +5,43 @@
 
 <div class="devise_login">
 
-  <%= form_for(resource, as: resource_name, html: {id: "login_user"}, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+  <%= simple_form_for(resource, as: resource_name, html: {id: "login_user"}, url: session_path(resource_name)) do |f| %>
+    
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+
+   
+    
+    
+    <label class="edit_label login_email_label" for="user_email">email</label> 
+    
+
+    <%= f.input_field :email, autocomplete: "email", disabled: true %>
+    
+    
+    <% if resource.errors[:email].any? %>
+      <span class="email_error"><%= resource.errors[:email][0] %> </span>
+    <% end %>
+    
+
+    
+
+
+
+
+    <label class="edit_label login_password_label" for="user_change_password">create password</label> 
+    
+
+    <%= f.password_field :password, autocomplete: "new-password", label: false %>
+    
+    
+    <% if resource.errors[:password].any? %>
+      <span class="change_error"><%= resource.errors[:password][0] %> </span>
+    <% end %>
+
+
+
+
+
 
     <% if devise_mapping.rememberable? %>
       <div class="field">

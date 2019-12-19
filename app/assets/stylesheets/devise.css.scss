@@ -181,6 +181,33 @@ form{
 
 }
 
+#login_user{
+
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	display: grid;
+	grid-gap: 10px;
+
+	align-items: center;
+	
+	grid-template-columns: 1fr 1fr 1fr;
+	//grid-template-rows: min-content;
+	grid-template-areas:
+
+		
+		
+		"login_email_label        login_email                 login_email_error"
+		"login_password_label     login_password              login_password_error"
+		
+		
+		"edit_button             edit_button                        .";
+
+
+
+}
+
 
 
 .uid_label{
@@ -561,7 +588,30 @@ width: 88%;
 
 
 
+.login_email_label{
+	grid-area: login_email_label;
+	justify-self: end;
+	align-self: end;
+}
 
+#user_email{
+
+	grid-area: login_email;
+
+
+}
+.login_password_label{
+	grid-area: login_password_label;
+	justify-self: end;
+	align-self: end;
+}
+
+#user_password{
+	grid-area: login_password;
+}
+#edit_button.btn{
+	grid-area: edit_button;
+}
 
 
 
