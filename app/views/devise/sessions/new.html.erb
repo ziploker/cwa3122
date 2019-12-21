@@ -12,10 +12,10 @@
    
     
     
-    <label class="edit_label login_email_label" for="user_email">email</label> 
+    <label class="edit_label login_email_label" for="login_email">email</label> 
     
 
-    <%= f.input_field :email, autocomplete: "email" %>
+    <%= f.input_field :email, autocomplete: "email", label: false, id: "login_email" %>
     
     
     <% if resource.errors[:email].any? %>
@@ -28,32 +28,33 @@
 
 
 
-    <label class="edit_label login_password_label" for="user_change_password">create password</label> 
+    <label class="edit_label login_password_label" for="login_password">create password</label> 
     
 
-    <%= f.password_field :password, autocomplete: "new-password", label: false %>
+    <%= f.password_field :password, autocomplete: "new-password", label: false, id: "login_password" %>
     
     
     <% if resource.errors[:password].any? %>
       <span class="change_error"><%= resource.errors[:password][0] %> </span>
     <% end %>
 
-
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
 
 
 
 
     <% if devise_mapping.rememberable? %>
-      <div class="field">
+      
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
-      </div>
+      
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
+    <div class="links">
+      <%=render "devise/shared/links" %>
     </div>
-    <%=render "devise/shared/links" %>
 
   <% end %>
 </div>

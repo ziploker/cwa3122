@@ -95,10 +95,12 @@ header{
   	align-items: center;
 	
 	grid-template-columns: 1em minmax(200px, 1fr) 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
+	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
 	grid-template-areas:
 
 		"header header header"
+
+		".      errors ."
 		"  .   headline   .  "
 		"  .   form   .  "
 		"  .    login    .  ";

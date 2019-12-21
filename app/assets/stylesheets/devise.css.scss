@@ -200,9 +200,10 @@ form{
 		
 		"login_email_label        login_email                 login_email_error"
 		"login_password_label     login_password              login_password_error"
+		"remember_me_checkbox     remember_me_label                 .           "
+		"       .                 edit_button                        .           "
+		" . links links";
 		
-		
-		"edit_button             edit_button                        .";
 
 
 
@@ -248,7 +249,7 @@ form{
 	align-self: end;
 }
 
-#user_email{
+input#user_email{
 
 	grid-area: edit_email;
 
@@ -594,7 +595,7 @@ width: 88%;
 	align-self: end;
 }
 
-#user_email{
+#login_email{
 
 	grid-area: login_email;
 
@@ -606,11 +607,27 @@ width: 88%;
 	align-self: end;
 }
 
-#user_password{
+#login_password{
 	grid-area: login_password;
 }
-#edit_button.btn{
+
+#user_remember_me{
+
+	grid-area: remember_me_checkbox;
+	justify-self: end;
+}
+
+label.string.optional{
+
+	grid-area: remember_me_label;
+}
+.actions{
 	grid-area: edit_button;
+}
+
+.links{
+
+	grid-area: links;
 }
 
 
