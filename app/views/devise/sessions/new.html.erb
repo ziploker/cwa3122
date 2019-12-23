@@ -1,6 +1,7 @@
 <div class="devise_headline">
 
-  <h2>Log in</h2>
+  <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
+  <span class="header_for_devise"> Login</span>
 </div>
 
 <div class="devise_login">
@@ -38,9 +39,9 @@
       <span class="change_error"><%= resource.errors[:password][0] %> </span>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
+    
+    <%= f.submit "Log in", id: "login_button", class: "btn"%>
+    
 
 
 

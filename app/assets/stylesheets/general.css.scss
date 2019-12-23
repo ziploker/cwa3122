@@ -911,7 +911,9 @@ a:hover{
   background-color: inherit;
   display: block;
   width: 100%;
-  margin: none;
+  margin: 0px;
+  padding: 0;
+  height: 22px;
 }
 
 #message:focus, #message_overlay:focus, select:focus {
@@ -928,7 +930,7 @@ a:hover{
   display: inline-block;
   transition: .3s width ease-in-out;
   position: relative;
-  top: -14px;
+  top: -17px;
 }
 
 #message:focus+.line, #message_overlay:focus+.line, select:focus+.line {

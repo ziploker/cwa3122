@@ -65,10 +65,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
+  #if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        
+   #     params[:user].delete(:current_password)
+   #     params[:user].delete(:password)
+   #     params[:user].delete(:password_confirmation)
+
+        
+
+    #    puts "did it i think ........................"
+    #end
+
 
     @title = "devise_page"
 
-     
+    #if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        
+    #    params[:user].delete(:current_password)
+    #    params[:user].delete(:password)
+    #    params[:user].delete(:password_confirmation)
+
+        
+
+        
+    #end
+
+
 
     super
     
@@ -80,6 +102,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       puts "there was NOT an avatar at update method"
     end
+
+    
    end
 
   # DELETE /resource

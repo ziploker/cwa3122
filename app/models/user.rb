@@ -15,7 +15,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, format: /\A[^@,\s]+@[^@,\s]+\.[^@,\s]+\z/
 
   validates :password, :length => {:within => 6..40}
-
   validates_confirmation_of :password
 
   
