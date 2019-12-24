@@ -30,7 +30,7 @@
     
     
     <label class="edit_label first_name_label" for="user_first_name">first name</label> 
-    <%= f.input_field :first_name, required: true, disabled: true, :input_html => { :value => current_user.first_name } %>
+    <%= f.input_field :first_name, required: true, disabled: false, :input_html => { :value => current_user.first_name } %>
     <% if resource.errors[:first_name].any? %>
     <span class="first_name_error"><%= resource.errors[:first_name][0] %> </span>
     <% end %>
@@ -55,23 +55,13 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br/>
     <% end %>
 
-    <label class="edit_label current_label" for="user_current_password">current password</label> 
-    <%= f.password_field :current_password, label: false, autocomplete: "current-password" %>
     
 
     
-    <label class="edit_label change_label" for="user_change_password">new password</label> 
-    <%= f.password_field :password, autocomplete: "new-password", label: false %>
-    <% if resource.errors[:password].any? %>
-    <span class="change_error"><%= resource.errors[:password][0] %> </span>
-    <% end %>
+   
     
-    
-    <label class="edit_label confirm_label" for="user_confirm_new_password">confirm password</label> 
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", label: false %>
-    <% if resource.errors[:password_confirmation].any? %>
-    <span class="confirm_error"><%= resource.errors[:password_confirmation][0] %> </span>
-    <% end %>
+
+   
     
 
 

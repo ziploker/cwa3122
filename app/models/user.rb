@@ -8,14 +8,14 @@ class User < ApplicationRecord
   validates_presence_of     :email # optional
   validates_presence_of     :first_name # optional
   validates_presence_of     :last_name # optional
-  validates_presence_of     :password # optional
+  #validates_presence_of     :password # optional
   validates_presence_of     :last_name # optional
 
   validates :uid, uniqueness: true
   validates :email, uniqueness: true, format: /\A[^@,\s]+@[^@,\s]+\.[^@,\s]+\z/
 
-  validates :password, :length => {:within => 6..40}
-  validates_confirmation_of :password
+  validates :password, :length => {:within => 6..40}, confirmation: true, on: :create
+  validates_confirmation_of :password, on: :create
 
   
   

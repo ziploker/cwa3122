@@ -5,6 +5,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   #respond_to :html, :js
   #GET /resource/sign_up
+
+
+
   def new
 
     @title = "devise_page"
@@ -25,19 +28,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @title = "devise_page"
 
-      if User.count == 0
-        super
-        @user.admin = "true"
-        @user.approved = "true"
-        @user.save
-      else
+    if User.count == 0
+      super
+      @user.admin = "true"
+      @user.approved = "true"
+      @user.save
+    else
 
       super
     end
 
       
 
-      if params[:user][:avatar] != nil
+    if params[:user][:avatar] != nil
       puts "there was an avatar"
       @user.avatar.attach(params[:user][:avatar])
 
@@ -60,48 +63,41 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
    def edit
     @title = "devise_page"
-     super
+    super
    end
 
   # PUT /resource
    def update
-  #if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-        
-   #     params[:user].delete(:current_password)
-   #     params[:user].delete(:password)
-   #     params[:user].delete(:password_confirmation)
-
-        
-
-    #    puts "did it i think ........................"
-    #end
-
+ 
 
     @title = "devise_page"
+     #@user.avatar.purge_later
 
-    #if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-        
-    #    params[:user].delete(:current_password)
-    #    params[:user].delete(:password)
-    #    params[:user].delete(:password_confirmation)
-
-        
-
-        
-    #end
-
-
-
-    super
     
 
-     if params[:user][:avatar] != nil || params[:avatar] != nil
+    
+    
+    
+    
+
+    if params[:user][:avatar] != nil
       puts "there was an avatar at update method"
+
+      
       @user.avatar.attach(params[:user][:avatar])
+
+
+      
 
     else
       puts "there was NOT an avatar at update method"
+
     end
+
+    #puts "password is => " + params[:user][:password]
+    #puts "passwordC is => " + params[:user][:password_confirmation]
+    #user.save!
+    super
 
     
    end
@@ -153,7 +149,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     
-    params.require(:user).permit(:uid, :first_name, :last_name, :email, :password, :password_confirmation, :avatar, :approved, :admin, :current_password)
+    params.require(:user).permit(:uid, :first_name, :last_name, :email, :avatar, :approved, :admin)
   end
 
 end
