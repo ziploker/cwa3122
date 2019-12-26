@@ -1,16 +1,46 @@
-<h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="forgot_password">
+	
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+	<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name),  html: { method: :post, id: "forgot_password" }) do |f| %>
+	  	
+	  	
+	  	<div class="form_title">
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+		    <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
+		    <span> Forgot password?</span>
+  		</div>
 
-<%= render "devise/shared/links" %>
+	  	<label class="edit_label forgot_password_email_label" for="forgot_password_email">email</label> 
+	    
+	    
+	  	<%= f.input_field :email, autofocus: true, autocomplete: "email", label: false, id: "forgot_password_email" %><br/>
+
+
+	  	<% if resource.errors[:email].any? %>
+      		<span class="forgot_password_email_error"><%= resource.errors[:email][0] %> </span>
+    	<% end %>
+	 
+
+	  	
+	    <%= f.submit "Send me reset password instructions", id: "forgot_password_button", class: "btn"%>
+
+	    <div class="links">
+      		<%=render "devise/shared/links" %>
+    	</div>
+	  
+	<% end %>
+
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+

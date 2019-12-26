@@ -13,15 +13,20 @@ $(document).ready(function (){
 
 	var dt = new Date();
 
-	
-
+	$(document).on('change','#fileSwitch' , function(){ 
+		if($("#fileSwitch").value != "") {
+	   		$(".avatar_error").text("File Ready");
+	   		$('#edit_button').prop('disabled', false);
+	   		$('#edit_button').css('cursor', 'pointer'); // 'default' to revert
+   		};
+	});
 
 	// Handling all of our errors here by alerting them
 	function handleError(error) {
 	  if (error) {
 	    alert(error.message);
-	  }
-	}
+	  };
+	};
 
 
 

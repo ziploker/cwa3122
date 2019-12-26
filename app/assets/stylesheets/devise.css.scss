@@ -127,19 +127,18 @@ form{
 	align-items: center;
 	
 	grid-template-columns: 1fr 1fr 1fr;
-	//grid-template-rows: min-content;
+	
 	grid-template-areas:
 
 		
 
+		"      title             title                             title "
 		"edit_uid_label          edit_uid                		uid_error"
 		"edit_first_name_label   edit_first_name         first_name_error"
 		"edit_last_name_label    edit_last_name          last_name_error"
 		"edit_email_label        edit_email                  email_error"
-		"edit_current_label      edit_current                   .       "
-		"edit_change_label       edit_change                 change_error"
-		"edit_confirm_label      edit_confirm               confirm_error"
-		"edit_avatar_label       edit_avatar                  avatar_error"
+		
+		"edit_avatar_label       edit_avatar                  edit_avatar"
 		".                       edit_button                        .";
 
 	
@@ -164,6 +163,8 @@ form{
 	//grid-template-rows: min-content;
 	grid-template-areas:
 
+
+		"      title             title                             title "
 		"edit_uid_label          edit_uid                		uid_error"
 		"edit_first_name_label   edit_first_name         first_name_error"
 		"edit_last_name_label    edit_last_name          last_name_error"
@@ -172,7 +173,8 @@ form{
 		"edit_change_label       edit_change                 change_error"
 		"edit_confirm_label      edit_confirm               confirm_error"
 		"edit_avatar_label       edit_avatar                  avatar_error"
-		".                       edit_button                        .";
+		".                       edit_button                        ."
+		".                         links                           links";
 
 	
 
@@ -197,7 +199,7 @@ form{
 	grid-template-areas:
 
 		
-		
+		"    title                   title                     title             "
 		"login_email_label        login_email                 login_email_error"
 		"login_password_label     login_password              login_password_error"
 		"        .                 remember_me                    remember_me  "
@@ -207,6 +209,107 @@ form{
 
 
 
+}
+
+#forgot_password{
+
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	display: grid;
+	grid-gap: 10px;
+
+	align-items: center;
+	
+	grid-template-columns: 1fr 1fr 1fr;
+	//grid-template-rows: min-content;
+	grid-template-areas:
+
+		
+		"         title                           title                     title             "
+		"forgot_password_email_label      forgot_password_email    forgot_password_email_error"
+		"       .                        forgot_password_button                  .            "
+		"       .                               links                          links          ";
+		
+
+
+
+}
+
+.avatar_error{
+	white-space:nowrap;
+	//display: none;
+	display: inline-block;
+	font-size: .75rem;
+	align-self: center;
+	//grid-column: span 2/3;
+	//grid-row: span 1 / 2;
+}
+
+.form_title{
+
+	grid-area: title;
+	justify-self: center;
+	margin: 25px 0px 0px 0px;
+
+
+	
+	align-content: center;
+
+	align-items: center;
+
+	//padding: 35px 20px 27px 0px;
+	
+	//display: grid;
+
+	grid-template-columns: minmax(0px, 1fr);
+	
+
+
+
+}
+
+.form_title img{
+	
+	//padding-right: 8px;
+	//display: inline-block;
+	width: 25px;
+	height: 25px;
+
+
+}
+
+.form_title span{
+
+	height: 40px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1.4rem;
+
+}
+
+
+
+
+.forgot_password_email_label{
+
+	grid-area: forgot_password_email_label
+}
+
+.forgot_password_email{
+
+	grid-area: forgot_password_email
+}
+
+.forgot_password_email_error{
+
+	grid-area: forgot_password_email_error
+}
+
+#forgot_password_button{
+
+	grid-area: forgot_password_button
 }
 
 
@@ -307,6 +410,7 @@ input#user_email{
 
 #edit_button.btn{
 	grid-area: edit_button;
+	cursor: default;
 }
 
 
@@ -410,19 +514,16 @@ width: 88%;
 
 }
 
-.avatar_error{
+//.avatar_error{
 
-	grid-area: avatar_error;
+//	grid-area: avatar_error;
 
-}
-
-
+//}
 
 
-#new_user span{
 
-	font-size: .75em;
-}
+
+
 
 
 
@@ -458,7 +559,10 @@ width: 88%;
 
 
 
-	
+.upload-preview{
+	display: grid;
+	grid-template-columns: minmax(0px, min-content) minmax(0px, min-content);
+}
 
 
 
@@ -470,6 +574,8 @@ width: 88%;
 	height: 50px;
 	width: 50px;
 	margin-right: 1.5em;
+	//grid-column: span 1/2;
+	//grid-row: span 1 / 2;
 }
 
 .upload_button{
@@ -526,36 +632,8 @@ width: 88%;
 
 
 
-.devise_headline{
-	grid-area: headline;
-	align-content: center;
-
-	align-items: center;
-
-	padding: 35px 0px 27px 0px;
-
-	display: grid;
-
-	grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr);
-	grid-template-rows: minmax(min-content, max-content);
 
 
-
-}
-
-.devise_headline img{
-
-	align-self: center;
-	justify-self: end;
-	padding-right: 8px;
-}
-
-.header_for_devise{
-	
-	align-self: center;
-	justify-self: start;
-	font-size: 1.4rem;
-}
 
 
 
@@ -632,9 +710,13 @@ label.string.optional{
 .links{
 
 	grid-area: links;
+	margin-top: 8px;
 }
 
+.forgot_password{
 
+	grid-area: forgot_password;
+}
 
 
 
@@ -643,6 +725,43 @@ label.string.optional{
 		
 	#edit_user{
 		margin: 0;
+		padding: 0;
+		width: 100%;
+
+		display: grid;
+
+		align-items: center;
+
+		grid-template-columns: minmax(0px, 1fr) minmax(100px, 1fr);
+
+		grid-template-areas:
+
+
+			"   title                  title   "
+
+			"edit_uid_label           uid_error"
+			"edit_uid                 edit_uid" 
+			
+			"edit_first_name_label    first_name_error"
+			"edit_first_name          edit_first_name"   
+			
+			"edit_last_name_label     last_name_error"
+			"edit_last_name           edit_last_name"   
+			
+			"edit_email_label         email_error"
+			"edit_email               edit_email"        
+			
+			
+			
+			"edit_avatar_label        edit_avatar" 
+			
+			"edit_button              edit_button";
+
+
+	}
+
+	#new_user{
+		margin: 0px 0px 20px 0px;
 		padding: 0;
 		width: 100%;
 
@@ -666,47 +785,6 @@ label.string.optional{
 			"edit_email_label         email_error"
 			"edit_email               edit_email"        
 			
-			"edit_current_label       current_error"
-			"edit_current             edit_current"
-			
-			"edit_change_label        change_error"
-			"edit_change              edit_change"
-			
-			"edit_confirm_label       confirm_error"  
-			"edit_confirm             edit_confirm"
-			
-			"edit_avatar_label        edit_avatar" 
-			
-			"edit_button              edit_button";
-
-
-	}
-
-	#new_user{
-		margin: 0px 0px 20px 0px;
-		padding: 0;
-		width: 100%;
-
-		display: grid;
-
-		align-items: center;
-
-		grid-template-columns: minmax(0px, min-content) minmax(0px, 1fr);
-
-		grid-template-areas:
-
-			"edit_uid_label           uid_error"
-			"edit_uid                 edit_uid" 
-			
-			"edit_first_name_label    first_name_error"
-			"edit_first_name          edit_first_name"   
-			
-			"edit_last_name_label     last_name_error"
-			"edit_last_name           edit_last_name"   
-			
-			"edit_email_label         email_error"
-			"edit_email               edit_email"        
-			
 			
 			
 			"edit_change_label        change_error"
@@ -717,7 +795,8 @@ label.string.optional{
 			
 			"edit_avatar_label        edit_avatar" 
 			
-			"edit_button              edit_button";
+			"edit_button              edit_button"
+			"links                            links";
 
 
 	}
@@ -739,7 +818,7 @@ label.string.optional{
 	grid-template-areas:
 
 		
-		
+		"     title                   title       "
 		"login_email_label       login_email_error"
 		"login_email                  login_email "
 		
@@ -752,6 +831,50 @@ label.string.optional{
 
 
 
+	}
+
+	#forgot_password{
+
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	display: grid;
+	grid-gap: 10px;
+
+	align-items: center;
+	
+	grid-template-columns: 1fr;
+	//grid-template-rows: min-content;
+	grid-template-areas:
+
+		
+		"         title   "
+		"forgot_password_email_label"      
+		"forgot_password_email" 
+		"forgot_password_email_error"
+		" forgot_password_button  "
+		"       links     "
+
+
+
+	}
+
+	.upload-preview{
+		display: grid;
+		grid-template-columns: minmax(0px, min-content);
+		grid-template-rows: minmax(0px, min-content) minmax(0px, min-content);
+	}
+
+	.forgot_password_email_label{
+
+		grid-area: forgot_password_email_label;
+		justify-self: start;
+	}
+	.forgot_password_email_error{
+
+		grid-area: forgot_password_email_error;
+		justify-self: start;
 	}
 
 	.uid_label{
@@ -963,9 +1086,9 @@ label.string.optional{
 
 	.avatar_error{
 
-		grid-area: avatar_error;
+		//grid-area: avatar_error;
 		align-self: end;
-		justify-self: end;
+		justify-self: start;
 	}
 
 
@@ -1017,4 +1140,14 @@ label.string.optional{
 
 	grid-area: links;
 }
+
+
+
+
+
+
+
+
+
+
 }

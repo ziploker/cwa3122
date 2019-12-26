@@ -47,7 +47,7 @@
 
     <label class="edit_label email_label" for="user_email">email</label> 
     <%= f.input_field :email, autocomplete: "email", disabled: true %>
-    <% if resource.errors[:email].any? %>
+   <% if resource.errors[:email].any? %>
     <span class="email_error"><%= resource.errors[:email][0] %> </span>
     <% end %>
 
@@ -58,38 +58,80 @@
 
     
 
+    
+   
+    
+
+   
+    
+
+
+    <!--</div>-->
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <label class="button_to_change_avatar avatar_label" for="fileSwitch">choose file</label>
 
 
-    <div class="upload-preview avatar">
+      <div class="upload-preview avatar">
+        
 
 
+        <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable?%>
+          
 
-      <% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable?%>
-        <%= image_tag current_user.avatar.variant(resize_to_limit: [100, 100]) %>
+          
+
+          <%= image_tag current_user.avatar.variant(resize_to_limit: [100, 100]) %>
+          
+
+        <%else%>
 
 
-      <%else%>
+            
 
-        <%= image_tag("man100px.png", height: '150', width: '150') %>
+       
+            
+          <%= image_tag("man100px.png", height: '150', width: '150') %>
+        <% end %>
+        <span class="avatar_error"> No File Selected </span>
+
+
+      </div>
+
+      
+        <%= f.button :submit, "Confirm Changes", id: "edit_button" %>
+       
+
   
-      <% end %>
-
-      <span class="avatar_error"> No File Selected </span>
-
-    </div>
+ 
 
 
 
-    <%= f.file_field :avatar, class: "file", id: "fileSwitch" %>
 
-    <%= f.button :submit, "Confirm Changes", id: "edit_button", disabled: true %>
+    
+
 
   <% end %>
 
 
 
-</div>
+
+ 
 
 
 

@@ -75,29 +75,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     
 
-    
-    
-    
-    
-
-    if params[:user][:avatar] != nil
-      puts "there was an avatar at update method"
+    if params.has_key?(:user)
 
       
-      @user.avatar.attach(params[:user][:avatar])
+      puts "has key avatar"
+    
 
+      if params[:user][:avatar] != nil
+        
+        puts "there was an avatar at update method"
 
-      
+        
+        @user.avatar.attach(params[:user][:avatar])
 
+        super
+        
+
+      else
+        puts "there was NOT an avatar at update method"
+
+      end
     else
-      puts "there was NOT an avatar at update method"
 
+      puts "nothing selected"
+      #render "edit_errors"
+      super
     end
+    
 
     #puts "password is => " + params[:user][:password]
     #puts "passwordC is => " + params[:user][:password_confirmation]
     #user.save!
-    super
+    
 
     
    end

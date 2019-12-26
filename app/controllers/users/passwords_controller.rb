@@ -1,25 +1,31 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
-  # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  
+  # GET /resource/password/new5
+   def new
+      
+     @title = "forgot_password_wrapper"
+     super
+   end
 
   # POST /resource/password
-  # def create
-  #   super
-  # end
+   def create
+    @title = "forgot_password_wrapper"
+     super
+   end
 
   # GET /resource/password/edit?reset_password_token=abcdef
-  # def edit
-  #   super
-  # end
+   def edit
+    @title = "forgot_password_wrapper"
+     super
+   end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+   def update
+    @title = "forgot_password_wrapper"
+     super
+   end
 
   # protected
 

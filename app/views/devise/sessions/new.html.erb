@@ -1,14 +1,14 @@
-<div class="devise_headline">
 
-  <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
-  <span class="header_for_devise"> Login</span>
-</div>
 
 <div class="devise_login">
 
   <%= simple_form_for(resource, as: resource_name, html: {id: "login_user"}, url: session_path(resource_name)) do |f| %>
     
+  <div class="form_title">
 
+    <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
+    <span> Login</span>
+  </div>
 
    
     

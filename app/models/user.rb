@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates_presence_of     :last_name # optional
   #validates_presence_of     :password # optional
   validates_presence_of     :last_name # optional
+  #validates_presence_of     :avatar # optional
 
   validates :uid, uniqueness: true
   validates :email, uniqueness: true, format: /\A[^@,\s]+@[^@,\s]+\.[^@,\s]+\z/
