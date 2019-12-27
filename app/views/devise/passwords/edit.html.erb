@@ -1,25 +1,44 @@
-<h2>Change your password</h2>
+<div class="forgot_password">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+  
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, id: "change_password" }) do |f| %>
+    
+    <div class="form_title">
+
+      <%= image_tag("cwa3122.webp", height: '40', width: '40') %>
+      <span>Change your password</span>
+
+    </div>
+
+    
+    <%= f.hidden_field :reset_password_token %>
+
+    
+    <label class="edit_label change_password_label" for="change_password_input">create password</label> 
+    <%= f.password_field :password, label: false, id: "change_password_input" %>
+    <% if resource.errors[:password].any? %>
+    <span class="change_password_error"><%= resource.errors[:password][0] %> </span>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+    
+    
+    <label class="edit_label change_password_confirm_label" for="change_password_confirm">confirm password</label> 
+    <%= f.password_field :password_confirmation, label: false, id: "change_password_confirm" %>
+    <% if resource.errors[:password_confirmation].any? %>
+    <span class="change_password_confirm_error"><%= resource.errors[:password_confirmation][0] %> </span>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+    <%= f.submit "Change my password", id: "change_password_button" , class: "btn"%>
 
-<%= render "devise/shared/links" %>
+    <div class ="links">
+      <%= render "devise/shared/links" %>
+    </div>
+    
+  <% end %>
+
+  
+
+</div>
+

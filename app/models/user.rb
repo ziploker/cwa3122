@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates_presence_of     :email # optional
   validates_presence_of     :first_name # optional
   validates_presence_of     :last_name # optional
-  #validates_presence_of     :password # optional
+  validates_presence_of     :password, on: :create
   validates_presence_of     :last_name # optional
   #validates_presence_of     :avatar # optional
 
