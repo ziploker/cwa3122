@@ -39,11 +39,11 @@ header{
 
   	grid-row-gap: 10px;
   	display: grid;
-	grid-template-columns: 1em minmax(222px, 650px) 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) minmax(0, min-content) 1fr ;
+	grid-template-columns: 1em minmax(222px, 666px) 1em;
+	grid-template-rows:  minmax(0px, min-content) minmax(0px, min-content) 1fr ;
 	grid-template-areas:
 
-		"header header header"
+		
 		".      errors ."
 		"  .    video     .  "
 		"  .    chat      .  ";
@@ -61,10 +61,11 @@ header{
 	  	justify-items: center;
 		
 		grid-template-columns: 1em minmax(222px, 1fr) 1em;
-		grid-template-rows: minmax(40px, 50px) minmax(min-content, max-content) 1fr;
+		grid-template-rows:  minmax(0px, min-content) minmax(0px, max-content);
 		grid-template-areas:
 
-			"header header header"
+			
+			".      errors .     "
 			"  .    video     .  ";
 			
 	}
@@ -77,10 +78,10 @@ header{
 	justify-self: center;
 	align-self: center;
 	grid-template-columns: 1em 1fr 1em;
-	grid-template-rows: minmax(40px, 50px) 1fr ;
+	grid-template-rows:  1fr ;
 	grid-template-areas:
 
-		"header header header"
+		
 		"  .    admin    .   "
 }
 
@@ -97,10 +98,10 @@ header{
   	align-items: center;
 	
 	grid-template-columns: 1em minmax(200px, 1fr) 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) minmax(min-content, max-content) minmax(min-content, max-content);
+	grid-template-rows:  minmax(0px, min-content) minmax(min-content, max-content) minmax(min-content, max-content);
 	grid-template-areas:
 
-		"header header header"
+		
 
 		".      errors ."
 		"  .   form   .  "
@@ -115,11 +116,11 @@ header{
 	justify-items: center;
   	//align-items: center;
 	grid-template-columns: 1em minmax(222px, 1fr) 1em;
-	grid-template-rows: minmax(40px, 50px) minmax(0px, min-content);
+	grid-template-rows:  minmax(0px, min-content);
 
 	grid-template-areas:
 
-	"header        header        header"
+	
 	".      errors                    ."
 	"  .        forgot_password     .  ";
 
@@ -139,11 +140,12 @@ header{
 
 	overflow: hidden;
 	height: 0;
-	padding-top: 40%;
+	padding-top: 55%;
 	position: relative;
 
 	
 	width: 100%;
+	max-width: 640px;
 	align-self: center;
 	justify-self: center;
 
@@ -199,23 +201,13 @@ header{
 	height: 100%;
 
 
-	
-
-
-
-
-
-
-
-	
-
-	border: 1px solid #e0e0e0;
+	//border: 1px solid #e0e0e0;
 	
 
 	display: grid;
 
-  	grid-template-columns: minmax(0, 720px);
-	grid-template-rows: 25px minmax(0px, min-content) minmax(min-content, max-content);
+  	grid-template-columns: minmax(0, 1fr);
+	grid-template-rows: 25px minmax(0px, max-content) minmax(min-content, max-content);
 	grid-template-areas:
 
 		" bar  "
@@ -1022,10 +1014,10 @@ a:hover{
 
 		
 		grid-template-columns: 1fr minmax(min-content, 650px) minmax(300px, 420px) 1fr;
-		grid-template-rows: minmax(40px, 50px) minmax(0px, min-content) 10px minmax(0px, min-content) ;
+		grid-template-rows:  minmax(0px, min-content) 10px minmax(0px, min-content) ;
 		grid-template-areas:
 
-			"header header header header"
+			
 			" .      errors  errors   .  "
 			"  .      .       .     .   "
 			"  .    video   chat    .   ";
@@ -1043,10 +1035,10 @@ a:hover{
 	  	justify-items: center;
 		
 		grid-template-columns: 1em 1fr 1em;
-		grid-template-rows: minmax(40px, 50px) minmax(420px, max-content) ;
+		grid-template-rows:  minmax(420px, max-content) ;
 		grid-template-areas:
 
-			"header header header"
+			
 			
 			"  .    video     .  ";
 			
