@@ -1,202 +1,208 @@
 
-<div class="aspect">
-<div class="aspect_inside">
-<section class="video_section">
-	
-	<div class="bar">
-
-
-		<input class="expand_menu_checkbox_overlay" type="checkbox" id="expand_menu_checkbox_overlay" />
-
-		
-		<label class="hamburger_menu_label_overlay" for="expand_menu_checkbox_overlay" >
-			<span class="hamburger_menu_overlay"></span>
+<div class="aspect_off">
+	<div class="aspect_inside_off">
+		<section class="video_section">
 			
-		</label>
+			<div class="bar">
 
 
-		<input class="expand_menu_checkbox_overlay_clone" type="checkbox" id="expand_menu_checkbox_overlay_clone" />
+				<input class="expand_menu_checkbox_overlay" type="checkbox" id="expand_menu_checkbox_overlay" />
 
-		<ul class="menu_overlay">
-
-
-
-		<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
-
-			<li>
-				<a href="/general/deleteSessionsV2" class="btnV2">Reset</a>
+				
+				<label class="hamburger_menu_label_overlay" for="expand_menu_checkbox_overlay" >
+					<span class="hamburger_menu_overlay"></span>
 					
-			</li>
-			
+				</label>
 
-		<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 
-			
-			<li>
-				<a href="#" class="publisherStart btnV2">Start Publishing</a>
-			</li>
-			
-			
-		<% elsif user_signed_in? %>
+				<input class="expand_menu_checkbox_overlay_clone" type="checkbox" id="expand_menu_checkbox_overlay_clone" />
 
-			<li>
-				<a href="/" class="try2Connect btnV2">Connect</a>
-			</li>
-			
-			
-		<%end%>
-
-		<li>
-				
-			<a href="#" class="toggle_chat btnV2">toggle chat</a>
-		</li>
-
-		
-	</ul>
+				<ul class="menu_overlay">
 
 
 
-	</div>
+				<% if @showDeleteSessionInsteadOfStartPublishing == "true" && user_signed_in? && @isAdmin == "true"%>
 
-	<div id="test_pattern">
-		<div class="bar1"></div>
-		<div class="bar2"></div>
-		<div class="bar3"></div>
-		<div class="bar4"></div>
-		<div class="bar5"></div>
-		<div class="bar6"></div>
-		<div class="bar7"></div>
-		<div class="bar8"></div>
-		<div class="bar9"></div>
-		<div class="bar10"></div>
-		<div class="bar11"></div>
-		<div class="bar12"></div>
-		<div class="bar13"></div>
-		<div class="bar14"></div>
-		<div class="bar15">
-			
-
-
-			<div class="bar16"></div>
-			<div class="bar17"></div>
-			<div class="bar18"></div>
-
-			<div class="bar19"></div>
-			<div class="bar20"></div>
-			<div class="bar21"></div>
-			<div class="bar22"></div>
-			<div class="bar23"></div>
-		</div>
-
-	</div>
-	
-	<div id="videos">
-
-		
-        <div id="subscriber"></div>
-        
-    </div>
-
-    <div id="overlay">
-
-    	
-
-	</div>
-
-
-    <div id="talk">
-
-    	<div class="my_avatar_overlay chat_img">
-
-			<% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
-				
-				<%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
-	        
-
-			<% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
-
-
-				<%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
-
-			<% else %>
-
-				<%= image_tag("/assets/man100px.png") %>
-
-
-			<% end %>
-
-
-
-		</div>
-			
-			
-			<% if user_signed_in? %>
-			<div class="my_name_overlay"> <%=current_user.first_name %> <%=current_user.last_name%></div>
-
-		<% elsif @first != nil %>
-			
-
-			<div class="my_name_overlay"> <%=@first%> <%=@last%></div>
-
-		<% else %>
-
-
-			<div class="my_name_overlay"> ...log in</div>
-
-			
-		<% end %>
-			
-			
-
-			
-			<div class="my_message_overlay">
-				<%= text_field_tag 'message_overlay', nil, placeholder: 'Say something...', class: 'line-animation' %>
-
-				<div class="line"></div>
-				
-			</div>
-
-			
-			
-				
+					<li>
+						<a href="/general/deleteSessionsV2" class="btnV2">Reset</a>
+							
+					</li>
 					
-			
-			
-			
 
-			<div class="stats_overlay">
+				<% elsif @showDeleteSessionInsteadOfStartPublishing == "false"  && user_signed_in? && @isAdmin == "true"%>
 
-
-				
-				<span>
-					<em class="jQTAreaCount"></em> / <em class="jQTAreaValue"></em>
-				</span>
+					
+					<li>
+						<a href="#" class="publisherStart btnV2">Start Publishing</a>
+					</li>
 					
 					
-				  <!--<p class="jQTAreaExt"></p> -->
+				<% elsif user_signed_in? %>
+
+					<li>
+						<a href="/" class="try2Connect btnV2">Connect</a>
+					</li>
+					
+					
+				<%end%>
+
+				<li>
+						
+					<a href="#" class="toggle_chat btnV2">toggle chat</a>
+				</li>
+
 				
+			</ul>
+
 
 
 			</div>
 
 
-			<div class="send_button_overlay">
+			<div class="overlay_aspect_on">
+				<div class="overlay_aspect_inside_on">
+
+					<div id="test_pattern">
+						<div class="bar1"></div>
+						<div class="bar2"></div>
+						<div class="bar3"></div>
+						<div class="bar4"></div>
+						<div class="bar5"></div>
+						<div class="bar6"></div>
+						<div class="bar7"></div>
+						<div class="bar8"></div>
+						<div class="bar9"></div>
+						<div class="bar10"></div>
+						<div class="bar11"></div>
+						<div class="bar12"></div>
+						<div class="bar13"></div>
+						<div class="bar14"></div>
+						<div class="bar15">
+							
 
 
-				<%= image_submit_tag("send.png", alt: 'Send') %>
+							<div class="bar16"></div>
+							<div class="bar17"></div>
+							<div class="bar18"></div>
+
+							<div class="bar19"></div>
+							<div class="bar20"></div>
+							<div class="bar21"></div>
+							<div class="bar22"></div>
+							<div class="bar23"></div>
+						</div>
+
+					</div>
+					
+					<div id="videos">
+
+						
+				        <div id="subscriber"></div>
+				        
+				    </div>
+
+				    <div id="overlay">
+
+				    	
+
+					</div>
+				</div>
 			</div>
 
 
+		    <div id="talk">
 
-	</div>
+		    	<div class="my_avatar_overlay chat_img">
+
+					<% if user_signed_in? && current_user.avatar.attached? && current_user.avatar.variable? %>
+						
+						<%= image_tag current_user.avatar.variant(resize_to_limit: [32, 32]) %>
+			        
+
+					<% elsif user_signed_in? && current_user.avatar.attached? && current_user.avatar.previewable? %>
+
+
+						<%= image_tag current_user.avatar.preview(resize_to_limit: [32, 32]) %>
+
+					<% else %>
+
+						<%= image_tag("/assets/man100px.png") %>
+
+
+					<% end %>
+
+
+
+				</div>
+					
+					
+					<% if user_signed_in? %>
+					<div class="my_name_overlay"> <%=current_user.first_name %> <%=current_user.last_name%></div>
+
+				<% elsif @first != nil %>
+					
+
+					<div class="my_name_overlay"> <%=@first%> <%=@last%></div>
+
+				<% else %>
+
+
+					<div class="my_name_overlay"> ...log in</div>
+
+					
+				<% end %>
+					
+					
+
+					
+					<div class="my_message_overlay">
+						<%= text_field_tag 'message_overlay', nil, placeholder: 'Say something...', class: 'line-animation' %>
+
+						<div class="line"></div>
+						
+					</div>
+
+					
+					
+						
+							
+					
+					
+					
+
+					<div class="stats_overlay">
+
+
+						
+						<span>
+							<em class="jQTAreaCount"></em> / <em class="jQTAreaValue"></em>
+						</span>
+							
+							
+						  <!--<p class="jQTAreaExt"></p> -->
+						
+
+
+					</div>
+
+
+					<div class="send_button_overlay">
+
+
+						<%= image_submit_tag("send.png", alt: 'Send') %>
+					</div>
+
+
+
+			</div>
 
 
     
     
 
 
-</section>
-</div>
+		</section>
+	</div>
 
 </div>	
 <!--######################### ENTIRE CHAT SECTION ########-->

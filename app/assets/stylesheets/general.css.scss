@@ -30,21 +30,40 @@ header{
 
 
 ////////////////////// PAGE WRAPPERS and overlays /////////////////////////////
+.universal_wrapper{
+
+	display: grid;
+
+	justify-items: center;
+
+	min-height: 100vh;
+	grid-template-columns: minmax(0px, 1fr);
+	grid-template-areas: 
+
+	      "universe";
+}
+
+
+
 
 .default_wrapper{
+
+
+
+
+	grid-area: universe;
 	
   	min-height: 100vh;
-  	justify-content: center;
-  	//align-content:  center;
-
+  	
   	grid-row-gap: 10px;
+  	
   	display: grid;
-	grid-template-columns: 1em minmax(222px, 666px) 1em;
-	grid-template-rows:  minmax(0px, min-content) minmax(0px, min-content) 1fr ;
+	grid-template-columns: 1em minmax(0px, 666px) 1em;
+	grid-template-rows:  minmax(0px, min-content) minmax(0px, min-content) minmax(0px, min-content)  ;
 	grid-template-areas:
 
 		
-		".      errors ."
+		".      errors    .  "
 		"  .    video     .  "
 		"  .    chat      .  ";
 		
@@ -54,29 +73,35 @@ header{
 
 .default_wrapper_overlay{
 	
+		grid-area: universe;
+
 	  	min-height: 100vh;
-	  	justify-items: center;
+	  	
 	  	display: grid;
 
-	  	justify-items: center;
+	  	
 		
-		grid-template-columns: 1em minmax(222px, 1fr) 1em;
-		grid-template-rows:  minmax(0px, min-content) minmax(0px, max-content);
+		grid-template-columns: 1em minmax(0px, 666px) 1em;
+		grid-template-rows:  minmax(0px, min-content) 10px minmax(0px, max-content);
 		grid-template-areas:
 
 			
 			".      errors .     "
+			"  .      .       .      "
 			"  .    video     .  ";
 			
 	}
 
 .admin_wrapper{
+
+	grid-area: universe;
 	
   	min-height: 100vh;
+
+  	justify-self: center;
+  	align-self: center;
   	
   	display: grid;
-	justify-self: center;
-	align-self: center;
 	grid-template-columns: 1em 1fr 1em;
 	grid-template-rows:  1fr ;
 	grid-template-areas:
@@ -87,16 +112,18 @@ header{
 
 
 .devise_wrapper{
+
+	grid-area: universe;
 	
   	min-height: 100vh;
   	width: 100%;
   	margin: 0;
   	padding: 0;
-  	display: grid;
-
+  	
   	justify-items: center;
   	align-items: center;
 	
+	display: grid;
 	grid-template-columns: 1em minmax(200px, 1fr) 1em;
 	grid-template-rows:  minmax(0px, min-content) minmax(min-content, max-content) minmax(min-content, max-content);
 	grid-template-areas:
@@ -110,11 +137,13 @@ header{
 
 .forgot_password_wrapper, .email_confirmation_wrapper{
 
+	grid-area: universe;
+
 	min-height: 100vh;
 	display: grid;
 
 	justify-items: center;
-  	//align-items: center;
+  	
 	grid-template-columns: 1em minmax(222px, 1fr) 1em;
 	grid-template-rows:  minmax(0px, min-content);
 
@@ -133,7 +162,7 @@ header{
 
 
 ////////////////   VIDEO SECTiON   /////////////////////
-.aspect{
+.aspect_on{
 	grid-area: video;
 	
 
@@ -145,17 +174,108 @@ header{
 
 	
 	width: 100%;
-	max-width: 640px;
+	max-width: 666px;
 	align-self: center;
 	justify-self: center;
 
 }
 
-.aspect_inside{
+.aspect_inside_on{
 	position: absolute;
 	top: 0;
 	left: 0;
 
+	
+	height: 100%;
+	width: 100%;
+
+
+	
+
+}
+
+.aspect_off{
+	grid-area: video;
+	
+
+
+	overflow: hidden;
+	
+
+	
+	width: 100%;
+	max-width: 666px;
+	
+	//align-self: center;
+	justify-self: center;
+
+
+}
+
+.aspect_inside_off{
+	
+	
+	height: 100%;
+	width: 100%;
+
+
+	
+
+}
+
+.overlay_aspect_on{
+	grid-area: screen;
+	
+
+
+	overflow: hidden;
+	height: 0;
+	padding-top: 55%;
+	position: relative;
+
+	
+	width: 100%;
+	max-width: 666px;
+	align-self: center;
+	justify-self: center;
+
+}
+
+.overlay_aspect_inside_on{
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	
+	height: 100%;
+	width: 100%;
+
+
+	
+
+}
+
+
+.overlay_aspect_off{
+	grid-area: screen;
+	
+
+
+	overflow: hidden;
+	
+
+	
+	width: 100%;
+	max-width: 666px;
+	
+	//align-self: center;
+	justify-self: center;
+
+
+}
+
+.overlay_aspect_inside_off{
+	
 	
 	height: 100%;
 	width: 100%;
@@ -201,6 +321,7 @@ header{
 	height: 100%;
 
 
+
 	//border: 1px solid #e0e0e0;
 	
 
@@ -218,7 +339,7 @@ header{
 
 .bar{
 	
-	//background-color: green;
+	background-color: #fff;
 	grid-area: bar;
 	width: 100%;
 	//overflow: hidden;
@@ -238,7 +359,7 @@ header{
 	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
-	grid-area: screen;
+	//grid-area: screen;
 	z-index: 12345;
 	position: relative;
 
@@ -394,7 +515,7 @@ header{
 
 
 
-	grid-area: screen;
+	//grid-area: screen;
 
 	
 
@@ -468,7 +589,7 @@ header{
 	
 	//height: 59vh;
 
-	grid-area: screen;
+	//grid-area: screen;
 
 
 
@@ -1013,7 +1134,7 @@ a:hover{
 
 
 		
-		grid-template-columns: 1fr minmax(min-content, 650px) minmax(300px, 420px) 1fr;
+		grid-template-columns: 1fr minmax(666px, 666px) minmax(300px, 420px) 1fr;
 		grid-template-rows:  minmax(0px, min-content) 10px minmax(0px, min-content) ;
 		grid-template-areas:
 
@@ -1034,13 +1155,14 @@ a:hover{
 
 	  	justify-items: center;
 		
-		grid-template-columns: 1em 1fr 1em;
-		grid-template-rows:  minmax(420px, max-content) ;
+		grid-template-columns: 1em minmax(666px, 666px) 1em;
+		grid-template-rows:  minmax(0px, min-content) 10px minmax(420px, max-content) ;
 		grid-template-areas:
 
 			
-			
-			"  .    video     .  ";
+			"  .    errors   .       "
+			"  .      .       .      "
+			"  .    video     .      ";
 			
 	}
 
@@ -1113,7 +1235,7 @@ a:hover{
 
 
 
-		//background-color: pink;
+		background-color: #fff;
 		grid-area: bar;
 		width: 100%;
 	}

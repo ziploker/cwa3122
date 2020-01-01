@@ -76,28 +76,28 @@
               
       </header>
     
+      <div class="universal_wrapper">
+        <% if @title == "admin_page" %>
 
-      <% if @title == "admin_page" %>
+          <div id="admin_wrapper" class="admin_wrapper">
 
-        <div id="admin_wrapper" class="admin_wrapper">
+        <% elsif @title == "devise_page" %>
 
-      <% elsif @title == "devise_page" %>
+          <div class="devise_wrapper">
 
-        <div class="devise_wrapper">
+        <% elsif @title == "forgot_password_wrapper" %>
 
-      <% elsif @title == "forgot_password_wrapper" %>
+          <div class="forgot_password_wrapper">
 
-        <div class="forgot_password_wrapper">
+        <% elsif @title == "email_confirmation_wrapper" %>
 
-      <% elsif @title == "email_confirmation_wrapper" %>
+          <div class="email_confirmation_wrapper">
 
-        <div class="email_confirmation_wrapper">
+        <% else %>
 
-      <% else %>
-
-        <div id="default_wrapper" class="default_wrapper">
-        
-      <% end %>
+          <div id="default_wrapper" class="default_wrapper">
+          
+        <% end %>
 
 
 
@@ -108,23 +108,23 @@
 
       
 
-      <div class="errors">
+        <div class="errors">
 
         
-        <% flash.each do |name, msg| %>
-        <div class = 'alert-<%=name%>'>
-          <%= msg %> 
+          <% flash.each do |name, msg| %>
+            <div class = 'alert-<%=name%>'>
+              <%= msg %> 
+            </div>
+          <% end %>
+
+
         </div>
-
-
-      <% end %>
-
-
-      </div>
 
     <%= yield %>
 
     </div>
+  </div>
+
 
   </body>
 </html>
