@@ -59,11 +59,12 @@ header{
   	
   	display: grid;
 	grid-template-columns: 1em minmax(0px, 666px) 1em;
-	grid-template-rows:  minmax(0px, min-content) minmax(0px, min-content) minmax(0px, min-content)  ;
+	grid-template-rows:  minmax(0px, min-content) 10px minmax(0px, min-content) minmax(0px, min-content)  ;
 	grid-template-areas:
 
 		
 		".      errors    .  "
+		".        .        .  "
 		"  .    video     .  "
 		"  .    chat      .  ";
 		
@@ -162,68 +163,9 @@ header{
 
 
 ////////////////   VIDEO SECTiON   /////////////////////
-.aspect_on{
-	grid-area: video;
-	
 
 
-	overflow: hidden;
-	height: 0;
-	padding-top: 55%;
-	position: relative;
-
-	
-	width: 100%;
-	max-width: 666px;
-	align-self: center;
-	justify-self: center;
-
-}
-
-.aspect_inside_on{
-	position: absolute;
-	top: 0;
-	left: 0;
-
-	
-	height: 100%;
-	width: 100%;
-
-
-	
-
-}
-
-.aspect_off{
-	grid-area: video;
-	
-
-
-	overflow: hidden;
-	
-
-	
-	width: 100%;
-	max-width: 666px;
-	
-	//align-self: center;
-	justify-self: center;
-
-
-}
-
-.aspect_inside_off{
-	
-	
-	height: 100%;
-	width: 100%;
-
-
-	
-
-}
-
-.overlay_aspect_on{
+.aspect_ratio_wrapper{
 	grid-area: screen;
 	
 
@@ -241,7 +183,7 @@ header{
 
 }
 
-.overlay_aspect_inside_on{
+.inside_aspect_ratio_wrapper{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -256,38 +198,12 @@ header{
 }
 
 
-.overlay_aspect_off{
-	grid-area: screen;
-	
 
 
-	overflow: hidden;
-	
-
-	
-	width: 100%;
-	max-width: 666px;
-	
-	//align-self: center;
-	justify-self: center;
-
-
-}
-
-.overlay_aspect_inside_off{
-	
-	
-	height: 100%;
-	width: 100%;
-
-
-	
-
-}
 
 .video_section{
 
-	//grid-area: video;
+	grid-area: video;
 	justify-content: center;
 	align-content: center;
 
@@ -302,12 +218,12 @@ header{
 
 	display: grid;
 
-  	grid-template-columns: 1em minmax(0, 1fr) 1em;
+  	grid-template-columns: minmax(0, 1fr);
 	grid-template-rows: minmax(0px, max-content);
 	grid-template-areas:
 
 		
-		" . screen .";
+		" screen ";
 		
 }
 
@@ -319,6 +235,8 @@ header{
 	
 	width: 100%;
 	height: 100%;
+
+	grid-area: video;
 
 
 
@@ -612,16 +530,30 @@ header{
 
 	background-color: #fff;
 	display: grid;
-	grid-template-columns: min-content min-content minmax(100px, 1fr) 1fr min-content;
+	/////grid-template-columns: min-content min-content minmax(100px, 1fr) 1fr min-content;
 	
 
 	//align-content: center;
-	grid-auto-rows: min-content;
+	/////////grid-auto-rows: min-content;
+	//grid-row-gap: .6em;
+	//grid-column-gap: 10px;
+
+	//////grid-template-areas:
+	//////	"my_avatar_oL   my_name_oL   my_message_oL  my_message_oL  my_stats_oL   my_button_oL ";
+
+
+
+	grid-template-columns: min-content min-content 1fr min-content min-content 20px  ;
+	grid-template-rows: min-content 25px min-content;
+	//align-content: center;
+	//grid-auto-rows: min-content;
 	//grid-row-gap: .6em;
 	//grid-column-gap: 10px;
 
 	grid-template-areas:
-		"my_avatar_oL   my_name_oL   my_message_oL  my_message_oL  my_stats_oL   my_button_oL ";
+		"my_avatar_oL   my_name_oL       .           .          .        . "
+		"    .     my_message_oL  my_message_oL  my_message_oL  my_message_oL  . "
+		"    .         .        my_stats_oL    my_stats_oL    my_button_oL  . ";
 
 		
 }
