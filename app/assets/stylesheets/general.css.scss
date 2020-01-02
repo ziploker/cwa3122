@@ -292,6 +292,9 @@ header{
     padding: 40px;
 
     background-image: linear-gradient(to top, #535252e0 30%, #000 96%);
+
+
+	
     
 
 }
@@ -299,11 +302,15 @@ header{
 
 
 #cover_image img{
-	z-index: 665;
+	z-index: -2;
 	display:block;
     margin: 20px auto;
 	width: 100px;
 	height: 100px;
+
+	//background: linear-gradient(#004092, #020202, transparent), url("cwa-logo.png") no-repeat center; 
+	//background-size: cover; 
+	box-shadow: 0px 10px 10px -2px rgba(0,0,0,.4); 
 }
 
 #cover_image h1{
@@ -1307,6 +1314,43 @@ a:hover{
 
 
 	
+}
+
+@media only screen and (max-width: 550px){
+
+	#cover_image img{
+	z-index: -2;
+	display:block;
+    margin: 10px auto;
+	width: 50px;
+	height: 50px;
+
+	//background: linear-gradient(#004092, #020202, transparent), url("cwa-logo.png") no-repeat center; 
+	//background-size: cover; 
+	box-shadow: 0px 10px 10px -2px rgba(0,0,0,.4); 
+}
+
+#cover_image h1{
+	color: white;
+	font-weight: 900;
+	font-size: .9rem;
+	display:block;
+    text-align: center;
+
+	
+}
+
+#cover_image h2{
+	color: white;
+	font-weight: 900;
+	font-size: .7rem;
+	display:block;
+    text-align: center;
+
+	
+}
+
+
 }
 
 
