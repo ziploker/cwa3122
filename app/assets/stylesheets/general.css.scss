@@ -192,10 +192,11 @@ header{
 	height: 100%;
 	width: 100%;
 
-
 	
 
 }
+
+
 
 
 
@@ -234,19 +235,19 @@ header{
 	position: relative;
 	
 	width: 100%;
-	height: 100%;
+	//height: 100%;
 
 	grid-area: video;
 
 
 
-	//border: 1px solid #e0e0e0;
+	border: 1px solid #e0e0e0;
 	
 
 	display: grid;
 
   	grid-template-columns: minmax(0, 1fr);
-	grid-template-rows: 25px minmax(0px, max-content) minmax(min-content, max-content);
+	grid-template-rows: 25px minmax(0px, max-content) minmax(0, min-content);
 	grid-template-areas:
 
 		" bar  "
@@ -271,14 +272,63 @@ header{
 	//height: 20px;
 }
 
+#cover_image{
+
+	
+
+	
+    content: "";
+    //width: 10%;
+    height: auto;
+    position: absolute;
+    //background:rgba(0, 0, 0, .8);
+    z-index: 666; 
+    // Take note of this negative z-index and copare to each article's positive z-index. This helps your content to show up over the overlay.
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    padding: 40px;
+
+    background-image: linear-gradient(to top, #535252e0 30%, #000 96%);
+    
+
+}
+
+
+
+#cover_image img{
+	z-index: 665;
+	display:block;
+    margin: 20px auto;
+	width: 100px;
+	height: 100px;
+}
+
+#cover_image h1{
+	color: white;
+	font-weight: 900;
+	font-size: 1.6rem;
+	display:block;
+    text-align: center;
+
+	
+}
+
+#cover_image h2{
+	color: white;
+	font-weight: 900;
+	font-size: 1.2rem;
+	display:block;
+    text-align: center;
+
+	
+}
 #test_pattern{
-	//height: 360px;
-	background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
-	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
-	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
+	
 	//grid-area: screen;
-	z-index: 12345;
+	//z-index: -1;
 	position: relative;
 
 	width: 100%;
@@ -289,76 +339,91 @@ header{
 
 	grid-template-columns: repeat(7, 1fr);
 	grid-template-rows: repeat(12, 1fr);
+	
 
 }
 
 .bar1{
 	background-color: #CCCCCC;
+	//background-color: rgba(204,204,204,.3);
 	grid-column: 1 / 2;
   	grid-row: 1 / 9;
 }
 .bar2{
 	background-color: #FFFF01;
+	//background-color: rgba(255,255,1,.3);
 	grid-column: 2 / 3;
   	grid-row: 1 / 9;
 }
 .bar3{
 	background-color: #01FFFF;
+	//background-color: rgba(1,255,255,.3);
 	grid-column: 3 / 4;
   	grid-row: 1 / 9;
 }
 .bar4{
 	background-color: #01FF01;
+	//background-color: rgba(1,255,1,.3);
 	grid-column: 4 / 5;
   	grid-row: 1 / 9;
 }
 .bar5{
 	background-color: #FF3FFC;
+	//background-color: rgba(255,63,252,.3);
 	grid-column: 5 / 6;
   	grid-row: 1 / 9;
 }
 .bar6{
 	background-color: #FD241F;
-	grid-column: 6 / 7;
+	//background-color: rgba(253,36,31,.3);
+	//grid-column: 6 / 7;
   	grid-row: 1 / 9;
 }
 .bar7{
 	background-color: #0000FE;
+	//background-color: rgba(0,0,254,.3);
 	grid-column: 7 / 8;
   	grid-row: 1 / 9;
 }
 .bar8{
 	background-color: #0000FE;
+	//background-color: rgba(0,0,254,.3);
 	grid-column: 1 / 2;
   	grid-row: 9 / 10;
 }
 .bar9{
-	background-color: #000000;
+	//background-color: #000000;
+	//background-color: rgba(0,0,0,.3);
 	grid-column: 2 / 3;
   	grid-row: 9 / 10;
 }
 .bar10{
 	background-color: #FF3FFC;
+	//background-color: rgba(255,63,252,.3);
 	grid-column: 3 / 4;
   	grid-row: 9 / 10;
 }
 .bar11{
-	background-color: #000000;
+	ackground-color: #000000;
+	//background-color: rgba(0,0,0,.3);
 	grid-column: 4 / 5;
   	grid-row: 9 / 10;
 }
 .bar12{
 	background-color: #01FFFF;
+	//background-color: rgba(1,255,255,.3);
 	grid-column: 5 / 6;
   	grid-row: 9 / 10;
 }
 .bar13{
 	background-color: #000000;
+	//background-color: rgba(0,0,0,.3);
 	grid-column: 6 / 7;
   	grid-row: 9 / 10;
 }
 .bar14{
 	background-color: #CCCCCC;
+	//background-color: rgba(204,204,204,.3);
 	grid-column: 7 / 8;
   	grid-row: 9 / 10;
 }
@@ -377,43 +442,51 @@ header{
 }
 .bar16{
 	background-color: #063E59;
+	//background-color: rgba(6,62,89,.5);
 	grid-column: 1 / 2;
   	grid-row: 1 / 2;
-  	z-index: 12346;
+  	//z-index: 12346;
 }
 
 .bar17{
 	background-color: #FFFFFF;
+	//background-color: rgba(255,255,255,.3);
 	grid-column: 2 / 3;
   	grid-row: 1 / 2;
 }
 .bar18{
 	background-color: #2D4698;
+	//background-color: rgba(45,70,152,.3);
 	grid-column: 3 / 4;
   	grid-row: 1 / 2;
 }
 .bar19{
 	background-color: #5C5C5C;
+	//background-color: rgba(92,92,92,.3);
 	grid-column: 4 / 5;
   	grid-row: 1 / 2;
 }
 .bar20{
 	background-color: #3F3F3F;
+	//background-color: rgba(63,63,63,.3);
 	grid-column: 5 / 6;
   	grid-row: 1 / 2;
 }
 .bar21{
 	background-color: #6C6C6C;
+	//background-color: rgba(108,108,108,.3);
 	grid-column: 6 / 7;
   	grid-row: 1 / 2;
 }
 .bar22{
 	background-color: #979797;
+	//background-color: rgba(151,151,151,.3);
 	grid-column: 7 / 8;
   	grid-row: 1 / 2;
 }
 .bar23{
 	background-color: #000000;
+	//background-color: rgba(0,0,0,.3);
 	grid-column: 8 / 9;
   	grid-row: 1 / 2;
 }
@@ -426,7 +499,8 @@ header{
 	//height: 360px;
 
 	position: relative;
-
+	width: 100%;
+	height: 100%;
 
 
 
@@ -479,7 +553,7 @@ header{
 	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
-	z-index: 420;
+	//z-index: 420;
 	
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none; 
@@ -1160,7 +1234,11 @@ a:hover{
 		
 		" . screen .";
 		
-}
+	}
+
+	//.video_section_overlay{
+	//	border: 1px solid #e0e0e0;
+	//}
 
 
 	.bar{
@@ -1327,7 +1405,7 @@ a:hover{
 	
 	width: 200px;
 	
-	z-index: 22292;
+	//z-index: 22292;
 	
 	max-height: 0;
 	transition: max-height .2s ease-out;
@@ -1347,7 +1425,7 @@ a:hover{
 	
 	width: 200px;
 	//grid-area: chatArea;
-	z-index: 9992222;
+	z-index: 5;
 	//justify-self: end;
 	//padding-top: -60px;
 	max-height: 0;

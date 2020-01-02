@@ -9,6 +9,11 @@ class GeneralController < ApplicationController
 
 	def index
 
+		date = Date.today.beginning_of_month
+		date += (4 - date.wday) % 7
+
+		@next_meeting = date.strftime("%B %d, %Y")
+
 		@showDeleteSessionInsteadOfStartPublishing = "false"
 
 		#set default flag, used in tokbox.js to trigger initalSession() if flag = true.
