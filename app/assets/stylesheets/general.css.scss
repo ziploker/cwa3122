@@ -4,6 +4,9 @@
 
 /////////////////    htmL - body - header - resets etc.. ////////
 
+$color-accent     : #d21e1e;
+$animate: all 0.1s ease-in-out;
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
@@ -282,7 +285,7 @@ header{
     height: auto;
     position: absolute;
     //background:rgba(0, 0, 0, .8);
-    z-index: 666; 
+    z-index: 1; 
     // Take note of this negative z-index and copare to each article's positive z-index. This helps your content to show up over the overlay.
     top: 0;
     right: 0;
@@ -302,7 +305,7 @@ header{
 
 
 #cover_image img{
-	z-index: -2;
+	//z-index: -2;
 	display:block;
     margin: 20px auto;
 	width: 100px;
@@ -315,10 +318,12 @@ header{
 
 #cover_image h1{
 	color: white;
-	font-weight: 900;
+	font-weight: 800;
 	font-size: 1.6rem;
 	display:block;
     text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
 
 	
 }
@@ -329,6 +334,8 @@ header{
 	font-size: 1.2rem;
 	display:block;
     text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1.1px;
 
 	
 }
@@ -825,6 +832,23 @@ header{
  	 white-space: nowrap;
  	 padding-left: 8px;
  	 padding-left: 20px;
+ 	 text-transform: uppercase;
+ 	 font-weight: 600;
+ 	 font-size: .75rem;
+
+}
+
+.chat_overlay{
+
+	display: inline-block;
+	width: min-content;
+	line-height: 25px;
+	 white-space: nowrap;
+	 padding-left: 8px;
+	 
+	 text-transform: uppercase;
+	 font-weight: 600;
+	 font-size: .6rem;
 
 }
 
@@ -1102,12 +1126,12 @@ input{
 	//float: right;
 
 	line-height: 18px;
- 	 white-space: nowrap;
+ 	white-space: nowrap;
+ 	color: rgb(63, 63, 63);
 
-
- 	color:#444;
-    border:1px solid #CCC;
-    background:#DDD;
+ 	background: rgba(#C8C0C0, .9);
+    
+    //background: rgba(black, .9);
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
     cursor:pointer;
     //vertical-align:middle;
@@ -1122,11 +1146,35 @@ input{
 
 }
 
+.btnV2:hover{
+
+	background: rgba(#e0c9c9, .9);
+	color: rgb(38, 38, 38);
+
+}
+
+a{
+	text-align: center;
+	font-weight: 800;
+	text-transform: uppercase;
+	font-size: .8rem;
+
+
+}
+
 a:hover{
 
-	color:red;
-    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+	
+    //box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+
+    
 }
+
+
+
+
+
+
 
 
 
@@ -1319,7 +1367,7 @@ a:hover{
 @media only screen and (max-width: 550px){
 
 	#cover_image img{
-	z-index: -2;
+	//z-index: -2;
 	display:block;
     margin: 10px auto;
 	width: 50px;
@@ -1467,15 +1515,17 @@ a:hover{
 	list-style: none;
 	overflow: hidden;
 	
-	width: 200px;
+	width: 150px;
 	//grid-area: chatArea;
-	z-index: 5;
+	z-index: 6;
 	//justify-self: end;
 	//padding-top: -60px;
 	max-height: 0;
 	transition: max-height .2s ease-out;
 	float: right;
 	position: relative;
+
+
 
 
 }
@@ -1498,7 +1548,7 @@ a:hover{
 
 .hamburger_menu{
 
-	background-color: red;
+	background-color: rgba(8, 7, 7, 1);
 	display: inline-block;
 	height: 2px;
 	width: 18px;
@@ -1509,7 +1559,7 @@ a:hover{
 }
 
 .hamburger_menu:before{
-	background-color: red;
+	background-color: rgba(8, 7, 7, 1);
 	content: "";
 	display: block;
 	height: 100%;
@@ -1520,7 +1570,7 @@ a:hover{
 }
 
 .hamburger_menu:after{
-	background-color: red;
+	background-color: rgba(8, 7, 7, 1);
 	content: "";
 	display: block;
 	height: 100%;
@@ -1533,7 +1583,7 @@ a:hover{
 
 .hamburger_menu_overlay{
 
-	background-color: red;
+	background-color: rgba(8, 7, 7, 1);
 	display: inline-block;
 	height: 2px;
 	width: 18px;
@@ -1544,7 +1594,7 @@ a:hover{
 }
 
 .hamburger_menu_overlay:before{
-	background-color: red;
+	background-color: rgba(8, 7, 7, 1);
 	content: "";
 	display: block;
 	height: 100%;
@@ -1555,7 +1605,7 @@ a:hover{
 }
 
 .hamburger_menu_overlay:after{
-	background-color: red;
+	background-color: rgba(8, 7, 7, 1);
 	content: "";
 	display: block;
 	height: 100%;
