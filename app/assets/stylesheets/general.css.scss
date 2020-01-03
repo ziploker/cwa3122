@@ -343,10 +343,15 @@ header{
 	
 	//grid-area: screen;
 	//z-index: -1;
-	position: relative;
+	//position: relative;
 
 	width: 100%;
 	height: 100%;
+
+	position: absolute;
+	//top: 0;
+	//left: 0;
+
 
 
 	display: grid;
@@ -512,10 +517,12 @@ header{
     
 	//height: 360px;
 
-	position: relative;
+	//position: relative;
 	width: 100%;
 	height: 100%;
 
+
+	position: absolute;
 
 
 
@@ -567,13 +574,14 @@ header{
 	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
-	//z-index: 420;
-	
+	z-index: 5;
+	position: relative;
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none; 
 	scrollbar-width: none;
 
-	max-height: 100%;
+	//max-height: 100%;
+	height: 100%;
 	
 
 	overflow-y: scroll;
@@ -1515,7 +1523,7 @@ a:hover{
 	list-style: none;
 	overflow: hidden;
 	
-	width: 150px;
+	width: 171.5px;
 	//grid-area: chatArea;
 	z-index: 6;
 	//justify-self: end;

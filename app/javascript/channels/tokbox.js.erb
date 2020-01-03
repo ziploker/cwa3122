@@ -52,6 +52,7 @@ $(document).ready(function (){
 
 			// Connect to the session
 			session.connect(token, function(error) {
+				
 				// If the connection is successful, publish to the session
 				if (error) {
 					//handleError(error);
@@ -63,6 +64,10 @@ $(document).ready(function (){
 				    puts = "some other error happened";
 
 				} else {
+					
+					$("#cover_image").detach();
+					$("#test_pattern").detach();
+
 					session.publish(publisher, handleError);
 					console.log("admin connected to session");
 				}
