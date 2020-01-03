@@ -68,6 +68,12 @@ $(document).ready(function (){
 					$("#cover_image").detach();
 					$("#test_pattern").detach();
 
+					$('.expand_menu_checkbox_overlay').prop('checked', false);
+					$('.expand_menu_checkbox_overlay_clone').prop('checked', false);
+
+					$('.expand_menu_checkbox').prop('checked', false);
+					$('.hamburger_to_x_checkbox').prop('checked', false);
+
 					session.publish(publisher, handleError);
 					console.log("admin connected to session");
 				}
