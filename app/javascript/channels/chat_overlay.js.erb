@@ -73,4 +73,38 @@ $(document).ready(function (){
 	});
 
 
+
+
+	/////////////////////whos online button /////////////////////
+
+	$('.whosOnlineBtn').click(function(){
+
+
+		$('.expand_menu_checkbox_overlay').prop('checked', false);
+		$('.expand_menu_checkbox_overlay_clone').prop('checked', false);
+
+		$('.expand_menu_checkbox').prop('checked', false);
+		$('.hamburger_to_x_checkbox').prop('checked', false);
+
+
+		$('.whos_online').css('z-index', '1');
+		$('.Chat').text("Online participants");
+		$('.hamburger_menu_label').hide();
+		$('.back_btn').show();
+	
+
+	});
+
+
+	$('.back_btn').click(function(){
+
+		$('.whos_online').css('z-index', '-1');
+		$('.Chat').text("Chat Window");
+		$('.back_btn').hide();
+		$('.hamburger_menu_label').show();
+
+
+	});
+
+
 });

@@ -9,10 +9,33 @@ class GeneralController < ApplicationController
 
 	def index
 
+		#calculate the first thursday of the month
 		date = Date.today.beginning_of_month
 		date += (4 - date.wday) % 7
 
-		@next_meeting = date.strftime("%B %d, %Y")
+
+
+		#calculate the first thursday of next month
+		next_month_date = Date.today.beginning_of_month.next_month
+		next_month_date += (4 - next_month_date.wday) % 7
+
+		
+
+		#calculate the meeting date to see if it passed
+		@meeting = date
+		@today = Date.today
+
+
+		if @today > @meeting
+			
+			@next_meeting = next_month_date.strftime("%B %d, %Y")
+		
+		elsif @today < @meeting
+			
+			@next_meeting = date.strftime("%B %d, %Y")
+		else
+			@next_meeting = "...please stand by"
+		end
 
 		@showDeleteSessionInsteadOfStartPublishing = "false"
 
@@ -97,7 +120,8 @@ class GeneralController < ApplicationController
 
 				if @numberOfTimesIpIsInIpDb.size == 0
 
-					@token = opentok.generate_token @session_id, data: @ipAddress
+					
+					@token = opentok.generate_token @session_id, data: @first+" "+@last+"@"+@ipAddress 
 					
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				

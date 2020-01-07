@@ -83,7 +83,21 @@ $(document).ready(function (){
 			
 			//forign user connects to the session
 			session.on("connectionCreated", function(event){
-				console.log(event);
+				console.log("THIS IS IT" + event.connection.data);
+
+				
+				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
+				alert (un);
+
+				
+			 	$('.whos_online ul').append('<li class="'+un+'"><span class="usernames">' +un+ '</span></li>');
+				$('.whos_online').scrollTop(  $('.whos_online')[0].scrollHeight   );
+
+
+
+      			$('#chat_window').append('<div class="chat_img"></div><div class="chat_name"> ** '+un+'</div><div class="chat_msg">has joined the room **</div>');
+
+
 			});
 
 			
