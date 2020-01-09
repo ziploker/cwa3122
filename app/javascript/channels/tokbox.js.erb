@@ -89,9 +89,7 @@ $(document).ready(function (){
 				
 				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
 
-				if (un == ""){
-					un = first +" "+ last;
-				};
+				
 				
 				//alert (un);
 
@@ -386,7 +384,7 @@ $(document).ready(function (){
 				}else{
 					$('#chat_window').append('<div class="chat_img"><img src= "/assets/man100px-0d38c43b2f0342519970fc323d1af110ec9a5534783c86654d0464d725fae682.png"></div>');
 				}
-				
+
 		  		
 				$('#chat_window').append('<div class="chat_name">' + event.data.first + ' ' + event.data.last + '</div>');
 				$('#chat_window').append('<div class="chat_msg">' +event.data.msg+ '</div>');
