@@ -161,7 +161,7 @@ $(document).ready(function (){
 		  		if (event.data.url != ""){
 		  			$('#chat_window').append('<div class="chat_img"><img src= ' + event.data.url + '></div>');
 				}else{
-					$('#chat_window').append('<div class="chat_img"><img src= "/assets/man100px.png"></div>');
+					$('#chat_window').append('<div class="chat_img"><img src= "/public/img/man100px.png"></div>');
 				}
 
 				$('#chat_window').append('<div class="chat_name">' + event.data.first + ' ' + event.data.last + '</div>');
@@ -177,7 +177,7 @@ $(document).ready(function (){
 				if (event.data.url != ""){
 		  			$('#overlay').append('<div class="chat_img_overlay"><img src= ' + event.data.url + '></div>');
 				}else{
-					$('#overlay').append('<div class="chat_img_overlay"><img src= "/assets/man100px.png"></div>');
+					$('#overlay').append('<div class="chat_img_overlay"><img src= "/public/img/man100px.png"></div>');
 				}
 				$('#overlay').append('<div class="chat_name_overlay">' + event.data.first + ' ' + event.data.last + '</div>');
 				$('#overlay').append('<div class="chat_msg_overlay">' +event.data.msg+ '</div>');
@@ -300,6 +300,8 @@ $(document).ready(function (){
 				} else {
 					//session.publish(publisher, handleError);
 					console.log("connected to session");
+					$("#cover_image").detach();
+					$("#test_pattern").detach();
 				}
 			});
 
@@ -382,7 +384,7 @@ $(document).ready(function (){
 		  		if (event.data.url != ""){
 		  			$('#chat_window').append('<div class="chat_img"><img src= ' + event.data.url + '></div>');
 				}else{
-					$('#chat_window').append('<div class="chat_img"><img src= "/assets/man100px.png"></div>');
+					$('#chat_window').append('<div class="chat_img"><img src= "/public/img/man100px.png"></div>');
 				}
 		  		
 				$('#chat_window').append('<div class="chat_name">' + event.data.first + ' ' + event.data.last + '</div>');
@@ -396,7 +398,7 @@ $(document).ready(function (){
 				if (event.data.url != ""){
 		  			$('#overlay').append('<div class="chat_img_overlay"><img src= ' + event.data.url + '></div>');
 				}else{
-					$('#overlay').append('<div class="chat_img_overlay"><img src= "/assets/man100px.png"></div>');
+					$('#overlay').append('<div class="chat_img_overlay"><img src= "/public/img/man100px.png"></div>');
 				}
 
 
