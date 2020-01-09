@@ -38,6 +38,8 @@ class GeneralController < ApplicationController
 
 		@showDeleteSessionInsteadOfStartPublishing = "false"
 
+		@sessionActive = "false"
+
 		#set default flag, used in tokbox.js to trigger initalSession() if flag = true.
 		@goodToGo = "false"
 		puts "initial good2go is "+@goodToGo
@@ -79,7 +81,7 @@ class GeneralController < ApplicationController
 
 			@isAdmin = "true"
 			@goodToGo = "true"
-			puts "if "+@goodToGo
+			
 
 	    	
 	    	
@@ -102,7 +104,7 @@ class GeneralController < ApplicationController
 
 		    	puts "***********Admin logged in, no sessions existed so created new session and save to db"
 				
-
+		    	@sessionActive = "true"
 
 
 				#3#temporarily, ALWAYS create token
@@ -144,6 +146,9 @@ class GeneralController < ApplicationController
 
 		    	puts "----------@allSessions.length > 0, shows on, Duplicate tab maybe??"
 		    	@showDeleteSessionInsteadOfStartPublishing = "true"
+		    	@sessionActive = "true"
+		    	
+
 
 	    	end
 

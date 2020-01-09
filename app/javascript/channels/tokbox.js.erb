@@ -75,6 +75,12 @@ $(document).ready(function (){
 					$('.hamburger_to_x_checkbox').prop('checked', false);
 
 					session.publish(publisher, handleError);
+
+
+					$('.multiple').removeClass('publisherStart');
+			
+					$('.multiple').attr("href", "/general/deleteSessionsV2");
+					$('.multiple').text("Stop publishing");
 					console.log("admin connected to session");
 				}
 			});
@@ -490,11 +496,17 @@ $(document).ready(function (){
 			console.log("publisher start starting  true");
 			initializeSession();
 			goodToGo = "false";
+
+			
 		}else{
 			console.log("goodToGo was false");
 
 		}
+
+
 	});
+
+	
 
 
 	
