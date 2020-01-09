@@ -1,10 +1,10 @@
 class GeneralController < ApplicationController
 	require 'opentok'
 	skip_before_action :verify_authenticity_token
-	#before_filter :authenticate_user!
+	#before_filter :authenticate_user!, except: [:index]
 
 	
-
+	puts "stoooop"
 
 
 	def index
@@ -41,6 +41,7 @@ class GeneralController < ApplicationController
 
 		#set default flag, used in tokbox.js to trigger initalSession() if flag = true.
 		@goodToGo = "false"
+		puts "initial good2go is "+@goodToGo
 
 		
 		#used at the end of tokbox.js, if false then start initalSession() automatically when user signes in
@@ -59,10 +60,10 @@ class GeneralController < ApplicationController
     		@first = current_user.first_name
     		@last = current_user.last_name
 
-		else
+		#else
 
-			@first = "test user"
-			@last = rand(2000)
+		#	@first = "test user"
+		#	@last = rand(2000)
 
 		end
 	    
@@ -73,12 +74,13 @@ class GeneralController < ApplicationController
 
 
 	    #check if logged in, and if admin status is true
-		if user_signed_in? && current_user.admin
+		if current_user != nil && current_user.admin
 
 			puts "------------Admin user signed in"
 
 			@isAdmin = "true"
 			@goodToGo = "true"
+			puts "if "+@goodToGo
 
 	    	
 	    	
@@ -148,11 +150,20 @@ class GeneralController < ApplicationController
 
 	  	
 	  	#check if user logged in
-	  	elsif user_signed_in? && current_user.admin == false
+	  	elsif current_user != nil && current_user.admin == false
 
 	  		puts "----------non-Admin user logged in."
 
+	  		if current_user == nil
+	  			puts "current_user was nil"
+  			elsif current_user != nil
+  				puts "current_user was not nil"
+			end
+  				
+	  		#puts current_user.admin.to_s
+
 	  		@goodToGo = "true"
+	  		puts "else "+@goodToGo
 
 
 	  		if @allSessions.size == 0
@@ -188,7 +199,8 @@ class GeneralController < ApplicationController
 
 					
 
-					@token = opentok.generate_token @existing_session_id, data: @ipAddress
+					@token = opentok.generate_token @existing_session_id, data: @first+" "+@last+"@"+@ipAddress
+					
 
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				#newIpToSaveInDb.save
@@ -204,25 +216,26 @@ class GeneralController < ApplicationController
 
     	
 
-    	else #temporary option for demo 
+    	#else #temporary option for demo 
 
-    		puts "----------non-Admin GUEST user logged in."
+    	#	puts "----------non-Admin GUEST user logged in."
 
-	  		@goodToGo = "true"
+	  	#	@goodToGo = "true"
+	  	#    puts "wtf "+@goodToGo
 
 
-	  		if @allSessions.size == 0
+	  	#	if @allSessions.size == 0
 
-		    	puts "-----non admin GUEST signed in but no sessions in db, show is off"
+		#    	puts "-----non admin GUEST signed in but no sessions in db, show is off"
 				
-		    else
+		#    else
 
-		    	puts "-----non admin GUEST signed in and session exists in db"
-		    	puts "IP address is = "+ @ipAddress
+		#    	puts "-----non admin GUEST signed in and session exists in db"
+		#    	puts "IP address is = "+ @ipAddress
 
 		    	
 
-		    	@existing_session_id = Session.last.session
+		#    	@existing_session_id = Session.last.session
 
 		    	#temporarily, ALWAYS create token
 				#@token = opentok.generate_token @session_id, data: @ipAddress
@@ -238,28 +251,28 @@ class GeneralController < ApplicationController
 
 
 		    	#create Token
-				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
+		#		@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
 
-				if @numberOfTimesIpIsInIpDb.size == 0
+		#		if @numberOfTimesIpIsInIpDb.size == 0
 
 					
 
-					@token = opentok.generate_token @existing_session_id, data: @ipAddress
+		#			@token = opentok.generate_token @existing_session_id, data: @ipAddress
 
-					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+		#			newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				#newIpToSaveInDb.save
 
-	    			puts "*****************created new token with existing session and saved iP addy to DB"
+	    #			puts "*****************created new token with existing session and saved iP addy to DB"
 
 
-  				elsif @numberOfTimesIpIsInIpDb.size > 0
+  		#		elsif @numberOfTimesIpIsInIpDb.size > 0
   					
-  					puts "**Unable to create dual service token ****************"
-  				end
-	    	end
+  		#			puts "**Unable to create dual service token ****************"
+  		#		end
+	    #	end
 
 
-
+	    puts "nada signed in"
 
     	end
 

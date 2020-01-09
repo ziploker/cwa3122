@@ -319,7 +319,7 @@ header{
 #cover_image h1{
 	color: white;
 	font-weight: 800;
-	font-size: 1.6rem;
+	font-size: 2rem;
 	display:block;
     text-align: center;
     text-transform: capitalize;
@@ -331,7 +331,7 @@ header{
 #cover_image h2{
 	color: white;
 	font-weight: 900;
-	font-size: 1.2rem;
+	font-size: 1.6rem;
 	display:block;
     text-align: center;
     text-transform: capitalize;
@@ -574,7 +574,7 @@ header{
 	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(23,36,36,0.4037814955083596) 78%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#172424",GradientType=1);
-	z-index: 5;
+	z-index: 10;
 	position: relative;
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none; 
@@ -926,11 +926,37 @@ header{
 	//grid-area: row_avatar;
 }
 
+.chat_img_info{
+
+	padding-left: 10px;
+	width: 30px;
+
+	//background-color: red;
+	justify-self: start;
+	align-self: start;
+	//grid-area: row_avatar;
+}
+
 .chat_name{
 	//padding: 5px;
 	justify-self: start;
 	align-self: start;
 	padding-top: 2.5px;
+	//grid-area: row_name;
+
+	//background-color: yellow;
+	overflow: hidden;
+    white-space: nowrap;
+	
+	font-size: .78em;
+	color: #a8a8a8;
+}
+
+.chat_name_info{
+	//padding: 5px;
+	justify-self: start;
+	align-self: start;
+	//padding-top: 2.5px;
 	//grid-area: row_name;
 
 	//background-color: yellow;
@@ -964,6 +990,34 @@ header{
 	align-self: start;
 
 	//grid-area: row_message;
+}
+
+.chat_msg_info{
+	
+	overflow-x: hidden;
+	
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+
+	//border:1px solid #CCC;
+	//width: 40em;
+	max-width: 100%;
+	
+	justify-self: start;
+	align-self: start;
+
+	//grid-area: row_message;
+
+	font-style: italic;
+	font-size: .8rem;
+	color: red;
 }
 
 
@@ -1137,7 +1191,7 @@ input{
  	white-space: nowrap;
  	color: rgb(63, 63, 63);
 
- 	background: rgba(#C8C0C0, .9);
+ 	background: #C8C0C0;
     
     //background: rgba(black, .9);
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
@@ -1156,7 +1210,7 @@ input{
 
 .btnV2:hover{
 
-	background: rgba(#e0c9c9, 1);
+	background: #e0c9c9;
 	color: rgb(38, 38, 38);
 
 }
@@ -1519,7 +1573,7 @@ a:hover{
 	
 	width: 200px;
 	
-	//z-index: 22292;
+	z-index: 25;
 	
 	max-height: 0;
 	transition: max-height .2s ease-out;
@@ -1539,7 +1593,7 @@ a:hover{
 	
 	width: 171.5px;
 	//grid-area: chatArea;
-	z-index: 6;
+	z-index: 20;
 	//justify-self: end;
 	//padding-top: -60px;
 	max-height: 0;
@@ -1733,5 +1787,11 @@ a:hover{
 
 .menu{
 
-	z-index: 9;
+	z-index: 20;
+}
+
+.watchers{
+
+	font-size: .7rem;
+	padding-left: 8px;
 }

@@ -9,7 +9,7 @@ $(document).ready(function (){
     
     var watchers = 0;
 	
-	var streamers = 0;
+	
 
 	var dt = new Date();
 
@@ -85,9 +85,10 @@ $(document).ready(function (){
 			session.on("connectionCreated", function(event){
 				console.log("THIS IS IT" + event.connection.data);
 
+				watchers++
 				
 				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
-				alert (un);
+				//alert (un);
 
 				
 			 	$('.whos_online ul').append('<li class="'+un+'"><span class="usernames">' +un+ '</span></li>');
@@ -95,8 +96,29 @@ $(document).ready(function (){
 
 
 
-      			$('#chat_window').append('<div class="chat_img"></div><div class="chat_name"> ** '+un+'</div><div class="chat_msg">has joined the room **</div>');
+      			$('#chat_window').append('<div class="chat_img_info"></div><div class="chat_name_info"> ** '+un+'</div><div class="chat_msg_info">has joined the room</div>');
 
+      			$('.watchers').text('(currently online: '+watchers+')');
+			});
+
+			//forign user disconnects from the session
+			session.on("connectionDestroyed", function(event){
+				console.log("THIS IS IT" + event.connection.data);
+
+				watchers--
+				
+				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
+				//alert (un);
+
+				
+			 	$('.'+un).remove();
+				$('.whos_online').scrollTop(  $('.whos_online')[0].scrollHeight   );
+
+
+
+      			$('#chat_window').append('<div class="chat_img_info"></div><div class="chat_name_info"> ** '+un+'</div><div class="chat_msg_info">has left the room</div>');
+
+      			$('.watchers').text('(currently online: '+watchers+')');
 
 			});
 
@@ -119,7 +141,8 @@ $(document).ready(function (){
 			
 			// Create a publisher
 			var publisher = OT.initPublisher('subscriber', {
-				insertMode: 'append',
+				fitMode: "contain",
+				insertMode: 'replace',
 				width: '100%',
 				height: '100%'
 			}, handleError);
@@ -277,10 +300,47 @@ $(document).ready(function (){
 
 
 			
+			
+
 			//forign user connects to the session
 			session.on("connectionCreated", function(event){
 				console.log("nonadmin connectionCreated========" + event);
+
+				watchers++
 				
+				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
+				//alert (un);
+
+				
+			 	$('.whos_online ul').append('<li class="'+un+'"><span class="usernames">' +un+ '</span></li>');
+				$('.whos_online').scrollTop(  $('.whos_online')[0].scrollHeight   );
+
+
+
+      			$('#chat_window').append('<div class="chat_img_info"></div><div class="chat_name_info"> ** '+un+'</div><div class="chat_msg_info">has joined the room</div>');
+
+      			$('.watchers').text('(currently online: '+watchers+')');
+			});
+
+			//forign user disconnects from the session
+			session.on("connectionDestroyed", function(event){
+				console.log("nonadmin connectionDestroyed========" + event);
+
+				watchers--
+				
+				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
+				//alert (un);
+
+				
+			 	$('.'+un).remove();
+				$('.whos_online').scrollTop(  $('.whos_online')[0].scrollHeight   );
+
+
+
+      			$('#chat_window').append('<div class="chat_img_info"></div><div class="chat_name_info"> ** '+un+'</div><div class="chat_msg_info">has left the room</div>');
+
+      			$('.watchers').text('(currently online: '+watchers+')');
+
 			});
 
 			// Subscribe to a newly created stream
@@ -290,6 +350,7 @@ $(document).ready(function (){
 				console.log(event);
 
 				session.subscribe(event.stream, 'subscriber', {
+				fitMode: "contain",
 				insertMode: 'replace',
 				width: '100%',
 				height: '100%'
@@ -432,7 +493,7 @@ $(document).ready(function (){
 	
 	//if non-admin user is logged in or a temp GUEST, start initalSession()
 	if (goodToGo == "true" && isAdmin == "false"){
-		console.log("is admin is false and user logged in gogogogogo");
+		console.log("goodToGo is "+goodToGo+ "and is admin is false and user logged in gogogogogo");
 			subscribe2Session();
 
 	}
