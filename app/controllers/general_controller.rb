@@ -256,7 +256,7 @@ class GeneralController < ApplicationController
 
 					
 
-					@token = opentok.generate_token @existing_session_id, data: @ipAddress
+					@token = opentok.generate_token @existing_session_id, data: @first+" "+@last+"@"+@ipAddress
 
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				#newIpToSaveInDb.save

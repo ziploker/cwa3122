@@ -315,9 +315,7 @@ $(document).ready(function (){
 				
 				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
 				//alert (un);
-				if (un == ""){
-					un = first +" "+ last;
-				};
+				
 
 				
 			 	$('.whos_online ul').append('<li class="'+un+'"><span class="usernames">' +un+ '</span></li>');
