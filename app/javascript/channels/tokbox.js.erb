@@ -88,6 +88,11 @@ $(document).ready(function (){
 				watchers++
 				
 				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
+
+				if (un == ""){
+					un = first +" "+ last;
+				};
+				
 				//alert (un);
 
 				
@@ -141,8 +146,8 @@ $(document).ready(function (){
 			
 			// Create a publisher
 			var publisher = OT.initPublisher('subscriber', {
-				fitMode: "contain",
-				insertMode: 'replace',
+				fitMode: "cover",
+				insertMode: 'append',
 				width: '100%',
 				height: '100%'
 			}, handleError);
@@ -310,6 +315,9 @@ $(document).ready(function (){
 				
 				var un = event.connection.data.substr(0, event.connection.data.indexOf('@'));
 				//alert (un);
+				if (un == ""){
+					un = first +" "+ last;
+				};
 
 				
 			 	$('.whos_online ul').append('<li class="'+un+'"><span class="usernames">' +un+ '</span></li>');
@@ -350,8 +358,8 @@ $(document).ready(function (){
 				console.log(event);
 
 				session.subscribe(event.stream, 'subscriber', {
-				fitMode: "contain",
-				insertMode: 'replace',
+				fitMode: "cover",
+				insertMode: 'append',
 				width: '100%',
 				height: '100%'
 				}, handleError);

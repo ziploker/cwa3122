@@ -4,8 +4,7 @@ class GeneralController < ApplicationController
 	#before_filter :authenticate_user!, except: [:index]
 
 	
-	puts "stoooop"
-
+	
 
 	def index
 
@@ -60,10 +59,10 @@ class GeneralController < ApplicationController
     		@first = current_user.first_name
     		@last = current_user.last_name
 
-		#else
+		else
 
-		#	@first = "test user"
-		#	@last = rand(2000)
+			@first = "test user"
+			@last = rand(2000)
 
 		end
 	    
@@ -216,26 +215,26 @@ class GeneralController < ApplicationController
 
     	
 
-    	#else #temporary option for demo 
+    	else #temporary option for demo 
 
-    	#	puts "----------non-Admin GUEST user logged in."
+    		puts "----------non-Admin GUEST user logged in."
 
-	  	#	@goodToGo = "true"
-	  	#    puts "wtf "+@goodToGo
+	  		@goodToGo = "true"
+	  	    puts "wtf "+@goodToGo
 
 
-	  	#	if @allSessions.size == 0
+	  		if @allSessions.size == 0
 
-		#    	puts "-----non admin GUEST signed in but no sessions in db, show is off"
+		    	puts "-----non admin GUEST signed in but no sessions in db, show is off"
 				
-		#    else
+		    else
 
-		#    	puts "-----non admin GUEST signed in and session exists in db"
-		#    	puts "IP address is = "+ @ipAddress
+		    	puts "-----non admin GUEST signed in and session exists in db"
+		    	puts "IP address is = "+ @ipAddress
 
 		    	
 
-		#    	@existing_session_id = Session.last.session
+		    	@existing_session_id = Session.last.session
 
 		    	#temporarily, ALWAYS create token
 				#@token = opentok.generate_token @session_id, data: @ipAddress
@@ -251,28 +250,28 @@ class GeneralController < ApplicationController
 
 
 		    	#create Token
-		#		@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
+				@numberOfTimesIpIsInIpDb = Ip.where("ipaddy = ?", @ipAddress)
 
-		#		if @numberOfTimesIpIsInIpDb.size == 0
+				if @numberOfTimesIpIsInIpDb.size == 0
 
 					
 
-		#			@token = opentok.generate_token @existing_session_id, data: @ipAddress
+					@token = opentok.generate_token @existing_session_id, data: @ipAddress
 
-		#			newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
+					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				#newIpToSaveInDb.save
 
-	    #			puts "*****************created new token with existing session and saved iP addy to DB"
+	    			puts "*****************created new token with existing session and saved iP addy to DB"
 
 
-  		#		elsif @numberOfTimesIpIsInIpDb.size > 0
+  				elsif @numberOfTimesIpIsInIpDb.size > 0
   					
-  		#			puts "**Unable to create dual service token ****************"
-  		#		end
-	    #	end
+  					puts "**Unable to create dual service token ****************"
+  				end
+	    	end
 
 
-	    puts "nada signed in"
+	    
 
     	end
 
