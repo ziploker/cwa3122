@@ -62,7 +62,7 @@ class GeneralController < ApplicationController
 		else
 
 			@first = "test user"
-			@last = rand(2000)
+			@last = rand(2000).to_s
 
 		end
 	    
