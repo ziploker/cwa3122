@@ -61,7 +61,7 @@ class GeneralController < ApplicationController
 
 		else
 
-			@first = "test user"
+			@first = "TestUser-"
 			@last = rand(2000).to_s
 
 		end
@@ -256,7 +256,7 @@ class GeneralController < ApplicationController
 
 					
 
-					@token = opentok.generate_token @existing_session_id, data: @first+" "+@last+"@"+@ipAddress
+					@token = opentok.generate_token @existing_session_id, data: @first+@last+"@"+@ipAddress
 
 					newIpToSaveInDb = Ip.new(:ipaddy => @ipAddress)
 	  				#newIpToSaveInDb.save
